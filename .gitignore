@@ -1,0 +1,42 @@
+# Кэш и сборка Kotlin / Gradle
+.gradle/
+build/
+.kotlin/
+
+# Android (если есть)
+.idea/
+*.iml
+*.apk
+
+# iOS / Xcode (основное)
+**/DerivedData/
+**/DerivedData*
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+**/.xcodeproj/xcuserdata/
+**/xcshareddata/xcschemes/
+**/.XCCache/
+**/Pods/
+**/.sandbox/
+.DS_Store
+captures
+xcuserdata
+.externalNativeBuild
+.cxx
+node_modules/
+
+# Архивы и сборки КМP для iOS
+**/build/
+**/.konan/
+!src/**/build/
+
+# Прочее
+.misc/
+Mercury/
+Configure
+Get
+Run
