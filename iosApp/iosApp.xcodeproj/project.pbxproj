@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		75D017FC7FB5484F8966A913 /* Mercury */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mercury; path = "/Users/panfstas/Documents/XCodeProjects/Mercury"; sourceTree = "<absolute>"; };
+		75D017FC7FB5484F8966A913 /* Mercury */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mercury; path = /Users/panfstas/Documents/XCodeProjects/Mercury; sourceTree = "<absolute>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 

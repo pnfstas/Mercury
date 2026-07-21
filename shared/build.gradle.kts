@@ -52,6 +52,13 @@ kotlin {
             implementation(libs.kotlin.test)
         }
     }
+    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+        compilations.all {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xdisable-phases=CastsOptimization")
+            }
+        }
+    }
 }
 
 dependencies {
