@@ -14,7 +14,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "Shared"
+            baseName = "Mercury"
             isStatic = true
         }
     }
@@ -37,10 +37,8 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
-        }
-        commonMain.dependencies {
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.foundation)
+            //перенесено из commonMain
+            implementation(libs.compose.foundation
             implementation(libs.compose.material3)
             implementation(libs.compose.ui)
             implementation(libs.compose.components.resources)
@@ -48,15 +46,18 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
+        commonMain.dependencies {
+            implementation(libs.compose.runtime)
+            //implementation(libs.compose.foundation
+            //implementation(libs.compose.material3)
+            //implementation(libs.compose.ui)
+            //implementation(libs.compose.components.resources)
+            //implementation(libs.compose.webview.multiplatform)
+            //implementation(libs.androidx.lifecycle.viewmodelCompose)
+            //implementation(libs.androidx.lifecycle.runtimeCompose)
+        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
-        }
-    }
-    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
-        compilations.all {
-            compilerOptions.configure {
-                freeCompilerArgs.add("-Xdisable-phases=CastsOptimization")
-            }
         }
     }
 }
