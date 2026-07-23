@@ -30,7 +30,8 @@ struct MyWebView: UIViewRepresentable {
         }
     }
 }
-
+/*
 #Preview {
     ContentView()
 }
+*/
