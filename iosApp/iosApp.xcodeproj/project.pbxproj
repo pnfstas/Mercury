@@ -47,10 +47,107 @@
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB28589301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2EBC413A301349CE00540CB1 /* Exceptions for "Mercury" folder in "iosApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				.gitignore,
+				.gradle/9.4.1/checksums/checksums.lock,
+				.gradle/9.4.1/executionHistory/executionHistory.bin,
+				.gradle/9.4.1/executionHistory/executionHistory.lock,
+				".gradle/9.4.1/fileChanges/last-build.bin",
+				.gradle/9.4.1/fileHashes/fileHashes.bin,
+				.gradle/9.4.1/fileHashes/fileHashes.lock,
+				.gradle/9.4.1/fileHashes/resourceHashesCache.bin,
+				.gradle/9.4.1/gc.properties,
+				.gradle/buildOutputCleanup/buildOutputCleanup.lock,
+				.gradle/buildOutputCleanup/cache.properties,
+				.gradle/buildOutputCleanup/outputFiles.bin,
+				".gradle/file-system.probe",
+				".gradle/vcs-1/gc.properties",
+				androidApp/build.gradle.kts,
+				androidApp/src/main/AndroidManifest.xml,
+				androidApp/src/main/kotlin/app/mercury/MainActivity.kt,
+				"androidApp/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+				androidApp/src/main/res/drawable/ic_launcher_background.xml,
+				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+				"androidApp/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+				"androidApp/src/main/res/mipmap-hdpi/ic_launcher.png",
+				"androidApp/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+				"androidApp/src/main/res/mipmap-mdpi/ic_launcher.png",
+				"androidApp/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+				"androidApp/src/main/res/mipmap-xhdpi/ic_launcher.png",
+				"androidApp/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+				"androidApp/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+				"androidApp/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+				"androidApp/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+				androidApp/src/main/res/values/strings.xml,
+				build.gradle.kts,
+				"build/reports/problems/problems-report.html",
+				gradle.properties,
+				"gradle/gradle-daemon-jvm.properties",
+				gradle/libs.versions.toml,
+				"gradle/wrapper/gradle-wrapper.properties",
+				gradlew,
+				gradlew.bat,
+				iosApp/Configuration/Config.xcconfig,
+				iosApp/iosApp/Assets.xcassets,
+				iosApp/iosApp/ContentView.swift,
+				iosApp/iosApp/Info.plist,
+				iosApp/iosApp/iOSApp.swift,
+				"iosApp/iosApp/Preview Content/Preview Assets.xcassets",
+				local.properties,
+				README.md,
+				settings.gradle.kts,
+				shared/build.gradle.kts,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/files.knf,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/irDeclarations.knd,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/signatures.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/strings.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/types.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/bodies.knb,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/debugInfo.knd,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/fileEntries.knf,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/files.knf,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/irDeclarations.knd,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/signatures.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/strings.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/types.knt,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/module,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/0_mercury.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/1_mercury.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/2_mercury.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/root_package/0_.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/manifest,
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/compose-multiplatform.xml",
+				shared/build/konan.txt,
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
+				shared/src/androidMain/kotlin/app/mercury/Platform.android.kt,
+				"shared/src/commonMain/composeResources/drawable/compose-multiplatform.xml",
+				shared/src/commonMain/kotlin/app/mercury/App.kt,
+				shared/src/commonMain/kotlin/app/mercury/Platform.kt,
+				shared/src/iosMain/kotlin/app/mercury/MainViewController.kt,
+				shared/src/iosMain/kotlin/app/mercury/Platform.ios.kt,
+			);
+			target = 474263D4B11B924EA02484E9 /* iosApp */;
+		};
 		3005C4B2DE26C774410B573E /* Exceptions for "iosApp" folder in "iosApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -68,6 +165,9 @@
 		};
 		2EFF2A1230112F7200C6790B /* Mercury */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2EBC413A301349CE00540CB1 /* Exceptions for "Mercury" folder in "iosApp" target */,
+			);
 			name = Mercury;
 			path = ..;
 			sourceTree = "<group>";
@@ -353,6 +453,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBC410C30132C0F00540CB1 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		35B6F3EC05248E5BA9CC7CA3 = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +642,10 @@
 				{
 					ProductGroup = 2E453CB83011556A000E0AB6 /* Products */;
 					ProjectRef = 2E453B783011556A000E0AB6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBC410C30132C0F00540CB1 /* Products */;
+					ProjectRef = 2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB286C7301136E7003901EF /* Products */;
