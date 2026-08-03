@@ -39,6 +39,7 @@
 		2E88C7C830121A52008A7446 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E88D5B230121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E88D76930121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E8A4F243020BAD60038841A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9234301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -47,7 +48,10 @@
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB28589301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,7 +75,7 @@
 				".gradle/vcs-1/gc.properties",
 				androidApp/build.gradle.kts,
 				androidApp/src/main/AndroidManifest.xml,
-				androidApp/src/main/kotlin/app/mercury/MainActivity.kt,
+				androidApp/src/main/kotlin/app/mercury/activities/MainActivity.kt,
 				"androidApp/src/main/res/drawable-v24/ic_launcher_foreground.xml",
 				androidApp/src/main/res/drawable/ic_launcher_background.xml,
 				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
@@ -401,6 +405,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E8A4FBA3020BAD60038841A /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E8EA4E7301135E00039A83E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -453,7 +462,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB45249301F02C500C816B8 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB5428530208195007DDEFC /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBC410C30132C0F00540CB1 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EDF563F30212CE600AC8391 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -556,6 +580,10 @@
 					ProjectRef = 2E24EE5030115CE100A62C0B /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2E8A4FBA3020BAD60038841A /* Products */;
+					ProjectRef = 2E8A4F243020BAD60038841A /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2E88D95530121A52008A7446 /* Products */;
 					ProjectRef = 2E88D76930121A52008A7446 /* iosApp.xcodeproj */;
 				},
@@ -624,8 +652,20 @@
 					ProjectRef = 2E36F4FE30113F0C002163FF /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EDF563F30212CE600AC8391 /* Products */;
+					ProjectRef = 2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2E651A1E3011567000E4B3F6 /* Products */;
 					ProjectRef = 2E6518DC3011567000E4B3F6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB5428530208195007DDEFC /* Products */;
+					ProjectRef = 2EB541F130208195007DDEFC /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB45249301F02C500C816B8 /* Products */;
+					ProjectRef = 2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E0F45F230113C9100EC26A5 /* Products */;
@@ -759,7 +799,8 @@
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DerivedData/iosApp/Build/Products/Debug-iphonesimulator",
+					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/bin/iosX64/debugFramework",
+					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/xcode-frameworks/Debug/iphonesimulator26.5",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -851,7 +892,8 @@
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DerivedData/iosApp/Build/Products/Debug-iphonesimulator",
+					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/bin/iosX64/debugFramework",
+					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/xcode-frameworks/Debug/iphonesimulator26.5",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
