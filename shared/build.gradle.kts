@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -47,21 +49,23 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
         commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
             implementation(libs.compose.runtime)
-            //implementation(libs.compose.foundation)
-            //implementation(libs.compose.material3)
-            //implementation(libs.compose.ui)
-            //implementation(libs.compose.components.resources)
-            //implementation(libs.compose.webview.multiplatform)
-            //implementation(libs.androidx.lifecycle.viewmodelCompose)
-            //implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.room.runtime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
     }
 }
+/*
+room3 {
+    schemaDirectory("$projectDir/schemas")
+}
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
+    // KSP или компилятор Room для генерации кода DAO
+    add("kspCommonMainMetadata", libs.room.compiler)
 }
+*/
