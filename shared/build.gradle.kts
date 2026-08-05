@@ -38,6 +38,7 @@ kotlin {
     
     sourceSets {
         androidMain.dependencies {
+            implementation(libs.androidx.sqlite.bundled)
             implementation(libs.compose.uiToolingPreview)
             //перенесено из commonMain
             implementation(libs.compose.foundation)
@@ -52,14 +53,27 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.compose.runtime)
             implementation(libs.room.runtime)
+            implementation(libs.koin.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        val iosArm64Main by getting {
+            dependencies {
+                implementation(libs.androidx.sqlite.bundled)
+            }
+        }
+        val iosSimulatorArm64Main by getting {
+            dependencies {
+                implementation(libs.androidx.sqlite.bundled)
+            }
+        }
     }
 }
-/*
-room3 {
+room {
     schemaDirectory("$projectDir/schemas")
 }
 
@@ -68,4 +82,3 @@ dependencies {
     // KSP или компилятор Room для генерации кода DAO
     add("kspCommonMainMetadata", libs.room.compiler)
 }
-*/
