@@ -1,5 +1,5 @@
 //
-//  ProductDatabase.kt
+//  ProductsDatabase.kt
 //  iosApp
 //
 //  Created by Panferov Stanislav on 03.08.2026.
@@ -12,9 +12,7 @@ import app.mercury.data.local.entities.ProductEntity
 
 @Database(entities = [ProductEntity::class], version = 1, exportSchema = false)
 abstract class ProductsDatabase : RoomDatabase() {
-	abstract fun productsDao(): ProductDao
+	abstract fun productsDao(): ProductsDao
 }
 
-// expect-функция — это контракт. Мы говорим компилятору:
-// "Каждая платформа обязана предоставить свой способ сборки этого Builder"
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase>

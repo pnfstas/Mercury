@@ -5,7 +5,7 @@ import app.mercury.data.local.entities.ProductEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-class ProductDao {
+class ProductsDao {
 	fun getAll() : Flow<List<ProductEntity>> {
 
 	}

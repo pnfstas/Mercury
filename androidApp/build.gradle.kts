@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -13,14 +13,12 @@ kotlin {
 }
 dependencies {
     implementation(projects.shared)
-
     implementation(libs.androidx.activity.compose)
-
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
 }
 
-android {
+configure<com.android.build.api.dsl.ApplicationExtension> {
     namespace = "app.mercury"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 

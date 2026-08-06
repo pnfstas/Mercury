@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
-import app.mercury.data.local.database.ProductsDatabase
 
 @OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
@@ -20,6 +19,6 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
 
 	return Room.databaseBuilder<ProductsDatabase>(
 		name = dbFilePath,
-		factory = { ProductDatabase_Impl() } // Используем сгенерированный класс Room
+		factory = { ProductsDatabase_Impl() } // Используем сгенерированный класс Room
 	)
 }
