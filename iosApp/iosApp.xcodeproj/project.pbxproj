@@ -23,6 +23,7 @@
 		2E36098230113F0C002163FF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E36F4FE30113F0C002163FF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E36F4FF30113F0C002163FF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
+		2E38854E3025E3EA000555E0 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E4533773011556A000E0AB6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E4533783011556A000E0AB6 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E4539C13011556A000E0AB6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -61,6 +62,8 @@
 			membershipExceptions = (
 				.gitignore,
 				.gradle/9.4.1/checksums/checksums.lock,
+				".gradle/9.4.1/checksums/md5-checksums.bin",
+				".gradle/9.4.1/checksums/sha1-checksums.bin",
 				.gradle/9.4.1/executionHistory/executionHistory.bin,
 				.gradle/9.4.1/executionHistory/executionHistory.lock,
 				".gradle/9.4.1/fileChanges/last-build.bin",
@@ -73,9 +76,20 @@
 				.gradle/buildOutputCleanup/outputFiles.bin,
 				".gradle/file-system.probe",
 				".gradle/vcs-1/gc.properties",
+				.idea/.gitignore,
+				.idea/AndroidProjectSystem.xml,
+				.idea/caches/deviceStreaming.xml,
+				.idea/gradle.xml,
+				.idea/markdown.xml,
+				.idea/misc.xml,
+				.idea/runConfigurations.xml,
+				.idea/vcs.xml,
+				.idea/workspace.xml,
 				androidApp/build.gradle.kts,
 				androidApp/src/main/AndroidManifest.xml,
 				androidApp/src/main/kotlin/app/mercury/activities/MainActivity.kt,
+				androidApp/src/main/kotlin/app/mercury/ui/layouts/MainLayout.kt,
+				androidApp/src/main/kotlin/app/mercury/ui/viewmodels/ProductViewModel.kt,
 				"androidApp/src/main/res/drawable-v24/ic_launcher_foreground.xml",
 				androidApp/src/main/res/drawable/ic_launcher_background.xml,
 				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
@@ -101,10 +115,10 @@
 				gradlew.bat,
 				iosApp/Configuration/Config.xcconfig,
 				iosApp/iosApp/Assets.xcassets,
-				iosApp/iosApp/ContentView.swift,
 				iosApp/iosApp/Info.plist,
 				iosApp/iosApp/iOSApp.swift,
 				"iosApp/iosApp/Preview Content/Preview Assets.xcassets",
+				iosApp/iosApp/StartKoin.swift,
 				local.properties,
 				README.md,
 				settings.gradle.kts,
@@ -126,10 +140,16 @@
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/strings.knt,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/types.knt,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/module,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/0_database.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/1_database.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/2_database.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/3_database.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/0_entities.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.di/0_di.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/0_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/1_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/2_mercury.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/root_package/0_.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/3_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/manifest,
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
@@ -142,11 +162,19 @@
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
+				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
 				shared/src/androidMain/kotlin/app/mercury/Platform.android.kt,
 				"shared/src/commonMain/composeResources/drawable/compose-multiplatform.xml",
 				shared/src/commonMain/kotlin/app/mercury/App.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductRepository.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDao.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/entities/ProductEntity.kt,
+				shared/src/commonMain/kotlin/app/mercury/di/ProductsModule.kt,
 				shared/src/commonMain/kotlin/app/mercury/Platform.kt,
+				shared/src/iosMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
 				shared/src/iosMain/kotlin/app/mercury/MainViewController.kt,
 				shared/src/iosMain/kotlin/app/mercury/Platform.ios.kt,
 			);
@@ -156,6 +184,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Views/ContentView.swift,
 			);
 			target = 474263D4B11B924EA02484E9 /* iosApp */;
 		};
@@ -298,6 +327,11 @@
 			isa = PBXGroup;
 			children = (
 			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E3885F03025E3EA000555E0 /* Products */ = {
+			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -640,6 +674,10 @@
 					ProjectRef = 2E3607CB30113F0C002163FF /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EDF563F30212CE600AC8391 /* Products */;
+					ProjectRef = 2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB286C5301136E7003901EF /* Products */;
 					ProjectRef = 2EB273B7301136E7003901EF /* iosApp.xcodeproj */;
 				},
@@ -650,10 +688,6 @@
 				{
 					ProductGroup = 2E360AC030113F0C002163FF /* Products */;
 					ProjectRef = 2E36F4FE30113F0C002163FF /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EDF563F30212CE600AC8391 /* Products */;
-					ProjectRef = 2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E651A1E3011567000E4B3F6 /* Products */;
@@ -670,6 +704,10 @@
 				{
 					ProductGroup = 2E0F45F230113C9100EC26A5 /* Products */;
 					ProjectRef = 2E0F44B430113C9100EC26A5 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E3885F03025E3EA000555E0 /* Products */;
+					ProjectRef = 2E38854E3025E3EA000555E0 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E24F7F730115CE100A62C0B /* Products */;
@@ -799,8 +837,7 @@
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/bin/iosX64/debugFramework",
-					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/xcode-frameworks/Debug/iphonesimulator26.5",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -892,8 +929,7 @@
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/bin/iosX64/debugFramework",
-					"$(USER_LIBRARY_DIR)/CloudStorage/GoogleDrive-pnfstas@gmail.com/My\\ Drive/macOS_Shared/XCodeProjects/Mercury/shared/build/xcode-frameworks/Debug/iphonesimulator26.5",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;

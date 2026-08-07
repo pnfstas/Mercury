@@ -13,7 +13,7 @@ struct ContentView: View {
         NavigationStack {
             
         }
-        .navigationBarTitle(<#T##title: Text##Text#>)
+        .navigationBarTitle("Text")
     }
 }
 /*
