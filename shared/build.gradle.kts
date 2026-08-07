@@ -81,4 +81,5 @@ dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
     // KSP или компилятор Room для генерации кода DAO
     add("kspCommonMainMetadata", libs.room.compiler)
+    //ksp(libs.room.compiler)
 }

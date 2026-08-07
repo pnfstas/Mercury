@@ -19,6 +19,6 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
 
 	return Room.databaseBuilder<ProductsDatabase>(
 		name = dbFilePath,
-		factory = { ProductsDatabase_Impl() } // Используем сгенерированный класс Room
+		factory = { ProductsDatabaseConstructor.initialize() }
 	)
 }
