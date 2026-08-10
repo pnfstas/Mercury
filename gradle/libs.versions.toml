@@ -20,6 +20,7 @@ koin = "4.0.0"
 ktor = "3.0.0"
 sqliteBundled = "2.7.0"
 core-ktx = "1.19.0"
+ksoup = "0.2.6"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
@@ -48,6 +49,7 @@ ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-conte
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "sqliteBundled" }
 #androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+fleeksoft-ksoup = { group = "com.fleeksoft.ksoup", name = "ksoup", version.ref = "ksoup" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -6,10 +6,15 @@
 //
 package app.mercury.data.local.entities
 
+import androidx.room.Entity
+import kotlinx.serialization.Serializable
+
+@Serializable
+@Entity(tableName = "products")
 data class ProductEntity(
-	val picture : String,
 	val name : String,
 	val description : String,
 	val price : Float,
-	val hyperlink : String
+	val picture : String,
+	val url : String
 )
