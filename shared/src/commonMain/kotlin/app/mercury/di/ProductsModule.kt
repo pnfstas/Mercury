@@ -12,9 +12,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import org.koin.mp.KoinPlatform
 
 val productsModule = module {
 	single<CoroutineScope> {
@@ -39,13 +42,26 @@ val productsModule = module {
 			httpClient = get()
 		)
 	}
-	single {
+	factory {
 		(productsRepository: ProductsRepository) -> ProductsInteractor(productsRepository = productsRepository)
 	}
 }
 
+object koinStarter : KoinComponent {
+	fun initKoin(additionalModules: List<Module> = emptyList()) {
+		startKoin {
+			modules(productsModule + additionalModules)
+		}
+	}
+	fun getProductsInteractor() : ProductsInteractor {
+		return get()
+	}
+}
 fun initKoin(additionalModules: List<Module> = emptyList()) {
 	startKoin {
 		modules(productsModule + additionalModules)
 	}
+}
+fun getProductsInteractor() : ProductsInteractor {
+	return KoinPlatform.getKoin().get()
 }

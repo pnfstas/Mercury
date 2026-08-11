@@ -42,14 +42,14 @@ class ProductsRepository(
 				val elements: Elements = htmlDocument.select("div.js-product.t-catalog__card")
 				var products = mutableListOf<ProductEntity>()
 				for(element in elements) {
-					val listDescription : List<String> = element?.wholeOwnText()?.split('\n') ?: emptyList()
+					val listDescription : List<String> = element.wholeOwnText()?.split('\n') ?: emptyList()
 					if(listDescription.size >= 3) {
 						val name = listDescription[0]
 						val description = listDescription[1]
 						val price = listDescription[2].toFloat()
 						val picture = element.attribute("product.data-poduct-img")?.value ?: ""
 						val url = element.attribute("product.data-poduct-url")?.value ?: ""
-						if(name?.isNullOrBlank() == false && description?.isNullOrBlank() == false && price > 0) {
+						if(!name.isNullOrBlank() && !description.isNullOrBlank() && price > 0) {
 							val productEntity = ProductEntity(
 								name = name,
 								description = description,

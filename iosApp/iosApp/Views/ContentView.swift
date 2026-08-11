@@ -14,6 +14,9 @@ struct ContentView: View {
             
         }
         .navigationBarTitle("Text")
+        Grid(horizontalSpacing : 10, verticalSpacing : 10) {
+            
+        }
     }
 }
 /*

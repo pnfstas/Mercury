@@ -3,5 +3,8 @@ import shared
 
 @Observable
 final class ProductsViewModel {
-    private let productsInteractor : ProductsInteractor
+    private let productsInteractor : ProductsInteractor?
+    init() {
+        productsInteractor = ProductsModuleKt.getProductsInteractor()
+    }
 }

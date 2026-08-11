@@ -45,6 +45,7 @@
 		2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E92D6BF302B396800836AEE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B7301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -71,6 +72,17 @@
 				.gradle/9.4.1/fileHashes/fileHashes.lock,
 				.gradle/9.4.1/fileHashes/resourceHashesCache.bin,
 				.gradle/9.4.1/gc.properties,
+				.gradle/9.5.0/checksums/checksums.lock,
+				".gradle/9.5.0/checksums/md5-checksums.bin",
+				".gradle/9.5.0/checksums/sha1-checksums.bin",
+				.gradle/9.5.0/executionHistory/executionHistory.bin,
+				.gradle/9.5.0/executionHistory/executionHistory.lock,
+				".gradle/9.5.0/fileChanges/last-build.bin",
+				.gradle/9.5.0/fileHashes/fileHashes.bin,
+				.gradle/9.5.0/fileHashes/fileHashes.lock,
+				.gradle/9.5.0/fileHashes/resourceHashesCache.bin,
+				.gradle/9.5.0/gc.properties,
+				".gradle/9.5.0/kotlin-dsl-plugin-entries/kotlin-dsl-plugin-entries.lock",
 				.gradle/buildOutputCleanup/buildOutputCleanup.lock,
 				.gradle/buildOutputCleanup/cache.properties,
 				.gradle/buildOutputCleanup/outputFiles.bin,
@@ -123,6 +135,7 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
+				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
@@ -146,6 +159,7 @@
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/3_database.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/0_entities.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.di/0_di.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.ui/0_ui.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/0_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/1_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/2_mercury.knm,
@@ -164,17 +178,19 @@
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
 				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
+				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.android.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
 				shared/src/androidMain/kotlin/app/mercury/Platform.android.kt,
 				"shared/src/commonMain/composeResources/drawable/compose-multiplatform.xml",
 				shared/src/commonMain/kotlin/app/mercury/App.kt,
-				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductRepository.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsRepository.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/entities/ProductEntity.kt,
 				shared/src/commonMain/kotlin/app/mercury/di/ProductsModule.kt,
 				shared/src/commonMain/kotlin/app/mercury/Platform.kt,
-				shared/src/iosMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
+				shared/src/commonMain/kotlin/app/mercury/ui/ProductsInteractor.kt,
+				shared/src/iosMain/kotlin/app/mercury/data/local/database/ProductsDatabase.ios.kt,
 				shared/src/iosMain/kotlin/app/mercury/MainViewController.kt,
 				shared/src/iosMain/kotlin/app/mercury/Platform.ios.kt,
 			);
@@ -184,6 +200,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				ViewModels/ProductsViewModel.swift,
 				Views/ContentView.swift,
 			);
 			target = 474263D4B11B924EA02484E9 /* iosApp */;
@@ -470,6 +487,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E92D76B302B396800836AEE /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB286C5301136E7003901EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +722,10 @@
 				{
 					ProductGroup = 2EB45249301F02C500C816B8 /* Products */;
 					ProjectRef = 2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E92D76B302B396800836AEE /* Products */;
+					ProjectRef = 2E92D6BF302B396800836AEE /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E0F45F230113C9100EC26A5 /* Products */;
