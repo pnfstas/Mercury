@@ -1,7 +1,9 @@
 package app.mercury.di
 
+import app.mercury.data.local.database.ProductsDao
 import app.mercury.data.local.database.ProductsDatabase
 import app.mercury.data.local.database.ProductsRepository
+import app.mercury.ui.ProductsInteractor
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
@@ -36,6 +38,9 @@ val productsModule = module {
 			productsDao = get(),
 			httpClient = get()
 		)
+	}
+	single {
+		(productsRepository: ProductsRepository) -> ProductsInteractor(productsRepository = productsRepository)
 	}
 }
 

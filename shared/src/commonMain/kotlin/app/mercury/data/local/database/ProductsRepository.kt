@@ -34,7 +34,7 @@ class ProductsRepository(
 				}
 			}
 			*/
-			val client = HttpClient()
+			val httpClient = HttpClient()
 			val httpResponse : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog")
 			if(httpResponse.status == HttpStatusCode.OK) {
 				val htmlContent = httpResponse.bodyAsText()
