@@ -75,6 +75,10 @@ kotlin {
         }
     }
 }
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "app.mercury"
+}
 room {
     schemaDirectory("$projectDir/schemas")
 }

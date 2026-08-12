@@ -14,6 +14,10 @@ struct ContentView: View {
             
         }
         .navigationBarTitle("Text")
+        .toolbar {
+            ToolbarItem {
+            }
+        }
         Grid(horizontalSpacing : 10, verticalSpacing : 10) {
             
         }
