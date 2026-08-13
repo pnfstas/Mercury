@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 22 22"
+    fill="none">
+    <path
+        d="M4 4H18"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round">
+    </path>
+    <path
+        d="M4 10H7"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round">
+    </path>
+    <path
+        d="M4 16H7"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round">
+    </path>
+    <path
+        d="M13.6621 16.3242C15.6846 16.3242 17.3242 14.6846 17.3242 12.6621C17.3242 10.6396 15.6846 9 13.6621 9C11.6396 9 10 10.6396 10 12.6621C10 14.6846 11.6396 16.3242 13.6621 16.3242Z"
+        stroke="white"
+        stroke-width="2">
+    </path>
+    <path
+        d="M17 16L19 18"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round">
+    </path>
+</svg>

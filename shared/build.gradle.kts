@@ -53,6 +53,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.compose.runtime)
+            implementation(libs.compose.components.resources)
             implementation(libs.room.runtime)
             implementation(libs.koin.core)
             implementation(libs.ktor.client.core)
