@@ -52,6 +52,7 @@
 		2EB28589301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -132,6 +133,8 @@
 				iosApp/iosApp/iOSApp.swift,
 				"iosApp/iosApp/Preview Content/Preview Assets.xcassets",
 				iosApp/iosApp/StartKoin.swift,
+				iosApp/iosApp/Views/ContactsView.swift,
+				iosApp/iosApp/Views/FavoritesView.swift,
 				iosApp/iosApp/Views/MainView.swift,
 				local.properties,
 				README.md,
@@ -161,7 +164,6 @@
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/3_database.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/0_entities.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.di/0_di.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.resources/0_resources.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.ui/0_ui.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/0_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/1_mercury.knm,
@@ -172,9 +174,27 @@
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/6_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/7_mercury.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/manifest,
-				"shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/catalog.svg,
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/favorites.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/menu.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/mercury.png,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/search.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/trash.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/catalog.svg,
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/favorites.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/menu.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/mercury.png,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/search.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/trash.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/catalog.svg,
+				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/favorites.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/menu.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/mercury.png,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/search.svg,
+				shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/trash.svg,
 				shared/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors/app/mercury/Drawable0.commonMain.kt,
 				shared/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors/app/mercury/ExpectResourceCollectors.kt,
 				shared/build/generated/compose/resourceGenerator/kotlin/commonResClass/app/mercury/Res.kt,
@@ -187,12 +207,48 @@
 				shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/search.svg,
 				shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/trash.svg,
 				shared/build/konan.txt,
-				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
-				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/mercury.shared.generated.resources/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/trash.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/trash.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosX64/composeResources/app.mercury/drawable/trash.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/trash.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/trash.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/catalog.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/favorites.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/menu.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/mercury.png",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/search.svg",
+				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/trash.svg",
 				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.android.kt,
@@ -212,7 +268,6 @@
 				shared/src/commonMain/kotlin/app/mercury/data/local/entities/ProductEntity.kt,
 				shared/src/commonMain/kotlin/app/mercury/di/ProductsModule.kt,
 				shared/src/commonMain/kotlin/app/mercury/Platform.kt,
-				shared/src/commonMain/kotlin/app/mercury/resources/ResourceLoader.kt,
 				shared/src/commonMain/kotlin/app/mercury/ui/ProductsInteractor.kt,
 				shared/src/iosMain/kotlin/app/mercury/data/local/database/ProductsDatabase.ios.kt,
 				shared/src/iosMain/kotlin/app/mercury/MainViewController.kt,
@@ -225,7 +280,11 @@
 			membershipExceptions = (
 				Info.plist,
 				ViewModels/ProductsViewModel.swift,
+				Views/AboutView.swift,
+				Views/CatalogView.swift,
 				Views/ContentView.swift,
+				Views/QuestionsView.swift,
+				Views/ShoppingCartView.swift,
 			);
 			target = 474263D4B11B924EA02484E9 /* iosApp */;
 		};
@@ -552,6 +611,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBBC45C302EE9FB00E94228 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBC410C30132C0F00540CB1 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -683,6 +747,10 @@
 				{
 					ProductGroup = 2E360AC430113F0C002163FF /* Products */;
 					ProjectRef = 2E36098230113F0C002163FF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBBC45C302EE9FB00E94228 /* Products */;
+					ProjectRef = 2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E8EA4E7301135E00039A83E /* Products */;

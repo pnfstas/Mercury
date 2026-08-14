@@ -11,7 +11,10 @@ struct MainView: View {
     var body: some View {
         VStack {
             Text("Главная")
+                .background(Image("MainBackground"))
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Image("MainBackground"))
         .navigationTitle("Главная")
     }
 }
