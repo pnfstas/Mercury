@@ -46,6 +46,7 @@
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E92D6BF302B396800836AEE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B7301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -64,16 +65,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				.gitignore,
-				.gradle/9.4.1/checksums/checksums.lock,
-				".gradle/9.4.1/checksums/md5-checksums.bin",
-				".gradle/9.4.1/checksums/sha1-checksums.bin",
-				.gradle/9.4.1/executionHistory/executionHistory.bin,
-				.gradle/9.4.1/executionHistory/executionHistory.lock,
-				".gradle/9.4.1/fileChanges/last-build.bin",
-				.gradle/9.4.1/fileHashes/fileHashes.bin,
-				.gradle/9.4.1/fileHashes/fileHashes.lock,
-				.gradle/9.4.1/fileHashes/resourceHashesCache.bin,
-				.gradle/9.4.1/gc.properties,
 				.gradle/9.5.0/checksums/checksums.lock,
 				".gradle/9.5.0/checksums/md5-checksums.bin",
 				".gradle/9.5.0/checksums/sha1-checksums.bin",
@@ -575,6 +566,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB0BDCB30304CBA00FE865D /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB286C5301136E7003901EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +731,10 @@
 				{
 					ProductGroup = 2E88D95530121A52008A7446 /* Products */;
 					ProjectRef = 2E88D76930121A52008A7446 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB0BDCB30304CBA00FE865D /* Products */;
+					ProjectRef = 2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E8EA4EB301135E00039A83E /* Products */;

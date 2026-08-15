@@ -20,13 +20,30 @@ enum AppScreens : Hashable, CaseIterable {
 struct ContentView: View {
     @State private var navigationPath : [AppScreens] = []
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             MainView()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Image("Mercury")
-                        .renderingMode(.template)
-                        .frame(width: 24, height: 24)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 140, height: 70)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {navigationPath.append(.catalog)}) {
+                        HStack {
+                            Image("Catalog")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 22, height: 22)
+                            Text("Каталог")
+                                .foregroundStyle(.white)
+                                .font(.custom("Arial", size: 14).bold())
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue)
+                    .buttonBorderShape(.roundedRectangle(radius: 8))
                 }
             }
 
@@ -42,13 +59,10 @@ struct ContentView: View {
             case .questions: QuestionsView()
             }
         }
-        Grid(horizontalSpacing : 10, verticalSpacing : 10) {
-            
-        }
     }
 }
 /*
- #Preview {
- ContentView()
- }
+#Preview {
+    ContentView()
+}
 */
