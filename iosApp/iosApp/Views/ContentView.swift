@@ -22,42 +22,51 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $navigationPath) {
             MainView()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Image("Mercury")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 140, height: 70)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {navigationPath.append(.catalog)}) {
-                        HStack {
-                            Image("Catalog")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 22, height: 22)
-                            Text("Каталог")
-                                .foregroundStyle(.white)
-                                .font(.custom("Arial", size: 14).bold())
+                .navigationBarTitleDisplayMode(.automatic)
+                .toolbar(.hidden, for: .navigationBar)
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    HStack(alignment: .center) {
+                        if !navigationPath.isEmpty {
+                            
                         }
+                        Spacer()
+                        HStack(alignment: .center) {
+                            Image("Mercury")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 88, height: 44)
+                            Button(action: {navigationPath.append(.catalog)}) {
+                                HStack {
+                                    Image("Catalog")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 22, height: 22)
+                                    Text("Каталог")
+                                        .font(.system(size: 14, weight: .bold))
+                                }
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 5)
+                                .foregroundStyle(.white)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.blue))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .background(.white)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.blue)
-                    .buttonBorderShape(.roundedRectangle(radius: 8))
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
                 }
-            }
-
-        }
-        .navigationDestination(for: AppScreens.self) { screen in
-            switch screen {
-            case .main: MainView()
-            case .catalog: CatalogView()
-            case .favorites: FavoritesView()
-            case .shoppingCart: ShoppingCartView()
-            case .about: AboutView()
-            case .contacts: ContactsView()
-            case .questions: QuestionsView()
-            }
+                .navigationDestination(for: AppScreens.self) { screen in
+                    switch screen {
+                    case .main: MainView()
+                    case .catalog: CatalogView()
+                    case .favorites: FavoritesView()
+                    case .shoppingCart: ShoppingCartView()
+                    case .about: AboutView()
+                    case .contacts: ContactsView()
+                    case .questions: QuestionsView()
+                    }
+                }
         }
     }
 }
