@@ -15,6 +15,5 @@ struct MainView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image("MainBackground"))
-        .navigationTitle("Главная")
     }
 }

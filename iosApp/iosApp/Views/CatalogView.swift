@@ -12,6 +12,5 @@ struct CatalogView: View {
         VStack {
             Text("Каталог продукции")
         }
-        .navigationTitle("Каталог продукции")
     }
 }

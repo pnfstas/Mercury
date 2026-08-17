@@ -12,6 +12,5 @@ struct AboutView: View {
         VStack {
             Text("Об организации")
         }
-        .navigationTitle("Об организации")
     }
 }

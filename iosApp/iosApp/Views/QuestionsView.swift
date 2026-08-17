@@ -12,6 +12,5 @@ struct QuestionsView: View {
         VStack {
             Text("Часто задаваемые вопросы")
         }
-        .navigationTitle("Часто задаваемые вопросы")
     }
 }

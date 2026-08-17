@@ -12,6 +12,5 @@ struct FavoritesView: View {
         VStack {
             Text("Избранное")
         }
-        .navigationTitle("Избранное")
     }
 }

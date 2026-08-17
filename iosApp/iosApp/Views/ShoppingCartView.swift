@@ -12,6 +12,5 @@ struct ShoppingCartView: View {
         VStack {
             Text("Корзина")
         }
-        .navigationTitle("Корзина")
     }
 }

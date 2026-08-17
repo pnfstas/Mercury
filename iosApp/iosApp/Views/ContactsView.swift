@@ -12,6 +12,5 @@ struct ContactsView: View {
         VStack {
             Text("Контакты")
         }
-        .navigationTitle("Контакты")
     }
 }

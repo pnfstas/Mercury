@@ -53,6 +53,7 @@
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB28589301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB344B53032F2EC00257568 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 				iosApp/iosApp/Views/ContactsView.swift,
 				iosApp/iosApp/Views/ContentView.swift,
 				iosApp/iosApp/Views/FavoritesView.swift,
+				iosApp/iosApp/Views/MainToolbar.swift,
 				iosApp/iosApp/Views/MainView.swift,
 				local.properties,
 				README.md,
@@ -600,6 +602,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB345A73032F2EC00257568 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB45249301F02C500C816B8 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -742,6 +749,10 @@
 				{
 					ProductGroup = 2EB0BDCB30304CBA00FE865D /* Products */;
 					ProjectRef = 2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB345A73032F2EC00257568 /* Products */;
+					ProjectRef = 2EB344B53032F2EC00257568 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E8EA4EB301135E00039A83E /* Products */;
