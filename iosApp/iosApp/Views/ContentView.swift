@@ -15,39 +15,54 @@ enum AppScreens : Hashable, CaseIterable {
     case about
     case contacts
     case questions
+    var description : String {
+        return switch self {
+        case .main: "Главная"
+        case .catalog: "Каталог"
+        case .favorites: "Избранное"
+        case .shoppingCart: "Корзина"
+        case .about: "Об организации"
+        case .contacts: "Контакты"
+        case .questions: "Частые вопросы"
+        }
+    }
+    var imageName : String {
+        return switch self {
+        case .catalog: "Catalog"
+        case .favorites: "Favorites"
+        case .shoppingCart: "ShoppingCart"
+        default: ""
+        }
+    }
 }
 
 struct ContentView: View {
-    @State private var navigationPath = NavigationPath()
+    @State private var navigationPath : [AppScreens] = []
     var body: some View {
         NavigationStack(path: $navigationPath) {
             MainView()
                 .navigationBarTitleDisplayMode(.automatic)
-                .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
+                .mainToolbar(navigationPath: $navigationPath)
                 .navigationDestination(for: AppScreens.self) { screen in
-                    switch screen {
-                    case .main:
-                        MainView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                     case .catalog:
-                        CatalogView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                    case .favorites:
-                        FavoritesView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                     case .shoppingCart:
-                        ShoppingCartView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                    case .about:
-                        AboutView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                     case .contacts:
-                        ContactsView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
-                    case .questions:
-                        QuestionsView()
-                            .mainToolbar(navigationPath: $navigationPath, navigationTitle: "Главная")
+                    Group {
+                        switch screen {
+                        case .main:
+                            MainView()
+                        case .catalog:
+                            CatalogView()
+                        case .favorites:
+                            FavoritesView()
+                        case .shoppingCart:
+                            ShoppingCartView()
+                        case .about:
+                            AboutView()
+                        case .contacts:
+                            ContactsView()
+                        case .questions:
+                            QuestionsView()
+                        }
                     }
+                    .mainToolbar(navigationPath: $navigationPath)
                 }
         }
     }

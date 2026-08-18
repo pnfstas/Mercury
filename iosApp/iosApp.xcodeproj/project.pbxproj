@@ -58,6 +58,7 @@
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBC754630343C0200E100F2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -627,6 +628,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBC763830343C0200E100F2 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBE82BF302E426D00BF5E29 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -749,6 +755,10 @@
 				{
 					ProductGroup = 2EB0BDCB30304CBA00FE865D /* Products */;
 					ProjectRef = 2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBC763830343C0200E100F2 /* Products */;
+					ProjectRef = 2EBC754630343C0200E100F2 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB345A73032F2EC00257568 /* Products */;
