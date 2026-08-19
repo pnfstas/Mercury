@@ -26,7 +26,7 @@ enum AppScreens : Hashable, CaseIterable {
         case .questions: "Частые вопросы"
         }
     }
-    var imageName : String {
+    var buttonImageName : String {
         return switch self {
         case .catalog: "Catalog"
         case .favorites: "Favorites"
@@ -34,7 +34,19 @@ enum AppScreens : Hashable, CaseIterable {
         default: ""
         }
     }
-}
+    var buttonBackgroundColor : Color {
+        return switch self {
+        case .catalog: Color.green
+        default: Color.clear
+        }
+    }
+    var buttonForegroundColor : Color {
+        return switch self {
+        case .catalog: Color.white
+        default: Color.black
+        }
+    }
+ }
 
 struct ContentView: View {
     @State private var navigationPath : [AppScreens] = []

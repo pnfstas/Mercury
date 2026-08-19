@@ -27,19 +27,19 @@ struct MainToolbarModifier : ViewModifier {
                         }
                         Spacer()
                         HStack(alignment: .center) {
-                            Image("Mercury")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 88, height: 44)
                             EmptyView()
-                                .mainToolbarButton(appScreen: AppScreens.catalog, action: {navigationPath.append(AppScreens.catalog)}, orientation: Axis.horizontal)
-                                .mainToolbarButton(appScreen: AppScreens.favorites, action: {navigationPath.append(AppScreens.favorites)}, orientation: Axis.vertical)
-                                .mainToolbarButton(appScreen: AppScreens.shoppingCart, action: {navigationPath.append(AppScreens.shoppingCart)}, orientation: Axis.vertical)
+                                .mainToolbarButton(appScreen: AppScreens.catalog, action: {navigationPath.append(AppScreens.catalog)})
+                                .mainToolbarButton(appScreen: AppScreens.favorites, action: {navigationPath.append(AppScreens.favorites)})
+                                .mainToolbarButton(appScreen: AppScreens.shoppingCart, action: {navigationPath.append(AppScreens.shoppingCart)})
                         }
                         .background(.white)
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
+                    Image("Mercury")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 88, height: 44)
                     Divider()
                 }
             }

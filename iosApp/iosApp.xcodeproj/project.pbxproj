@@ -59,6 +59,7 @@
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC754630343C0200E100F2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +101,13 @@
 				androidApp/src/main/kotlin/app/mercury/ui/layouts/MainLayout.kt,
 				androidApp/src/main/kotlin/app/mercury/ui/viewmodels/ProductViewModel.kt,
 				"androidApp/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+				androidApp/src/main/res/drawable/catalog.svg,
+				androidApp/src/main/res/drawable/favorites.svg,
 				androidApp/src/main/res/drawable/ic_launcher_background.xml,
+				androidApp/src/main/res/drawable/menu.svg,
+				androidApp/src/main/res/drawable/mercury.png,
+				androidApp/src/main/res/drawable/search.svg,
+				androidApp/src/main/res/drawable/trash.svg,
 				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
 				"androidApp/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
 				"androidApp/src/main/res/mipmap-hdpi/ic_launcher_round.png",
@@ -242,13 +249,7 @@
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.android.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
 				shared/src/androidMain/kotlin/app/mercury/Platform.android.kt,
-				shared/src/commonMain/composeResources/drawable/catalog.svg,
 				"shared/src/commonMain/composeResources/drawable/compose-multiplatform.xml",
-				shared/src/commonMain/composeResources/drawable/favorites.svg,
-				shared/src/commonMain/composeResources/drawable/menu.svg,
-				shared/src/commonMain/composeResources/drawable/mercury.png,
-				shared/src/commonMain/composeResources/drawable/search.svg,
-				shared/src/commonMain/composeResources/drawable/trash.svg,
 				shared/src/commonMain/kotlin/app/mercury/App.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDatabase.kt,
@@ -268,6 +269,8 @@
 			membershipExceptions = (
 				Info.plist,
 				ViewModels/ProductsViewModel.swift,
+				ViewModifiers/MainToolbarButtonModifier.swift,
+				ViewModifiers/MainToolbarModifier.swift,
 				Views/AboutView.swift,
 				Views/CatalogView.swift,
 				Views/QuestionsView.swift,
@@ -633,6 +636,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBE402030357D6F00AC7712 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBE82BF302E426D00BF5E29 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -716,6 +724,10 @@
 			productRefGroup = 9577F1E47F0AEE137AD86CD1 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 2EBE402030357D6F00AC7712 /* Products */;
+					ProjectRef = 2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */;
+				},
 				{
 					ProductGroup = 2E249184301152AB000DC9BF /* Products */;
 					ProjectRef = 2E249046301152AB000DC9BF /* iosApp.xcodeproj */;

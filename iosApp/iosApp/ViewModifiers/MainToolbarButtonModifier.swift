@@ -10,9 +10,9 @@ import SwiftUI
 struct MainToolbarButtonModifier : ViewModifier {
     var appScreen : AppScreens
     var action : () -> Void
-    var orientation : Axis = .vertical
+    //var orientation : Axis = .vertical
     private var buttonImage : some View {
-        return Image(appScreen.imageName)
+        return Image(appScreen.buttonImageName)
             .resizable()
             .renderingMode(.template)
             .frame(width: 22, height: 22)
@@ -24,34 +24,23 @@ struct MainToolbarButtonModifier : ViewModifier {
     func body(content: Content) -> some View {
         content
             Button(action: action) {
-                Group {
-                    if orientation == .horizontal {
-                        HStack {
-                            buttonImage
-                            buttonText
-                        }
-                    }
-                    else {
-                        VStack {
-                            buttonImage
-                            buttonText
-                        }
-                    }
-                }
-                .padding(.horizontal, 7)
-                .padding(.vertical, 5)
-                .foregroundStyle(.white)
-                .background(RoundedRectangle(cornerRadius: 8).fill(.blue))
+                Image(appScreen.buttonImageName)
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 22, height: 22)
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 5)
+                    .foregroundStyle(appScreen.buttonForegroundColor)
+                    .background(RoundedRectangle(cornerRadius: 8).fill(appScreen.buttonBackgroundColor))
             }
+            .help(appScreen.description)
             .buttonStyle(.plain)
     }
 }
 extension View {
     func mainToolbarButton(appScreen : AppScreens,
-                           action : @escaping () -> Void,
-                           orientation: Axis = Axis.vertical) -> some View {
+                           action : @escaping () -> Void) -> some View {
         modifier(MainToolbarButtonModifier(appScreen : appScreen,
-                                           action : action,
-                                           orientation: orientation))
+                                           action : action))
     }
 }
