@@ -1,6 +1,5 @@
 package app.mercury.di
 
-import app.mercury.data.local.database.ProductsDao
 import app.mercury.data.local.database.ProductsDatabase
 import app.mercury.data.local.database.ProductsRepository
 import app.mercury.ui.ProductsInteractor

@@ -3,6 +3,7 @@ package app.mercury.data.local.database
 import app.mercury.data.local.entities.ProductEntity
 import com.fleeksoft.ksoup.Ksoup
 import com.fleeksoft.ksoup.nodes.Document
+import com.fleeksoft.ksoup.nodes.Element
 import com.fleeksoft.ksoup.select.Elements
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
@@ -17,26 +18,12 @@ import kotlinx.coroutines.launch
 class ProductsRepository(
 	val coroutineScope: CoroutineScope,
 	val productsDao: ProductsDao,
-	val httpClient: HttpClient
+	val httpClient : HttpClient
 ) {
 
 	fun updateProducts() {
 		coroutineScope.launch(Dispatchers.IO) {
-			/*
-			val client = HttpClient {
-				install(ContentNegotiation) {
-					json(Json {
-						ignoreUnknownKeys = true 	// игнорировать неизвестные поля
-						isLenient = true         	// мягкий синтаксис
-						prettyPrint = true			// Разрешить перенос строк и пробелы в JSON
-						coerceInputValues = true	// Если сервер пришлет null вместо обязательного поля, Ktor подставит default
-					})
-				}
-			}
-			*/
-			//val httpClientCatalog = HttpClient()
-			//val httpClientCatalog = HttpClient()
-			val httpClient = HttpClient()
+			//val httpClient = HttpClient()
 			val httpResponseCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog")
 			val httpResponseEliteCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog/440967997433-elitnie-siri")
 			if(httpResponseCatalog.status == HttpStatusCode.OK && httpResponseEliteCatalog.status == HttpStatusCode.OK) {
@@ -51,22 +38,23 @@ class ProductsRepository(
 				var products = mutableListOf<ProductEntity>()
 				for(divElementProduct in divElementsCatalog) {
 					val outerText : String = divElementProduct.wholeOwnText()
-					val listDescription : List<String> = outerText.split('\n') ?: emptyList()
+					val listDescription : List<String> = outerText.split('\n')
 					if(listDescription.size >= 5) {
 						val divElementEliteProduct : Element? = divElementsEliteCatalog.select(":containsOwn('${outerText}')").first()
 						val name : String = listDescription[0]
 						val description : String = listDescription[1]
 						val elite : Boolean = divElementEliteProduct != null
 						val price : Float = listDescription[2].toFloat()
-						val minAmount : Float = inputElements[inputElementIndex].attribute("min")?.toFloatOrNull() ?: 0
-						val maxAmount : Float = inputElements[inputElementIndex].attribute("max")?.toFloatOrNull() ?: 0
-						var amountInOrder : Float = inputElements[inputElementIndex].attribute("value")?.toFloatOrNull() ?: 0
+						val minAmount : Float = inputElements[inputElementIndex].attr("min").toFloatOrNull() ?: 0f
+						val maxAmount : Float = inputElements[inputElementIndex].attr("max").toFloatOrNull() ?: 0f
+						var amountInOrder : Float = inputElements[inputElementIndex].attr("value").toFloatOrNull() ?: 0f
 						val picture : String = divElementProduct.attribute("product.data-poduct-img")?.value ?: ""
 						val url : String = divElementProduct.attribute("product.data-poduct-url")?.value ?: ""
 						if(!name.isNullOrBlank() && !description.isNullOrBlank() && price > 0) {
 							val productEntity = ProductEntity(
 								name = name,
 								description = description,
+								elite = elite,
 								price = price,
 								minAmount = minAmount,
 								maxAmount = maxAmount,
