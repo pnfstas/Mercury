@@ -36,6 +36,7 @@
 		2E6510C63011567000E4B3F6 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E6517253011567000E4B3F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E6518DC3011567000E4B3F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E72F629303ACF20002CAB5F /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E7941E03031BE07007DE2A1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E88C7C730121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E88C7C830121A52008A7446 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
@@ -47,8 +48,10 @@
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E92D6BF302B396800836AEE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB03CBB30399E84001B3A8C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB0B79930318ACF0081A995 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB2408D303C1C6D003D7F4B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B7301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2EB283D2301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 		2EB344B53032F2EC00257568 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB5B92E303D8B0B001CA2A1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB88C6930381DD700AF0812 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC754630343C0200E100F2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -135,6 +140,8 @@
 				iosApp/iosApp/iOSApp.swift,
 				"iosApp/iosApp/Preview Content/Preview Assets.xcassets",
 				iosApp/iosApp/StartKoin.swift,
+				iosApp/iosApp/ViewModifiers/ContactsMenuModifier.swift,
+				iosApp/iosApp/ViewModifiers/MainToolbarMenuModifier.swift,
 				iosApp/iosApp/Views/ContactsView.swift,
 				iosApp/iosApp/Views/ContentView.swift,
 				iosApp/iosApp/Views/FavoritesView.swift,
@@ -269,7 +276,7 @@
 			membershipExceptions = (
 				Info.plist,
 				ViewModels/ProductsViewModel.swift,
-				ViewModifiers/MainToolbarButtonModifier.swift,
+				ViewModifiers/MainToolbarButton.swift,
 				ViewModifiers/MainToolbarModifier.swift,
 				Views/AboutView.swift,
 				Views/CatalogView.swift,
@@ -503,6 +510,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E72F6D9303ACF20002CAB5F /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E79421E3031BE07007DE2A1 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -570,12 +582,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB03D6B30399E84001B3A8C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB0B89C30318ACF0081A995 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
 		2EB0BDCB30304CBA00FE865D /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB2413D303C1C6D003D7F4B /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -617,6 +639,16 @@
 			sourceTree = "<group>";
 		};
 		2EB5428530208195007DDEFC /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB5B9DE303D8B0B001CA2A1 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB88D5530381DD700AF0812 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -729,6 +761,10 @@
 					ProjectRef = 2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2E72F6D9303ACF20002CAB5F /* Products */;
+					ProjectRef = 2E72F629303ACF20002CAB5F /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2E249184301152AB000DC9BF /* Products */;
 					ProjectRef = 2E249046301152AB000DC9BF /* iosApp.xcodeproj */;
 				},
@@ -773,8 +809,16 @@
 					ProjectRef = 2EBC754630343C0200E100F2 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EB88D5530381DD700AF0812 /* Products */;
+					ProjectRef = 2EB88C6930381DD700AF0812 /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB345A73032F2EC00257568 /* Products */;
 					ProjectRef = 2EB344B53032F2EC00257568 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB5B9DE303D8B0B001CA2A1 /* Products */;
+					ProjectRef = 2EB5B92E303D8B0B001CA2A1 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E8EA4EB301135E00039A83E /* Products */;
@@ -795,6 +839,10 @@
 				{
 					ProductGroup = 2E8EA4E7301135E00039A83E /* Products */;
 					ProjectRef = 2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB2413D303C1C6D003D7F4B /* Products */;
+					ProjectRef = 2EB2408D303C1C6D003D7F4B /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E88D95330121A52008A7446 /* Products */;
@@ -863,6 +911,10 @@
 				{
 					ProductGroup = 2EB5428530208195007DDEFC /* Products */;
 					ProjectRef = 2EB541F130208195007DDEFC /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB03D6B30399E84001B3A8C /* Products */;
+					ProjectRef = 2EB03CBB30399E84001B3A8C /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB45249301F02C500C816B8 /* Products */;

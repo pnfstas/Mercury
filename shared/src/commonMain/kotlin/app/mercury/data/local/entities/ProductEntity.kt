@@ -14,7 +14,14 @@ import kotlinx.serialization.Serializable
 data class ProductEntity(
 	val name : String,
 	val description : String,
+	val elite : Boolean,
 	val price : Float,
+	val minAmount : Float,
+	val maxAmount : Float,
+	val amountInOrder : Float,
 	val picture : String,
 	val url : String
-)
+) {
+	val inStock : Boolean
+		get() = minAmount > 0 && maxAmount >= minAmount
+}

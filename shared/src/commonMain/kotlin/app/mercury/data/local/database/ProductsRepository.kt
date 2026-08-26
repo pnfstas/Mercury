@@ -34,26 +34,43 @@ class ProductsRepository(
 				}
 			}
 			*/
+			//val httpClientCatalog = HttpClient()
+			//val httpClientCatalog = HttpClient()
 			val httpClient = HttpClient()
-			val httpResponse : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog")
-			if(httpResponse.status == HttpStatusCode.OK) {
-				val htmlContent = httpResponse.bodyAsText()
-				val htmlDocument : Document = Ksoup.parse(htmlContent)
-				val elements: Elements = htmlDocument.select("div.js-product.t-catalog__card")
+			val httpResponseCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog")
+			val httpResponseEliteCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog/440967997433-elitnie-siri")
+			if(httpResponseCatalog.status == HttpStatusCode.OK && httpResponseEliteCatalog.status == HttpStatusCode.OK) {
+				val htmlContentCatalog = httpResponseCatalog.bodyAsText()
+				val htmlContentEliteCatalog = httpResponseEliteCatalog.bodyAsText()
+				val htmlDocumentCatalog : Document = Ksoup.parse(htmlContentCatalog)
+				val htmlDocumentEliteCatalog : Document = Ksoup.parse(htmlContentEliteCatalog)
+				val divElementsCatalog: Elements = htmlDocumentCatalog.select("div.js-product.t-catalog__card:nth-of-type(even)")
+				val divElementsEliteCatalog: Elements = htmlDocumentEliteCatalog.select("div.js-product.t-catalog__card:nth-of-type(even)")
+				val inputElements: Elements = htmlDocumentCatalog.select("input.t-catalog__prod__quantity-input:nth-child(2)")
+				var inputElementIndex : Int = 0
 				var products = mutableListOf<ProductEntity>()
-				for(element in elements) {
-					val listDescription : List<String> = element.wholeOwnText()?.split('\n') ?: emptyList()
-					if(listDescription.size >= 3) {
-						val name = listDescription[0]
-						val description = listDescription[1]
-						val price = listDescription[2].toFloat()
-						val picture = element.attribute("product.data-poduct-img")?.value ?: ""
-						val url = element.attribute("product.data-poduct-url")?.value ?: ""
+				for(divElementProduct in divElementsCatalog) {
+					val outerText : String = divElementProduct.wholeOwnText()
+					val listDescription : List<String> = outerText.split('\n') ?: emptyList()
+					if(listDescription.size >= 5) {
+						val divElementEliteProduct : Element? = divElementsEliteCatalog.select(":containsOwn('${outerText}')").first()
+						val name : String = listDescription[0]
+						val description : String = listDescription[1]
+						val elite : Boolean = divElementEliteProduct != null
+						val price : Float = listDescription[2].toFloat()
+						val minAmount : Float = inputElements[inputElementIndex].attribute("min")?.toFloatOrNull() ?: 0
+						val maxAmount : Float = inputElements[inputElementIndex].attribute("max")?.toFloatOrNull() ?: 0
+						var amountInOrder : Float = inputElements[inputElementIndex].attribute("value")?.toFloatOrNull() ?: 0
+						val picture : String = divElementProduct.attribute("product.data-poduct-img")?.value ?: ""
+						val url : String = divElementProduct.attribute("product.data-poduct-url")?.value ?: ""
 						if(!name.isNullOrBlank() && !description.isNullOrBlank() && price > 0) {
 							val productEntity = ProductEntity(
 								name = name,
 								description = description,
 								price = price,
+								minAmount = minAmount,
+								maxAmount = maxAmount,
+								amountInOrder = amountInOrder,
 								picture = picture,
 								url = url
 							)

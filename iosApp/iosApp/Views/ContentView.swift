@@ -52,14 +52,14 @@ struct ContentView: View {
     @State private var navigationPath : [AppScreens] = []
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            MainView()
+            MainView(navigationPath: $navigationPath)
                 .navigationBarTitleDisplayMode(.automatic)
                 .mainToolbar(navigationPath: $navigationPath)
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
                         switch screen {
                         case .main:
-                            MainView()
+                            MainView(navigationPath: $navigationPath)
                         case .catalog:
                             CatalogView()
                         case .favorites:
