@@ -3,8 +3,15 @@ import shared
 
 @Observable
 final class ProductsViewModel {
-    private let productsInteractor : ProductsInteractor?
+    var products : [ProductEntity] = []
     init() {
-        productsInteractor = ProductsModuleKt.getProductsInteractor()
+        let productsInteractor : ProductsInteractor = ProductsModuleKt.getProductsInteractor()
+        Task {
+            for await productEnties in productsInteractor.products {
+                await MainActor.run {
+                    products = productEnties
+                }
+            }
+        }
     }
 }

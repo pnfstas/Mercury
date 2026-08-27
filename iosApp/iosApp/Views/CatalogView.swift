@@ -7,10 +7,30 @@
 
 import SwiftUI
 
-struct CatalogView: View {
+struct ProductCard : View {
     var body: some View {
-        VStack {
-            Text("Каталог продукции")
+        HStack(alignment: .center, spacing: 5) {
+            Image
+        }
+    }
+}
+
+struct CatalogView: View {
+    @Binding var productsViewModel : ProductsViewModel
+    var body: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 7) {
+                ForEach(productsViewModel.products, id: \.name) { product in
+                    HStack(alignment: .center, spacing: 5) {
+                        Image(product.picture)
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 150, height: 150)
+                            .scaledToFit()
+                            .background(Color.clear)
+                    }
+                }
+            }
         }
     }
 }

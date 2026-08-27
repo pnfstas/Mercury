@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.touchlab.skie) 
 }
 
 kotlin {

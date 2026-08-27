@@ -50,6 +50,7 @@ enum AppScreens : Hashable, CaseIterable {
 
 struct ContentView: View {
     @State private var navigationPath : [AppScreens] = []
+    @State private var productsViewModel : ProductsViewModel = ProductsViewModel()
     var body: some View {
         NavigationStack(path: $navigationPath) {
             MainView(navigationPath: $navigationPath)
@@ -61,7 +62,7 @@ struct ContentView: View {
                         case .main:
                             MainView(navigationPath: $navigationPath)
                         case .catalog:
-                            CatalogView()
+                            CatalogView(productsViewModel: $productsViewModel)
                         case .favorites:
                             FavoritesView()
                         case .shoppingCart:
