@@ -36,7 +36,7 @@ node_modules/
 
 # Прочее
 local.properties
-.misc/
+misc/
 /Mercury/
 Configure
 Get

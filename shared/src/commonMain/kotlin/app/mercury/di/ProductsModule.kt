@@ -68,6 +68,13 @@ fun getProductsInteractor() : ProductsInteractor {
 	return KoinPlatform.getKoin().get()
 }
 class KoinHelper : KoinComponent {
+	companion object {
+		fun initKoin(additionalModules: List<Module> = emptyList()) {
+			startKoin {
+				modules(productsModule + additionalModules)
+			}
+		}
+	}
 	fun getProductsInteractor() : ProductsInteractor = get()
 	fun getProductsRepository() : ProductsRepository = get()
 }
