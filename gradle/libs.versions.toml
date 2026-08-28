@@ -17,7 +17,7 @@ kotlinx-coroutines = "1.11.0"
 ksp = "2.3.10"
 room = "2.8.4"
 koin = "4.0.0"
-ktor = "3.0.0"
+ktor = "3.5.2"
 sqliteBundled = "2.7.0"
 core-ktx = "1.19.0"
 ksoup = "0.2.6"
@@ -47,6 +47,7 @@ compose-webview-multiplatform = { module = "io.github.kevinnzou:compose-webview-
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "sqliteBundled" }
 #androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }

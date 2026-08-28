@@ -5,7 +5,8 @@ import shared
 final class ProductsViewModel {
     var products : [ProductEntity] = []
     init() {
-        let productsInteractor : ProductsInteractor = //ProductsModuleKt.getProductsInteractor()
+        let koinHelper : KoinHelper = KoinHelper()
+        let productsInteractor : ProductsInteractor = koinHelper.getProductsInteractor()
         Task {
             for await productEnties in productsInteractor.products {
                 await MainActor.run {

@@ -26,7 +26,7 @@ val productsModule = module {
 		HttpClient {
 			install(ContentNegotiation) {
 				json(Json {
-					ignoreUnknownKeys = true // Чтобы Ktor не падал, если на Тильде появятся новые поля
+					ignoreUnknownKeys = true
 				})
 			}
 		}
@@ -42,31 +42,10 @@ val productsModule = module {
 		)
 	}
 	factory {
-		(productsRepository: ProductsRepository) -> ProductsInteractor(productsRepository = productsRepository)
+		ProductsInteractor(productsRepository = get())
 	}
 }
 
-object koinStarter : KoinComponent {
-	fun initKoin(additionalModules: List<Module> = emptyList()) {
-		startKoin {
-			modules(productsModule + additionalModules)
-		}
-	}
-	fun getProductsInteractor() : ProductsInteractor {
-		return get()
-	}
-}
-fun initKoin(additionalModules: List<Module> = emptyList()) {
-	startKoin {
-		modules(productsModule + additionalModules)
-	}
-}
-fun getProductsRepository() : ProductsRepository {
-	return KoinPlatform.getKoin().get()
-}
-fun getProductsInteractor() : ProductsInteractor {
-	return KoinPlatform.getKoin().get()
-}
 class KoinHelper : KoinComponent {
 	companion object {
 		fun initKoin(additionalModules: List<Module> = emptyList()) {
@@ -74,7 +53,29 @@ class KoinHelper : KoinComponent {
 				modules(productsModule + additionalModules)
 			}
 		}
+		fun initKoinIos() {
+			initKoin(emptyList())
+		}
 	}
-	fun getProductsInteractor() : ProductsInteractor = get()
+	//fun getProductsInteractor() : ProductsInteractor = get()
+	fun getProductsInteractor() : ProductsInteractor {
+		// Шаг 1: Проверяем scope
+		val scope = get<CoroutineScope>()
+		println("Scope OK: $scope")
+
+		// Шаг 2: Проверяем клиент
+		val client = get<HttpClient>()
+		println("HttpClient OK: $client")
+
+		// Шаг 3: Проверяем базу (ЗДЕСЬ скорее всего упадет, если модуля с базой нет в iOS)
+		val dao = get<app.mercury.data.local.database.ProductsDatabase>().productsDao()
+		println("DAO OK: $dao")
+
+		// Шаг 4: Проверяем репозиторий
+		val repo = get<ProductsRepository>()
+		println("Repository OK: $repo")
+
+		return get()
+	}
 	fun getProductsRepository() : ProductsRepository = get()
 }

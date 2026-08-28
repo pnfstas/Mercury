@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/*
 struct ProductCard : View {
     var body: some View {
         HStack(alignment: .center, spacing: 5) {
@@ -14,13 +15,14 @@ struct ProductCard : View {
         }
     }
 }
+*/
 
 struct CatalogView: View {
     @Binding var productsViewModel : ProductsViewModel
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(productsViewModel.products, id: \.name) { product in
+                ForEach(productsViewModel.products, id: \.id) { product in
                     HStack(alignment: .center, spacing: 5) {
                         Image(product.picture)
                             .resizable()
