@@ -4,6 +4,7 @@ import app.mercury.data.local.database.ProductsDatabase
 import app.mercury.data.local.database.ProductsRepository
 import app.mercury.ui.ProductsInteractor
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineScope
@@ -45,6 +46,8 @@ val productsModule = module {
 		ProductsInteractor(productsRepository = get())
 	}
 }
+
+expect fun getHttpClient(engine: HttpClientEngine) : HttpClient
 
 class KoinHelper : KoinComponent {
 	companion object {

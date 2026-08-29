@@ -67,11 +67,13 @@ kotlin {
         val iosArm64Main by getting {
             dependencies {
                 implementation(libs.androidx.sqlite.bundled)
+                implementation(libs.ktor.client.darwin)
             }
         }
         val iosSimulatorArm64Main by getting {
             dependencies {
                 implementation(libs.androidx.sqlite.bundled)
+                implementation(libs.ktor.client.darwin)
             }
         }
     }
