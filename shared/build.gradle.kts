@@ -12,6 +12,7 @@ plugins {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
     listOf(
         iosX64(),
         iosArm64(),
@@ -50,6 +51,7 @@ kotlin {
             implementation(libs.compose.webview.multiplatform)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
@@ -64,16 +66,19 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
+        }
         val iosArm64Main by getting {
             dependencies {
                 implementation(libs.androidx.sqlite.bundled)
-                implementation(libs.ktor.client.darwin)
             }
         }
         val iosSimulatorArm64Main by getting {
             dependencies {
                 implementation(libs.androidx.sqlite.bundled)
-                implementation(libs.ktor.client.darwin)
             }
         }
     }

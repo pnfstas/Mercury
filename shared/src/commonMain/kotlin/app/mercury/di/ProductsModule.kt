@@ -17,20 +17,13 @@ import org.koin.core.component.get
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import org.koin.mp.KoinPlatform
 
 val productsModule = module {
 	single<CoroutineScope> {
 		CoroutineScope(SupervisorJob() + Dispatchers.IO)
 	}
 	single<HttpClient> {
-		HttpClient {
-			install(ContentNegotiation) {
-				json(Json {
-					ignoreUnknownKeys = true
-				})
-			}
-		}
+		getHttpClient()
 	}
 	single {
 		get<ProductsDatabase>().productsDao()
@@ -47,7 +40,7 @@ val productsModule = module {
 	}
 }
 
-expect fun getHttpClient(engine: HttpClientEngine) : HttpClient
+expect fun getHttpClient() : HttpClient
 
 class KoinHelper : KoinComponent {
 	companion object {
