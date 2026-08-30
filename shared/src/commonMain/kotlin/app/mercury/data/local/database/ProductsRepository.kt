@@ -42,7 +42,7 @@ class ProductsRepository(
 					if(listDescription.size >= 5) {
 						val divElementEliteProduct : Element? = divElementsEliteCatalog.select(":containsOwn('${outerText}')").first()
 						val name : String = listDescription[0]
-						val description : String = listDescription[1]
+						val productInfo : String = listDescription[1]
 						val elite : Boolean = divElementEliteProduct != null
 						val price : Float = listDescription[2].toFloat()
 						val minAmount : Float = inputElements[inputElementIndex].attr("min").toFloatOrNull() ?: 0f
@@ -50,10 +50,10 @@ class ProductsRepository(
 						var amountInOrder : Float = inputElements[inputElementIndex].attr("value").toFloatOrNull() ?: 0f
 						val picture : String = divElementProduct.attribute("product.data-poduct-img")?.value ?: ""
 						val url : String = divElementProduct.attribute("product.data-poduct-url")?.value ?: ""
-						if(!name.isNullOrBlank() && !description.isNullOrBlank() && price > 0) {
+						if(!name.isNullOrBlank() && !productInfo.isNullOrBlank() && price > 0) {
 							val productEntity = ProductEntity(
 								name = name,
-								description = description,
+								productInfo = productInfo,
 								elite = elite,
 								price = price,
 								minAmount = minAmount,

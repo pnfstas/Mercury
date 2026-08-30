@@ -25,6 +25,9 @@ val productsModule = module {
 	single<HttpClient> {
 		getHttpClient()
 	}
+	single<ProductsDatabase> {
+		app.mercury.data.local.database.getDatabaseBuilder().build()
+	}
 	single {
 		get<ProductsDatabase>().productsDao()
 	}

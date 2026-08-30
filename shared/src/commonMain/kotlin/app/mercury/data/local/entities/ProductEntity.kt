@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 data class ProductEntity(
 	@PrimaryKey(autoGenerate = true) val id : Int = 0,
 	val name : String,
-	val description : String,
+	val productInfo : String,
 	val elite : Boolean,
 	val price : Float,
 	val minAmount : Float,

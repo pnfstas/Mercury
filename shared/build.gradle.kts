@@ -41,7 +41,6 @@ kotlin {
     
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.androidx.sqlite.bundled)
             implementation(libs.compose.uiToolingPreview)
             //перенесено из commonMain
             implementation(libs.compose.foundation)
@@ -57,6 +56,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.compose.runtime)
             implementation(libs.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
             implementation(libs.koin.core)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
@@ -71,6 +71,7 @@ kotlin {
                 implementation(libs.ktor.client.darwin)
             }
         }
+        /*
         val iosArm64Main by getting {
             dependencies {
                 implementation(libs.androidx.sqlite.bundled)
@@ -81,6 +82,7 @@ kotlin {
                 implementation(libs.androidx.sqlite.bundled)
             }
         }
+        */
     }
 }
 compose.resources {
