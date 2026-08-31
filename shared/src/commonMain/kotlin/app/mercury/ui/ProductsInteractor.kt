@@ -12,7 +12,7 @@ class ProductsInteractor(private val productsRepository: ProductsRepository) {
             productsRepository.coroutineScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList())
-	init() {
+	init {
 		productsRepository.updateProducts()
 	}
 }

@@ -66,6 +66,7 @@
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB5B92E303D8B0B001CA2A1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB88C6930381DD700AF0812 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB9968A3045451500E86162 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB9AF0530430EC100055E9E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
-				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
@@ -908,6 +908,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB9989B3045451500E86162 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB9AF4130430EC100055E9E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1109,6 +1114,10 @@
 				{
 					ProductGroup = 2E360ABE30113F0C002163FF /* Products */;
 					ProjectRef = 2E3607CB30113F0C002163FF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB9989B3045451500E86162 /* Products */;
+					ProjectRef = 2EB9968A3045451500E86162 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EDF563F30212CE600AC8391 /* Products */;
