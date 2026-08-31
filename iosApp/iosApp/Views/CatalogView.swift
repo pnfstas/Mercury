@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import shared
 
-/*
 struct ProductCard : View {
+    @Binding var product : ProductEntity
     var body: some View {
         HStack(alignment: .center, spacing: 5) {
-            Image
+            Image(product.picture)
+                .resizable()
+                .renderingMode(.template)
+                .frame(width: 150, height: 150)
+                .scaledToFit()
+                .background(.clear)
         }
     }
 }
-*/
 
 struct CatalogView: View {
     @Binding var productsViewModel : ProductsViewModel
@@ -29,8 +34,15 @@ struct CatalogView: View {
                             .renderingMode(.template)
                             .frame(width: 150, height: 150)
                             .scaledToFit()
-                            .background(Color.clear)
+                            .background(.clear)
+                        VStack(alignment: .center, spacing: 10) {
+                            Text(product.name)
+                            Text(product.productInfo)
+                        }
+                        Text(String(product.price))
+                            .frame(width: 150)
                     }
+                    .frame(maxWidth: .infinity)
                 }
             }
         }
