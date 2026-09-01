@@ -56,25 +56,19 @@ class KoinHelper : KoinComponent {
 			initKoin(emptyList())
 		}
 	}
-	//fun getProductsInteractor() : ProductsInteractor = get()
+	fun getProductsInteractor() : ProductsInteractor = get()
+	/*
 	fun getProductsInteractor() : ProductsInteractor {
-		// Шаг 1: Проверяем scope
 		val scope = get<CoroutineScope>()
 		println("Scope OK: $scope")
-
-		// Шаг 2: Проверяем клиент
 		val client = get<HttpClient>()
 		println("HttpClient OK: $client")
-
-		// Шаг 3: Проверяем базу (ЗДЕСЬ скорее всего упадет, если модуля с базой нет в iOS)
 		val dao = get<app.mercury.data.local.database.ProductsDatabase>().productsDao()
 		println("DAO OK: $dao")
-
-		// Шаг 4: Проверяем репозиторий
 		val repo = get<ProductsRepository>()
 		println("Repository OK: $repo")
-
 		return get()
 	}
+	*/
 	fun getProductsRepository() : ProductsRepository = get()
 }

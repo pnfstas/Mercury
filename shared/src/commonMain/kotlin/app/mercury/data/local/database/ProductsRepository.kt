@@ -24,16 +24,27 @@ class ProductsRepository(
 	fun updateProducts() {
 		coroutineScope.launch(Dispatchers.IO) {
 			//val httpClient = HttpClient()
-			val httpResponseCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog")
+			val httpResponseCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws")
 			val httpResponseEliteCatalog : HttpResponse = httpClient.get("https://mercury-food-store.tilda.ws/katalog/440967997433-elitnie-siri")
 			if(httpResponseCatalog.status == HttpStatusCode.OK && httpResponseEliteCatalog.status == HttpStatusCode.OK) {
 				val htmlContentCatalog = httpResponseCatalog.bodyAsText()
 				val htmlContentEliteCatalog = httpResponseEliteCatalog.bodyAsText()
 				val htmlDocumentCatalog : Document = Ksoup.parse(htmlContentCatalog)
 				val htmlDocumentEliteCatalog : Document = Ksoup.parse(htmlContentEliteCatalog)
+				println("htmlContentCatalog: $htmlContentCatalog")
+				//println("htmlDocumentCatalog: $htmlDocumentCatalog")
+				/*
 				val divElementsCatalog: Elements = htmlDocumentCatalog.select("div.js-product.t-catalog__card:nth-of-type(even)")
 				val divElementsEliteCatalog: Elements = htmlDocumentEliteCatalog.select("div.js-product.t-catalog__card:nth-of-type(even)")
+				*/
+				val divAllElementsCatalog: Elements = htmlDocumentCatalog.select("div.js-product.t-catalog__card")
+				val divAllElementsEliteCatalog: Elements = htmlDocumentEliteCatalog.select("div.js-product.t-catalog__card")
+				val divElementsCatalog: List<Element> = divAllElementsCatalog.filterIndexed { index, _ -> index % 2 == 1 }
+				val divElementsEliteCatalog: Elements = Elements(divAllElementsEliteCatalog
+					.filterIndexed { index, _ -> index % 2 == 1 })
 				val inputElements: Elements = htmlDocumentCatalog.select("input.t-catalog__prod__quantity-input:nth-child(2)")
+				println("divAllElementsCatalog: $divAllElementsCatalog")
+				println("divElementsCatalog: $divElementsCatalog")
 				var inputElementIndex : Int = 0
 				var products = mutableListOf<ProductEntity>()
 				for(divElementProduct in divElementsCatalog) {
@@ -41,27 +52,24 @@ class ProductsRepository(
 					val listDescription : List<String> = outerText.split('\n')
 					if(listDescription.size >= 5) {
 						val divElementEliteProduct : Element? = divElementsEliteCatalog.select(":containsOwn('${outerText}')").first()
-						val name : String = listDescription[0]
-						val productInfo : String = listDescription[1]
-						val elite : Boolean = divElementEliteProduct != null
-						val price : Float = listDescription[2].toFloat()
-						val minAmount : Float = inputElements[inputElementIndex].attr("min").toFloatOrNull() ?: 0f
-						val maxAmount : Float = inputElements[inputElementIndex].attr("max").toFloatOrNull() ?: 0f
-						var amountInOrder : Float = inputElements[inputElementIndex].attr("value").toFloatOrNull() ?: 0f
-						val picture : String = divElementProduct.attribute("product.data-poduct-img")?.value ?: ""
-						val url : String = divElementProduct.attribute("product.data-poduct-url")?.value ?: ""
-						if(!name.isNullOrBlank() && !productInfo.isNullOrBlank() && price > 0) {
-							val productEntity = ProductEntity(
-								name = name,
-								productInfo = productInfo,
-								elite = elite,
-								price = price,
-								minAmount = minAmount,
-								maxAmount = maxAmount,
-								amountInOrder = amountInOrder,
-								picture = picture,
-								url = url
-							)
+						val productEntity = ProductEntity (
+							name = listDescription[0],
+							productInfo = listDescription[1],
+							elite = divElementEliteProduct != null,
+							price = listDescription[2].toFloat(),
+							minAmount =
+								inputElements[inputElementIndex].attr("min").toFloatOrNull() ?: 0f,
+							maxAmount =
+								inputElements[inputElementIndex].attr("max").toFloatOrNull() ?: 0f,
+							amountInOrder =
+								inputElements[inputElementIndex].attr("value").toFloatOrNull() ?: 0f,
+							picture =
+								divElementProduct.attribute("product.data-poduct-img")?.value ?: "",
+							url =
+								divElementProduct.attribute("product.data-poduct-url")?.value ?: ""
+						)
+						println("ProductEntity: $productEntity")
+						if(!productEntity.name.isNullOrBlank() && !productEntity.productInfo.isNullOrBlank() && productEntity.price > 0) {
 							products.add(productEntity)
 						}
 					}

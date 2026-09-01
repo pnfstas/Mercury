@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
 @Entity(tableName = "products")
 data class ProductEntity(
 	@PrimaryKey(autoGenerate = true) val id : Int = 0,
-	val name : String,
-	val productInfo : String,
-	val elite : Boolean,
-	val price : Float,
-	val minAmount : Float,
-	val maxAmount : Float,
-	val amountInOrder : Float,
-	val picture : String,
-	val url : String
+	val name : String = "",
+	val productInfo : String = "",
+	val elite : Boolean = false,
+	val price : Float = 0f,
+	val minAmount : Float = 0f,
+	val maxAmount : Float = 0f,
+	val amountInOrder : Float = 0f,
+	val picture : String = "",
+	val url : String = ""
 ) {
 	val inStock : Boolean
 		get() = minAmount > 0 && maxAmount >= minAmount

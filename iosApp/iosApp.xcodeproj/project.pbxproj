@@ -38,6 +38,7 @@
 		2E6510C63011567000E4B3F6 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E6517253011567000E4B3F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E6518DC3011567000E4B3F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E71E5653045A8A200278F2C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E72F629303ACF20002CAB5F /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E7941E03031BE07007DE2A1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E88C7C730121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC6E35D304055EA001979F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ED6210F3046B9B8007EE001 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -750,6 +752,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E71E7763045A8A200278F2C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E72F6D9303ACF20002CAB5F /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -949,6 +956,11 @@
 			sourceTree = "<group>";
 		};
 		2EC6E40D304055EA001979F6 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ED623203046B9B8007EE001 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1212,6 +1224,10 @@
 					ProjectRef = 2EB88C6930381DD700AF0812 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2ED623203046B9B8007EE001 /* Products */;
+					ProjectRef = 2ED6210F3046B9B8007EE001 /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB345A73032F2EC00257568 /* Products */;
 					ProjectRef = 2EB344B53032F2EC00257568 /* iosApp.xcodeproj */;
 				},
@@ -1230,6 +1246,10 @@
 				{
 					ProductGroup = 2E88D95330121A52008A7446 /* Products */;
 					ProjectRef = 2E88D5B230121A52008A7446 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E71E7763045A8A200278F2C /* Products */;
+					ProjectRef = 2E71E5653045A8A200278F2C /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E554AC23011411F00D8B116 /* Products */;
