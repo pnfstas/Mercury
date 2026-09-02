@@ -13,5 +13,6 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
 	val dbFile : File = appContext.getDatabasePath("products")
 	return Room.databaseBuilder<ProductsDatabase>(context = appContext, name = dbFile.absolutePath)
 		.setDriver(BundledSQLiteDriver())
+		.fallbackToDestructiveMigration(true)
 		.setJournalMode(RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING)
 }

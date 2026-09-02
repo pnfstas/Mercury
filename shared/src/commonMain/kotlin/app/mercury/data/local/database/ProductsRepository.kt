@@ -46,7 +46,7 @@ class ProductsRepository(
 						val productEntity = ProductEntity (
 							title = product.title ?: "",
 							descr = product.descr ?: "",
-							elite = tildaEliteCatalog.contains(product),
+							elite = tildaEliteCatalog.any { it -> it.sku == product.sku  },
 							price = product.price?.toFloatOrNull() ?: 0f,
 							quantity = product.quantity?.toFloatOrNull() ?: 0f,
 							amountInOrder = 0f,

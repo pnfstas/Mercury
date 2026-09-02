@@ -12,7 +12,7 @@ struct ProductCard : View {
     @Binding var product : ProductEntity
     var body: some View {
         HStack(alignment: .center, spacing: 5) {
-            Image(product.picture)
+            Image(product.image)
                 .resizable()
                 .renderingMode(.template)
                 .frame(width: 150, height: 150)
@@ -29,15 +29,15 @@ struct CatalogView: View {
             LazyVStack(alignment: .leading, spacing: 7) {
                 ForEach(productsViewModel.products, id: \.id) { product in
                     HStack(alignment: .center, spacing: 5) {
-                        Image(product.picture)
+                        Image(product.image)
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 150, height: 150)
                             .scaledToFit()
                             .background(.clear)
                         VStack(alignment: .center, spacing: 10) {
-                            Text(product.name)
-                            Text(product.productInfo)
+                            Text(product.title)
+                            Text(product.descr)
                         }
                         Text(String(product.price))
                             .frame(width: 150)

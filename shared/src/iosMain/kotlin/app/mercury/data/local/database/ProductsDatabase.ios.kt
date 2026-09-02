@@ -23,4 +23,5 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
 		factory = { ProductsDatabaseConstructor.initialize() }
 	)
 	.setDriver(BundledSQLiteDriver())
+	.fallbackToDestructiveMigration(true)
 }
