@@ -11,6 +11,7 @@ actual fun getHttpClient() : HttpClient {
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
+                coerceInputValues = true
             })
         }
     }
