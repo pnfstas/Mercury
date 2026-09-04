@@ -12,7 +12,7 @@ import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import app.mercury.data.local.entities.ProductEntity
 
-@Database(entities = [ProductEntity::class], version = 2, exportSchema = false)
+@Database(entities = [ProductEntity::class], version = 5, exportSchema = false)
 @ConstructedBy(ProductsDatabaseConstructor::class)
 abstract class ProductsDatabase : RoomDatabase() {
 	abstract fun productsDao(): ProductsDao

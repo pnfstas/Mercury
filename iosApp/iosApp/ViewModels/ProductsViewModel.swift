@@ -8,9 +8,9 @@ final class ProductsViewModel {
         let koinHelper : KoinHelper = KoinHelper()
         let productsInteractor : ProductsInteractor = koinHelper.getProductsInteractor()
         Task {
-            for await productEnties in productsInteractor.products {
+            for await productEntities in productsInteractor.products {
                 await MainActor.run {
-                    products = productEnties
+                    products = productEntities
                 }
             }
         }

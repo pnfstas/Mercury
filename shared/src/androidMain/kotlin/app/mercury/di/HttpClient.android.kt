@@ -13,6 +13,7 @@ actual fun getHttpClient() : HttpClient {
             json(Json {
                 ignoreUnknownKeys = true
                 coerceInputValues = true
+				explicitNulls = false
             }, contentType = ContentType.Any)
         }
     }

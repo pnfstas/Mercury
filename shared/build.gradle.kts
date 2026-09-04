@@ -63,6 +63,9 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.fleeksoft.ksoup)
         }
+        //commonMain.resources {
+        //    srcDirs("src/commonMain/resources")
+        //}
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

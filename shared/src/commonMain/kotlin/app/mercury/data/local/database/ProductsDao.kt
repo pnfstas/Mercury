@@ -19,6 +19,6 @@ interface ProductsDao {
 	@Delete
 	suspend fun delete(productEntity : ProductEntity)
 
-	@Query("SELECT * FROM products")
+	@Query("SELECT * FROM products ORDER BY elite DESC")
 	fun getAll() : Flow<List<ProductEntity>>
 }
