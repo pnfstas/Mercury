@@ -21,4 +21,7 @@ interface ProductsDao {
 
 	@Query("SELECT * FROM products ORDER BY elite DESC")
 	fun getAll() : Flow<List<ProductEntity>>
+
+	@Query("UPDATE products SET amountInOrder = :amount WHERE id = :id")
+	suspend fun updateAmountInOrder(id : Int, amount : Float)
 }

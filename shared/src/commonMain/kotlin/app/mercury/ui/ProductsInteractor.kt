@@ -15,4 +15,7 @@ class ProductsInteractor(private val productsRepository: ProductsRepository) {
 	init {
 		productsRepository.updateProducts()
 	}
+    suspend fun updateAmountInOrder(id : Int, amount : Float) {
+        productsRepository.productsDao.updateAmountInOrder(id = id, amount = amount)
+    }
 }

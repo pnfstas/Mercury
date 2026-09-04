@@ -45,7 +45,7 @@ struct CatalogView: View {
                         Text(product.priceDescr)
                             .frame(width: 150)
                         HStack {
-                            Button(action: { product.amountInOrder -= product.portion }) {
+                            Button(action: productsViewModel.decreaseAmountInOrder(product)) {
                                 Text("-")
                                     .frame(width: 22, height: 22)
                                     .padding(.horizontal, 7)
@@ -55,9 +55,9 @@ struct CatalogView: View {
                                     .font(.custom("Arial", size: 16).weight(.bold))
                             }
                             .buttonStyle(.plain)
-                            TextField("", value: product.amountInOrder, format: .number)
+                            TextField("", value: productsViewModel.bindAmountInOrder(product: product), format: .number)
                                 .keyboardType(.decimalPad)
-                            Button(action: { product.amountInOrder += product.portion }) {
+                            Button(action: productsViewModel.increaseAmountInOrder(product)) {
                                 Text("+")
                                     .frame(width: 22, height: 22)
                                     .padding(.horizontal, 7)
