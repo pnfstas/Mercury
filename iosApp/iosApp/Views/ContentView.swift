@@ -36,8 +36,8 @@ enum AppScreens : Hashable, CaseIterable {
     }
     var buttonBackgroundColor : Color {
         return switch self {
-        case .catalog: Color.green
-        default: Color.clear
+        case .catalog: .main
+        default: .clear
         }
     }
     var buttonForegroundColor : Color {

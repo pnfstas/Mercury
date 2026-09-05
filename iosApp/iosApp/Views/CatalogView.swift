@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  Catalog.swift
 //  iosApp
 //
 //  Created by Panferov Stanislav on 13.08.2026.
@@ -7,20 +7,6 @@
 
 import SwiftUI
 import shared
-
-struct ProductCard : View {
-    @Binding var product : ProductEntity
-    var body: some View {
-        HStack(alignment: .center, spacing: 5) {
-            Image(product.image)
-                .resizable()
-                .renderingMode(.template)
-                .frame(width: 150, height: 150)
-                .scaledToFit()
-                .background(.clear)
-        }
-    }
-}
 
 struct CatalogView: View {
     @Binding var productsViewModel : ProductsViewModel
@@ -36,7 +22,7 @@ struct CatalogView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                            .frame(width: 150, height: 150)
+                            .frame(width: 100, height: 100)
                             .background(.clear)
                         VStack(alignment: .center, spacing: 10) {
                             Text(product.title)
@@ -45,11 +31,11 @@ struct CatalogView: View {
                         Text(product.priceDescr)
                             .frame(width: 150)
                         HStack {
-                            Button(action: productsViewModel.decreaseAmountInOrder(product)) {
+                            Button(action: { productsViewModel.decreaseAmountInOrder(product: product) }) {
                                 Text("-")
                                     .frame(width: 22, height: 22)
-                                    .padding(.horizontal, 7)
-                                    .padding(.vertical, 5)
+                                    //.padding(.horizontal, 7)
+                                    //.padding(.vertical, 5)
                                     .foregroundStyle(.black)
                                     .background(.clear)
                                     .font(.custom("Arial", size: 16).weight(.bold))
@@ -57,21 +43,36 @@ struct CatalogView: View {
                             .buttonStyle(.plain)
                             TextField("", value: productsViewModel.bindAmountInOrder(product: product), format: .number)
                                 .keyboardType(.decimalPad)
-                            Button(action: productsViewModel.increaseAmountInOrder(product)) {
+                                .frame(width: 22, height: 22)
+                            Button(action: { productsViewModel.increaseAmountInOrder(product: product) }) {
                                 Text("+")
                                     .frame(width: 22, height: 22)
-                                    .padding(.horizontal, 7)
-                                    .padding(.vertical, 5)
+                                    //.padding(.horizontal, 7)
+                                    //.padding(.vertical, 5)
                                     .foregroundStyle(.black)
                                     .background(.clear)
                                     .font(.custom("Arial", size: 16).weight(.bold))
                             }
                             .buttonStyle(.plain)
+                            Button(action: { productsViewModel.increaseAmountInOrder(product: product) }) {
+                                Text(product.inStock ? "Добавить в корзину" : "Нет в наличии")
+                            }
+                            .buttonStyle(.plain)
+                            .frame(width: 50, height: 22)
+                            .padding(.horizontal, 7)
+                            .padding(.vertical, 5)
+                            .foregroundStyle(.white)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
+                            .opacity(product.inStock ? 1 : 0.5)
+                            .font(.custom("Arial", size: 16).weight(.bold))
                         }
+                        .overlay(Rectangle().stroke(.black, lineWidth: 2))
                     }
                     .frame(maxWidth: .infinity)
                 }
             }
         }
+        .scrollIndicators(.automatic, axes: .horizontal)
+        .scrollIndicators(.automatic, axes: .vertical)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		2E01B0E4304B16CB00180E17 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E0F304530113C9100EC26A5 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E0F304630113C9100EC26A5 /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E0F42FD30113C9100EC26A5 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
+				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
@@ -207,6 +209,9 @@
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/compose-multiplatform.xml",
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDatabase_Impl.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDatabaseConstructor.kt,
 				shared/build/konan.txt,
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
@@ -214,6 +219,35 @@
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
+				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
+				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/ProductsDatabase_Impl.kt,
+				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/ProductsDatabaseConstructor.kt,
+				shared/build/kspCaches/iosX64/iosX64Main/caches.uptodate,
+				shared/build/kspCaches/iosX64/iosX64Main/sealed,
+				shared/build/kspCaches/iosX64/iosX64Main/sourceToOutputs,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/counters.tab,
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab_i",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab_i.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.keystream",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.keystream.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.values.at",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab_i",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab_i.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.keystream",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.keystream.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.len",
+				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.values.at",
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab_i,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab_i.len,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.keystream,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.keystream.len,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.len,
+				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.values.at,
+				shared/build/kspCaches/iosX64/iosX64Main/symbols,
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/common-compiler-configuration.json",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/compiler-environment.json",
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/git.json,
@@ -348,6 +382,8 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDao.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDatabase_iosKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDatabase_iosKt.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsInteractor.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsInteractor.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsModuleKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsModuleKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.AsyncStreamDispatcherDelegate.o",
@@ -430,6 +466,7 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.Platform_iosKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsDao.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsDatabase_iosKt.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsInteractor.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsModuleKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.AsyncStreamDispatcherDelegate.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.bridgeSubscriptionCount.swift,
@@ -454,7 +491,6 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.LazyThreadSafetyMode.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction1.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction2.swift,
-				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/ProductsDatabase.android.kt,
 				shared/src/androidMain/kotlin/app/mercury/di/HttpClient.android.kt,
@@ -527,6 +563,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E01B120304B16CB00180E17 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E0F45F030113C9100EC26A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1154,6 +1195,10 @@
 				{
 					ProductGroup = 2E651A1E3011567000E4B3F6 /* Products */;
 					ProjectRef = 2E6518DC3011567000E4B3F6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E01B120304B16CB00180E17 /* Products */;
+					ProjectRef = 2E01B0E4304B16CB00180E17 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB03D6B30399E84001B3A8C /* Products */;
