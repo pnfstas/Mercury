@@ -8,7 +8,7 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
 @OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
-actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<MercuryShopDatabase> {
 	val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
 		directory = NSDocumentDirectory,
 		inDomain = NSUserDomainMask,
@@ -18,9 +18,9 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
 	)
 	val dbFilePath = documentDirectory!!.path + "/products.db"
 
-	return Room.databaseBuilder<ProductsDatabase>(
+	return Room.databaseBuilder<MercuryShopDatabase>(
 		name = dbFilePath,
-		factory = { ProductsDatabaseConstructor.initialize() }
+		factory = { MercuryShopDatabaseConstructor.initialize() }
 	)
 	.setDriver(BundledSQLiteDriver())
 	.fallbackToDestructiveMigration(true)

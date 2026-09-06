@@ -3,13 +3,13 @@ import shared
 
 @Observable
 final class ProductsViewModel {
-    private var productsInteractor : ProductsInteractor
+    private var mercuryShopInteractor : MercuryShopInteractor
     var products : [ProductEntity] = []
     init() {
         let koinHelper : KoinHelper = KoinHelper()
-        productsInteractor = koinHelper.getProductsInteractor()
+        mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
         Task {
-            for await productEntities in productsInteractor.products {
+            for await productEntities in mercuryShopInteractor.products {
                 await MainActor.run {
                     products = productEntities
                 }
@@ -19,7 +19,7 @@ final class ProductsViewModel {
     func updateAmountInOrder(product: ProductEntity, amount : Float) {
         Task {
             do {
-                try await productsInteractor.updateAmountInOrder(id: product.id, amount: amount)
+                try await mercuryShopInteractor.updateAmountInOrder(id: product.id, amount: amount)
             }
             catch {
                 print("Не удалось обновить количество для товара \(product.title)")

@@ -1,8 +1,8 @@
 package app.mercury.di
 
-import app.mercury.data.local.database.ProductsDatabase
-import app.mercury.data.local.database.ProductsRepository
-import app.mercury.ui.ProductsInteractor
+import app.mercury.data.local.database.MercuryShopDatabase
+import app.mercury.data.local.database.MercuryShopRepository
+import app.mercury.ui.MercuryShopInteractor
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,28 +14,36 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-val productsModule = module {
+val mercuryModule = module {
 	single<CoroutineScope> {
 		CoroutineScope(SupervisorJob() + Dispatchers.IO)
 	}
 	single<HttpClient> {
 		getHttpClient()
 	}
-	single<ProductsDatabase> {
+	single<MercuryShopDatabase> {
 		app.mercury.data.local.database.getDatabaseBuilder().build()
 	}
 	single {
-		get<ProductsDatabase>().productsDao()
+		get<MercuryShopDatabase>().productsDao()
 	}
 	single {
-		ProductsRepository(
+		get<MercuryShopDatabase>().shoppingCartDao()
+	}
+	single {
+		get<MercuryShopDatabase>().ordersDao()
+	}
+	single {
+		MercuryShopRepository(
 			coroutineScope = get(),
 			productsDao = get(),
+			shoppingCartDao = get(),
+			ordersDao = get(),
 			httpClient = get()
 		)
 	}
 	factory {
-		ProductsInteractor(productsRepository = get())
+		MercuryShopInteractor(mercuryShopRepository = get())
 	}
 }
 
@@ -45,16 +53,16 @@ class KoinHelper : KoinComponent {
 	companion object {
 		fun initKoin(additionalModules: List<Module> = emptyList()) {
 			startKoin {
-				modules(productsModule + additionalModules)
+				modules(mercuryModule + additionalModules)
 			}
 		}
 		fun initKoinIos() {
 			initKoin(emptyList())
 		}
 	}
-	fun getProductsInteractor() : ProductsInteractor = get()
+	fun getMercuryShopInteractor() : MercuryShopInteractor = get()
 	/*
-	fun getProductsInteractor() : ProductsInteractor {
+	fun getMercuryShopInteractor() : MercuryShopInteractor {
 		val scope = get<CoroutineScope>()
 		println("Scope OK: $scope")
 		val client = get<HttpClient>()
@@ -66,5 +74,5 @@ class KoinHelper : KoinComponent {
 		return get()
 	}
 	*/
-	fun getProductsRepository() : ProductsRepository = get()
+	fun getMercuryShopRepository() : MercuryShopRepository = get()
 }

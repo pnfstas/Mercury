@@ -7,11 +7,11 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import org.koin.mp.KoinPlatformTools
 import java.io.File
 
-actual fun getDatabaseBuilder(): RoomDatabase.Builder<ProductsDatabase> {
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<MercuryShopDatabase> {
 	val context : Context = KoinPlatformTools.defaultContext().get().get()
 	val appContext : Context = context.applicationContext
 	val dbFile : File = appContext.getDatabasePath("products")
-	return Room.databaseBuilder<ProductsDatabase>(context = appContext, name = dbFile.absolutePath)
+	return Room.databaseBuilder<MercuryShopDatabase>(context = appContext, name = dbFile.absolutePath)
 		.setDriver(BundledSQLiteDriver())
 		.fallbackToDestructiveMigration(true)
 		.setJournalMode(RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING)
