@@ -2,7 +2,7 @@ import SwiftUI
 import shared
 
 @Observable
-final class ProductsViewModel {
+final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
     var products : [ProductEntity] = []
     init() {
@@ -16,39 +16,43 @@ final class ProductsViewModel {
             }
         }
     }
-    func updateAmountInOrder(product: ProductEntity, amount : Float) {
+    func updateQuantityInShoppingCart(product: ProductEntity, quantity : Float) {
         Task {
             do {
-                try await mercuryShopInteractor.updateAmountInOrder(id: product.id, amount: amount)
+                try await mercuryShopInteractor.updateQuantityInShoppingCart(productId: product.id, quantity: quantity)
             }
             catch {
                 print("Не удалось обновить количество для товара \(product.title)")
             }
         }
     }
-    func stepAmountInOrder(product: ProductEntity, decrease: Bool = false) {
-        var step : Float = product.portion > 0 ? product.portion : 1
-        if decrease {
-            step *= -1
+    func increaseQuantityInShoppingCart(product: ProductEntity) {
+        Task {
+            do {
+                try await mercuryShopInteractor.stepQuantityInShoppingCart(productId: product.id, decrease: false)
+            }
+            catch {
+                print("Не удалось обновить количество для товара \(product.title)")
+            }
         }
-        var newAmountInOrder = product.amountInOrder + step
-        if newAmountInOrder >= 0 && newAmountInOrder <= product.quantity {
-            updateAmountInOrder(product: product, amount: newAmountInOrder)
+    }
+    func decreaseQuantityInShoppingCart(product: ProductEntity) {
+        Task {
+            do {
+                try await mercuryShopInteractor.stepQuantityInShoppingCart(productId: product.id, decrease: true)
+            }
+            catch {
+                print("Не удалось обновить количество для товара \(product.title)")
+            }
         }
     }
-    func increaseAmountInOrder(product: ProductEntity) {
-        stepAmountInOrder(product: product)
-    }
-    func decreaseAmountInOrder(product: ProductEntity) {
-        stepAmountInOrder(product: product, decrease: true)
-    }
-    func bindAmountInOrder(product: ProductEntity) -> Binding<Float> {
+    func bindQuantityInShoppingCart(product: ProductEntity) -> Binding<Float> {
         return Binding(
             get: {
                 product.amountInOrder
             },
             set: { newValue in
-                self.updateAmountInOrder(product: product, amount: newValue)
+                self.updateQuantityInShoppingCart(product: product, quantity: newValue)
             }
         )
     }

@@ -22,6 +22,27 @@ interface ShoppingCartDao {
     @Query("SELECT * FROM shopping_cart")
     fun getAll() : Flow<List<ShoppingCartEntity>>
 
+	@Query("SELECT * FROM shopping_cart")
+	fun getOne(productId : Int) : Flow<List<ShoppingCartEntity>>
+
     @Query("UPDATE shopping_cart SET quantity = :quantity WHERE productId = :productId")
     suspend fun updateQuantity(productId : Int, quantity : Float)
+
+	@Query("""
+		   UPDATE shopping_cart
+		   SET quantity = shopping_cart.quantity +
+			CASE products.portion > 0
+				THEN products.portion
+			ELSE 1.0
+			END *
+			CASE :decrease
+				THEN -1
+			ELSE 1
+			END
+		   FROM products
+		   WHERE
+			shopping_cart.productId = products.id
+			shopping_cart.productId = :productId
+		   """)
+	suspend fun stepQuantity(productId : Int, decrease: Boolean = false)
 }

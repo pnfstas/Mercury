@@ -9,11 +9,11 @@ import SwiftUI
 import shared
 
 struct CatalogView: View {
-    @Binding var productsViewModel : ProductsViewModel
+    @Binding var mercuryShopViewModel : MercuryShopViewModel
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(productsViewModel.products, id: \.id) { product in
+                ForEach(mercuryShopViewModel.products, id: \.id) { product in
                     HStack(alignment: .center, spacing: 5) {
                         AsyncImage(url: URL(string: product.image)) { image in
                             image
@@ -31,7 +31,7 @@ struct CatalogView: View {
                         Text(product.priceDescr)
                             .frame(width: 150)
                         HStack {
-                            Button(action: { productsViewModel.decreaseAmountInOrder(product: product) }) {
+                            Button(action: { mercuryShopViewModel.decreaseQuantityInShoppingCart(product: product) }) {
                                 Text("-")
                                     .frame(width: 22, height: 22)
                                     //.padding(.horizontal, 7)
@@ -41,10 +41,10 @@ struct CatalogView: View {
                                     .font(.custom("Arial", size: 16).weight(.bold))
                             }
                             .buttonStyle(.plain)
-                            TextField("", value: productsViewModel.bindAmountInOrder(product: product), format: .number)
+                            TextField("", value: mercuryShopViewModel.bindQuantityInShoppingCart(product: product), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 22, height: 22)
-                            Button(action: { productsViewModel.increaseAmountInOrder(product: product) }) {
+                            Button(action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) }) {
                                 Text("+")
                                     .frame(width: 22, height: 22)
                                     //.padding(.horizontal, 7)
@@ -54,7 +54,7 @@ struct CatalogView: View {
                                     .font(.custom("Arial", size: 16).weight(.bold))
                             }
                             .buttonStyle(.plain)
-                            Button(action: { productsViewModel.increaseAmountInOrder(product: product) }) {
+                            Button(action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) }) {
                                 Text(product.inStock ? "Добавить в корзину" : "Нет в наличии")
                             }
                             .buttonStyle(.plain)

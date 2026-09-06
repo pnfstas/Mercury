@@ -14,7 +14,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-val mercuryModule = module {
+val mercuryShopModule = module {
 	single<CoroutineScope> {
 		CoroutineScope(SupervisorJob() + Dispatchers.IO)
 	}
@@ -53,7 +53,7 @@ class KoinHelper : KoinComponent {
 	companion object {
 		fun initKoin(additionalModules: List<Module> = emptyList()) {
 			startKoin {
-				modules(mercuryModule + additionalModules)
+				modules(mercuryShopModule + additionalModules)
 			}
 		}
 		fun initKoinIos() {

@@ -1,3 +1,9 @@
+//
+//  MercuryShopInteractor.kt
+//  iosApp
+//
+//  Created by Panferov Stanislav on 03.08.2026.
+//
 package app.mercury.ui
 
 import app.mercury.data.local.database.MercuryShopRepository
@@ -15,7 +21,10 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 	init {
         mercuryShopRepository.updateProducts()
 	}
-    suspend fun updateAmountInOrder(id : Int, amount : Float) {
-        mercuryShopRepository.productsDao.updateAmountInOrder(id = id, amount = amount)
+    suspend fun updateQuantityInShoppingCart(productId : Int, quantity : Float) {
+        mercuryShopRepository.shoppingCartDao.updateQuantity(productId = productId, quantity = quantity)
     }
+	suspend fun stepQuantityInShoppingCart(productId : Int, decrease: Boolean = false) {
+		mercuryShopRepository.shoppingCartDao.stepQuantity(productId = productId, decrease = decrease)
+	}
 }
