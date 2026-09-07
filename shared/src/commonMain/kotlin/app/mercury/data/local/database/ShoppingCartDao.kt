@@ -22,7 +22,7 @@ interface ShoppingCartDao {
     @Query("SELECT * FROM shopping_cart")
     fun getAll() : Flow<List<ShoppingCartEntity>>
 
-	@Query("SELECT * FROM shopping_cart")
+	@Query("SELECT * FROM shopping_cart WHERE productId = :productId")
 	fun getOne(productId : Int) : Flow<List<ShoppingCartEntity>>
 
     @Query("UPDATE shopping_cart SET quantity = :quantity WHERE productId = :productId")
@@ -31,17 +31,17 @@ interface ShoppingCartDao {
 	@Query("""
 		   UPDATE shopping_cart
 		   SET quantity = shopping_cart.quantity +
-			CASE products.portion > 0
-				THEN products.portion
-			ELSE 1.0
-			END *
-			CASE :decrease
-				THEN -1
-			ELSE 1
+			CASE 
+                WHEN (SELECT portion FROM products WHERE id = :productId) > 0
+				    THEN (SELECT portion FROM products WHERE id = :productId)
+                ELSE 1
+            END *
+			CASE 
+                WHEN :decrease
+				    THEN -1
+			    ELSE 1
 			END
-		   FROM products
 		   WHERE
-			shopping_cart.productId = products.id
 			shopping_cart.productId = :productId
 		   """)
 	suspend fun stepQuantity(productId : Int, decrease: Boolean = false)
