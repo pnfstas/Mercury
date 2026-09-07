@@ -10,6 +10,7 @@ import shared
 
 struct CatalogView: View {
     @Binding var mercuryShopViewModel : MercuryShopViewModel
+    let screenWidth : CGFloat = UIScreen.main.bounds.width
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
@@ -22,43 +23,35 @@ struct CatalogView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                            .frame(width: 100, height: 100)
+                            .frame(width: screenWidth / 8, height: screenWidth / 8)
                             .background(.clear)
                         VStack(alignment: .center, spacing: 10) {
                             Text(product.title)
                             Text(product.descr)
                         }
                         Text(product.priceDescr)
-                            .frame(width: 150)
+                            .frame(maxWidth: .infinity)
                         HStack {
-                            Button(action: { mercuryShopViewModel.decreaseQuantityInShoppingCart(product: product) }) {
-                                Text("-")
-                                    .frame(width: 22, height: 22)
-                                    //.padding(.horizontal, 7)
-                                    //.padding(.vertical, 5)
-                                    .foregroundStyle(.black)
-                                    .background(.clear)
-                                    .font(.custom("Arial", size: 16).weight(.bold))
-                            }
+                            Button("-", action: { mercuryShopViewModel.decreaseQuantityInShoppingCart(product: product) })
                             .buttonStyle(.plain)
+                            .frame(width: 20, height: 22)
+                            .foregroundStyle(.black)
+                            .background(.clear)
+                            .font(.custom("Arial", size: 16).weight(.bold))
                             TextField("", value: mercuryShopViewModel.bindQuantityInShoppingCart(product: product), format: .number)
                                 .keyboardType(.decimalPad)
-                                .frame(width: 22, height: 22)
-                            Button(action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) }) {
-                                Text("+")
-                                    .frame(width: 22, height: 22)
-                                    //.padding(.horizontal, 7)
-                                    //.padding(.vertical, 5)
-                                    .foregroundStyle(.black)
-                                    .background(.clear)
-                                    .font(.custom("Arial", size: 16).weight(.bold))
-                            }
+                                .frame(width: 20, height: 22)
+                            Button("+", action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) })
                             .buttonStyle(.plain)
+                            .frame(width: 20, height: 22)
+                            .foregroundStyle(.black)
+                            .background(.clear)
+                            .font(.custom("Arial", size: 16).weight(.bold))
                             Button(action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) }) {
                                 Text(product.inStock ? "Добавить в корзину" : "Нет в наличии")
                             }
                             .buttonStyle(.plain)
-                            .frame(width: 50, height: 22)
+                            .frame(width: screenWidth / 8, height: 22)
                             .padding(.horizontal, 7)
                             .padding(.vertical, 5)
                             .foregroundStyle(.white)

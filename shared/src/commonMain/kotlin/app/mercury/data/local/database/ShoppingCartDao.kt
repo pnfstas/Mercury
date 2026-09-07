@@ -37,7 +37,7 @@ interface ShoppingCartDao {
                 ELSE 1
             END *
 			CASE 
-                WHEN :decrease
+                WHEN :decrease = 1
 				    THEN -1
 			    ELSE 1
 			END

@@ -17,7 +17,8 @@ import kotlinx.serialization.Serializable
             onDelete = CASCADE,
             onUpdate = CASCADE
         )
-    ])
+    ],
+	indices = [Index(value = ["productId"])])
 data class ShoppingCartEntity (
     @PrimaryKey
     val productId : Int,
