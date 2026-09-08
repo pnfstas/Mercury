@@ -4,59 +4,56 @@ import shared
 @Observable
 final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
-    var products : [ProductUIState] = []
+    var shopUIStates : [MercuryShopUIState] = []
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
         Task {
-            for await productUIStates in mercuryShopInteractor.products {
+            for await curShopUIStates in mercuryShopInteractor.shopUIStates {
                 await MainActor.run {
-                    products = productUIStates
+                    shopUIStates = curShopUIStates
                 }
             }
         }
     }
-    func updateQuantityInShoppingCart(product: ProductEntity, quantity : Float) {
+    func increaseQuantityInShoppingCart(shopUIState : MercuryShopUIState) {
         Task {
             do {
-                try await mercuryShopInteractor.updateQuantityInShoppingCart(productId: product.id, quantity: quantity)
+                try await mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: false)
             }
             catch {
-                print("Не удалось обновить количество для товара \(product.title)")
+                print("Не удалось обновить количество для товара \(shopUIState.product.title)")
             }
         }
     }
-    func increaseQuantityInShoppingCart(product: ProductEntity) {
+    func decreaseQuantityInShoppingCart(shopUIState : MercuryShopUIState) {
         Task {
             do {
-                try await mercuryShopInteractor.stepQuantityInShoppingCart(productId: product.id, decrease: false)
+                try await mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: true)
             }
             catch {
-                print("Не удалось обновить количество для товара \(product.title)")
+                print("Не удалось обновить количество для товара \(shopUIState.product.title)")
             }
         }
     }
-    func decreaseQuantityInShoppingCart(product: ProductEntity) {
-        Task {
-            do {
-                try await mercuryShopInteractor.stepQuantityInShoppingCart(productId: product.id, decrease: true)
-            }
-            catch {
-                print("Не удалось обновить количество для товара \(product.title)")
-            }
-        }
-    }
-    func bindQuantityInShoppingCart(product: ProductEntity) -> Binding<Float> {
+    func bindQuantityInShoppingCart(shopUIState : MercuryShopUIState) -> Binding<Float> {
         return Binding(
             get: {
-                product.amountInOrder
+                shopUIState.enteredQuantity
             },
             set: { newValue in
-                self.updateQuantityInShoppingCart(product: product, quantity: newValue)
+                shopUIState.enteredQuantity = newValue
             }
         )
     }
-    func addToShoppingCart(product: ProductEntity) {
-        
+    fun addToShoppingCartOrUpdateQuantity(shopUIState : MercuryShopUIState) {
+        Task {
+            do {
+                try await mercuryShopInteractor.addToShoppingCartOrUpdateQuantity(shopUIState: shopUIState)
+            }
+            catch {
+                print("Не удалось добавить в корзину или изменить коичество для товара \(shopUIState.product.title)")
+            }
+        }
     }
 }

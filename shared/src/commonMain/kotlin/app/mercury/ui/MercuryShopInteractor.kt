@@ -7,6 +7,7 @@
 package app.mercury.ui
 
 import androidx.collection.emptyLongSet
+import androidx.room.Ignore
 import app.mercury.data.local.database.MercuryShopRepository
 import app.mercury.data.local.entities.OrderEntity
 import app.mercury.data.local.entities.ProductEntity
@@ -17,17 +18,21 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
-data class ProductUIState (
+data class MercuryShopUIState (
     val product : ProductEntity,
     val portion : Float = 0f,
     var quantityInStock : Float = 0f,
     var enteredQuantity : Float = 0f,
     var cartQuantity : Float = 0f,
     var orderedQuantity : Float = 0f
-)
+) {
+    @get:Ignore
+    val inStock : Boolean
+        get() = quantityInStock > 0
+}
 
 class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopRepository) {
-    val products : StateFlow<List<ProductUIState>> = combine(
+    val shopUIStates : StateFlow<List<MercuryShopUIState>> = combine(
         mercuryShopRepository.productsDao.getAll(),
         mercuryShopRepository.shoppingCartDao.getAll(),
         mercuryShopRepository.ordersDao.getAll()
@@ -37,7 +42,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             val portion : Float = if(product.portion > 0) product.portion else 1f
             val cartItem : ShoppingCartEntity? = cartItems.find { it.productId == product.id }
             val orderedQuantity : Float = orders.filter { it.productId == product.id }.sumOf { it.quantity.toDouble() }.toFloat()
-            ProductUIState(
+            MercuryShopUIState(
                 product = product,
                 portion = portion,
                 quantityInStock = product.quantity,
@@ -64,14 +69,14 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 	init {
         mercuryShopRepository.updateProducts()
 	}
-	fun stepEnteredQuantity(productUIState : ProductUIState, decrease: Boolean = false) {
+	fun stepEnteredQuantity(shopUIState : MercuryShopUIState, decrease: Boolean = false) {
         if(decrease)
-            productUIState.enteredQuantity = min(productUIState.enteredQuantity - productUIState.portion, 0f)
+            shopUIState.enteredQuantity = min(shopUIState.enteredQuantity - shopUIState.portion, 0f)
         else
-            productUIState.enteredQuantity = min(productUIState.enteredQuantity + productUIState.portion, productUIState.quantityInStock)
+            shopUIState.enteredQuantity = min(shopUIState.enteredQuantity + shopUIState.portion, shopUIState.quantityInStock)
 	}
-    suspend fun updateQuantityInShoppingCart(productUIState : ProductUIState) {
-        mercuryShopRepository.shoppingCartDao.insertOneOrIgnore(shoppingCartEntity = ShoppingCartEntity(productId = productUIState.product.id))
-        mercuryShopRepository.shoppingCartDao.updateQuantity(productId = productUIState.product.id, quantity = productUIState.enteredQuantity)
+    suspend fun addToShoppingCartOrUpdateQuantity(shopUIState : MercuryShopUIState) {
+        mercuryShopRepository.shoppingCartDao.insertOneOrIgnore(shoppingCartEntity = ShoppingCartEntity(productId = shopUIState.product.id))
+        mercuryShopRepository.shoppingCartDao.updateQuantity(productId = shopUIState.product.id, quantity = shopUIState.enteredQuantity)
     }
 }

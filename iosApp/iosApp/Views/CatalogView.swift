@@ -14,9 +14,9 @@ struct CatalogView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(mercuryShopViewModel.products, id: \.id) { product in
+                ForEach(mercuryShopViewModel.shopUIStates, id: \.id) { shopUIState in
                     HStack(alignment: .center, spacing: 5) {
-                        AsyncImage(url: URL(string: product.image)) { image in
+                        AsyncImage(url: URL(string: shopUIState.product.image)) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -26,29 +26,29 @@ struct CatalogView: View {
                             .frame(width: screenWidth / 8, height: screenWidth / 8)
                             .background(.clear)
                         VStack(alignment: .center, spacing: 10) {
-                            Text(product.title)
-                            Text(product.descr)
+                            Text(shopUIState.product.title)
+                            Text(shopUIState.product.descr)
                         }
-                        Text(product.priceDescr)
+                        Text(shopUIState.product.priceDescr)
                             .frame(maxWidth: .infinity)
                         HStack {
-                            Button("-", action: { mercuryShopViewModel.decreaseQuantityInShoppingCart(product: product) })
+                            Button("-", action: { mercuryShopViewModel.decreaseQuantityInShoppingCart(shopUIState: shopUIState) })
                             .buttonStyle(.plain)
                             .frame(width: 20, height: 22)
                             .foregroundStyle(.black)
                             .background(.clear)
                             .font(.custom("Arial", size: 16).weight(.bold))
-                            TextField("", value: mercuryShopViewModel.bindQuantityInShoppingCart(product: product), format: .number)
+                            TextField("", value: mercuryShopViewModel.bindQuantityInShoppingCart(shopUIState: shopUIState), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 20, height: 22)
-                            Button("+", action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) })
+                            Button("+", action: { mercuryShopViewModel.increaseQuantityInShoppingCart(shopUIState: shopUIState) })
                             .buttonStyle(.plain)
                             .frame(width: 20, height: 22)
                             .foregroundStyle(.black)
                             .background(.clear)
                             .font(.custom("Arial", size: 16).weight(.bold))
-                            Button(action: { mercuryShopViewModel.increaseQuantityInShoppingCart(product: product) }) {
-                                Text(product.inStock ? "Добавить в корзину" : "Нет в наличии")
+                            Button(action: { mercuryShopViewModel.addToShoppingCartOrUpdateQuantity(shopUIState: shopUIState) }) {
+                                Text(shopUIState.inStock ? "Добавить в корзину" : "Нет в наличии")
                             }
                             .buttonStyle(.plain)
                             .frame(width: screenWidth / 8, height: 22)
@@ -56,7 +56,7 @@ struct CatalogView: View {
                             .padding(.vertical, 5)
                             .foregroundStyle(.white)
                             .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                            .opacity(product.inStock ? 1 : 0.5)
+                            .opacity(shopUIState.inStock ? 1 : 0.5)
                             .font(.custom("Arial", size: 16).weight(.bold))
                         }
                         .overlay(Rectangle().stroke(.black, lineWidth: 2))
