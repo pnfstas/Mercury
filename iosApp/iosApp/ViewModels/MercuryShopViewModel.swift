@@ -4,14 +4,14 @@ import shared
 @Observable
 final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
-    var products : [ProductEntity] = []
+    var products : [ProductUIState] = []
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
         Task {
-            for await productEntities in mercuryShopInteractor.products {
+            for await productUIStates in mercuryShopInteractor.products {
                 await MainActor.run {
-                    products = productEntities
+                    products = productUIStates
                 }
             }
         }

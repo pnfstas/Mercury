@@ -3,6 +3,7 @@ package app.mercury.data.local.entities
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.Companion.CASCADE
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
@@ -18,7 +19,8 @@ import kotlinx.serialization.Serializable
             onUpdate = CASCADE
         )
     ],
-	indices = [Index(value = ["productId"])])
+	indices = [Index(value = ["productId"])]
+)
 data class ShoppingCartEntity (
     @PrimaryKey
     val productId : Int,

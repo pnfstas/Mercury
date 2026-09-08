@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ShoppingCartDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOne(vararg shoppingCartEntity : ShoppingCartEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOneOrIgnore(shoppingCartEntity : ShoppingCartEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(shoppingCartEntities : List<ShoppingCartEntity>): List<Long>
