@@ -54,6 +54,7 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
             implementation(libs.compose.runtime)
             implementation(libs.room.runtime)
             implementation(libs.androidx.sqlite.bundled)

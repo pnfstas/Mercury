@@ -16,7 +16,7 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<MercuryShopDatabase> {
 		create = true,
 		error = null
 	)
-	val dbFilePath = documentDirectory!!.path + "/products.db"
+	val dbFilePath = documentDirectory!!.path + "/mercury_shop.db"
 
 	return Room.databaseBuilder<MercuryShopDatabase>(
 		name = dbFilePath,

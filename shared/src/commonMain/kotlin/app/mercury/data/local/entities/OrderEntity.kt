@@ -5,7 +5,17 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.Companion.CASCADE
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
+
+enum class OrderState {
+    None,
+    Created,
+    Assembled,
+    InTransit,
+    IsReady,
+    Completed
+}
 
 @Serializable
 @Entity(
@@ -26,5 +36,8 @@ data class OrderEntity (
     val id : Int = 0,
     val productId : Int,
     val quantity : Float = 0f,
-    val amount : Float = 0f
+    val amount : Float = 0f,
+    val creationDate : LocalDateTime,
+    val completionDate : LocalDateTime,
+    val state : OrderState = OrderState.None
 )

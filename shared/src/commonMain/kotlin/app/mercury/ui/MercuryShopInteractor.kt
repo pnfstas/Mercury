@@ -16,6 +16,8 @@ import kotlin.math.min
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 data class MercuryShopUIState (
@@ -56,6 +58,20 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList())
+    val cartUIStates = shopUIStates.map { list ->
+        list.filter { it.cartQuantity > 0 }
+    }
+    .stateIn(
+        mercuryShopRepository.coroutineScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList())
+    val orderUIStates = shopUIStates.map { list ->
+        list.filter { it.orderedQuantity > 0 }
+    }
+	.stateIn(
+		mercuryShopRepository.coroutineScope,
+		started = SharingStarted.WhileSubscribed(5000),
+		initialValue = emptyList())
     val shoppingCart : StateFlow<List<ShoppingCartEntity>> = mercuryShopRepository.shoppingCartDao.getAll()
         .stateIn(
             mercuryShopRepository.coroutineScope,

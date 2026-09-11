@@ -1,22 +1,22 @@
 //
-//  Catalog.swift
+//  ShoppingCartViewModifier.swift
 //  iosApp
 //
 //  Created by Panferov Stanislav on 13.08.2026.
 //
 
 import SwiftUI
-import shared
 
-struct CatalogView: View {
+struct ShoppingCartViewModifier: ViewModifier {
     @Binding var mercuryShopViewModel : MercuryShopViewModel
     let screenWidth : CGFloat = UIScreen.main.bounds.width
-    var body: some View {
+    func body(content: Content) -> some View {
+        content
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(mercuryShopViewModel.shopUIStates, id: \.product.id) { shopUIState in
+                ForEach(mercuryShopViewModel.cartUIStates, id: \.product.id) { cartUIState in
                     HStack(alignment: .center, spacing: 2) {
-                        AsyncImage(url: URL(string: shopUIState.product.image)) { image in
+                        AsyncImage(url: URL(string: cartUIState.product.image)) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -25,35 +25,24 @@ struct CatalogView: View {
                         }
                             .frame(width: screenWidth / 8, height: screenWidth / 8)
                          VStack(alignment: .center, spacing: 10) {
-                            Text(shopUIState.product.title)
-                            Text(shopUIState.product.descr)
+                            Text(cartUIState.product.title)
+                            Text(cartUIState.product.descr)
                         }
                             .frame(maxWidth: .infinity)
-                        Text(shopUIState.product.priceDescr)
+                        Text(cartUIState.product.priceDescr)
                             .frame(width: screenWidth / 8)
                         HStack {
-                            Button("", systemImage: "minus", action: { mercuryShopViewModel.decreaseEnteredQuantity(shopUIState: shopUIState) })
+                            Button("", systemImage: "minus", action: { mercuryShopViewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) })
                             .buttonStyle(.plain)
                             .frame(width: 15, height: 22)
-                            TextField("", value: mercuryShopViewModel.bindEnteredQuantity(shopUIState: shopUIState), format: .number)
+                            TextField("", value: mercuryShopViewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 20, height: 22)
-                            Button("", systemImage: "plus", action: { mercuryShopViewModel.increaseEnteredQuantity(shopUIState: shopUIState) })
+                            Button("", systemImage: "plus", action: { mercuryShopViewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) })
                             .buttonStyle(.plain)
                             .frame(width: 15, height: 22)
                         }
                         .overlay(Rectangle().stroke(.black, lineWidth: 2))
-                        Button(action: { mercuryShopViewModel.addToShoppingCart(shopUIState: shopUIState) }) {
-                            Text(shopUIState.inStock ? "Добавить в корзину" : "Нет в наличии")
-                        }
-                        .buttonStyle(.plain)
-                        .frame(width: screenWidth / 4, height: 40)
-                        .padding(.horizontal, 7)
-                        .padding(.vertical, 5)
-                        .foregroundStyle(.white)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                        .opacity(shopUIState.inStock ? 1 : 0.5)
-                        .font(.custom("Arial", size: 14).weight(.bold))
                     }
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(.black)
@@ -64,5 +53,10 @@ struct CatalogView: View {
         }
         .scrollIndicators(.automatic, axes: .horizontal)
         .scrollIndicators(.automatic, axes: .vertical)
+    }
+}
+extension View {
+    func shoppingCart(mercuryShopViewModel: Binding<MercuryShopViewModel>) -> some View {
+        modifier(ShoppingCartViewModifier(mercuryShopViewModel: mercuryShopViewModel))
     }
 }

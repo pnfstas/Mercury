@@ -12,6 +12,7 @@ enum AppScreens : Hashable, CaseIterable {
     case catalog
     case favorites
     case shoppingCart
+    case orders
     case about
     case contacts
     case questions
@@ -21,6 +22,7 @@ enum AppScreens : Hashable, CaseIterable {
         case .catalog: "Каталог"
         case .favorites: "Избранное"
         case .shoppingCart: "Корзина"
+        case .orders: "Заказы"
         case .about: "Об организации"
         case .contacts: "Контакты"
         case .questions: "Частые вопросы"
@@ -31,6 +33,7 @@ enum AppScreens : Hashable, CaseIterable {
         case .catalog: "Catalog"
         case .favorites: "Favorites"
         case .shoppingCart: "ShoppingCart"
+        case .orders: "Orders"
         default: ""
         }
     }

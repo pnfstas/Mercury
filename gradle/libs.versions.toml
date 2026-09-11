@@ -13,6 +13,7 @@ composeWebviewMultiplatform = "1.9.40"
 junit = "4.13.2"
 kotlin = "2.4.0"
 kotlinx-coroutines = "1.11.0"
+kotlinx-datetime = "0.8.0"
 ksp = "2.3.10"
 room = "2.8.4"
 koin = "4.0.0"
@@ -24,6 +25,7 @@ skie = "0.10.14"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 #kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 #junit = { module = "junit:junit", version.ref = "junit" }

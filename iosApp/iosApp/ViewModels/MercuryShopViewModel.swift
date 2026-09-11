@@ -5,6 +5,8 @@ import shared
 final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
     var shopUIStates : [MercuryShopUIState] = []
+    var cartUIStates : [MercuryShopUIState] = []
+    var orderUIStates : [MercuryShopUIState] = []
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
@@ -14,29 +16,26 @@ final class MercuryShopViewModel {
                     shopUIStates = curShopUIStates
                 }
             }
+            for await curCartUIStates in mercuryShopInteractor.cartUIStates {
+                await MainActor.run {
+                    cartUIStates = curCartUIStates
+                }
+            }
+            for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
+                await MainActor.run {
+                    orderUIStates = curOrderUIStates
+                }
+            }
+
         }
     }
-    func increaseQuantityInShoppingCart(shopUIState : MercuryShopUIState) {
-        Task {
-            do {
-                try await mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: false)
-            }
-            catch {
-                print("Не удалось обновить количество для товара \(shopUIState.product.title)")
-            }
-        }
+    func increaseEnteredQuantity(shopUIState : MercuryShopUIState) {
+        mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: false)
     }
-    func decreaseQuantityInShoppingCart(shopUIState : MercuryShopUIState) {
-        Task {
-            do {
-                try await mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: true)
-            }
-            catch {
-                print("Не удалось обновить количество для товара \(shopUIState.product.title)")
-            }
-        }
+    func decreaseEnteredQuantity(shopUIState : MercuryShopUIState) {
+        mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: true)
     }
-    func bindQuantityInShoppingCart(shopUIState : MercuryShopUIState) -> Binding<Float> {
+    func bindEnteredQuantity(shopUIState : MercuryShopUIState) -> Binding<Float> {
         return Binding(
             get: {
                 shopUIState.enteredQuantity
@@ -46,14 +45,45 @@ final class MercuryShopViewModel {
             }
         )
     }
-    fun addToShoppingCartOrUpdateQuantity(shopUIState : MercuryShopUIState) {
+    func addToShoppingCart(shopUIState : MercuryShopUIState) {
         Task {
             do {
-                try await mercuryShopInteractor.addToShoppingCartOrUpdateQuantity(shopUIState: shopUIState)
+                try await mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
             }
             catch {
                 print("Не удалось добавить в корзину или изменить коичество для товара \(shopUIState.product.title)")
             }
         }
     }
+    func increaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
+        Task {
+            do {
+                try await mercuryShopInteractor.stepShoppingCartQuantity(shopUIState: shopUIState, decrease: false)
+            }
+            catch {
+                print("Не удалось уменьшить коичество товара \(shopUIState.product.title) в корзине")
+            }
+        }
+    }
+    func decreaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
+        Task {
+            do {
+                try await mercuryShopInteractor.stepShoppingCartQuantity(shopUIState: shopUIState, decrease: true)
+            }
+            catch {
+                print("Не удалось увеличить коичество товара \(shopUIState.product.title) в корзине")
+            }
+        }
+    }
+    func bindShoppingCartQuantity(cartUIState : MercuryShopUIState) -> Binding<Float> {
+        return Binding(
+            get: {
+                shopUIState.cartQuantity
+            },
+            set: { newValue in
+                shopUIState.cartQuantity = newValue
+            }
+        )
+    }
+
 }
