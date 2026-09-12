@@ -46,42 +46,21 @@ final class MercuryShopViewModel {
         )
     }
     func addToShoppingCart(shopUIState : MercuryShopUIState) {
-        Task {
-            do {
-                try await mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
-            }
-            catch {
-                print("Не удалось добавить в корзину или изменить коичество для товара \(shopUIState.product.title)")
-            }
-        }
+        mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
     }
     func increaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
-        Task {
-            do {
-                try await mercuryShopInteractor.stepShoppingCartQuantity(shopUIState: shopUIState, decrease: false)
-            }
-            catch {
-                print("Не удалось уменьшить коичество товара \(shopUIState.product.title) в корзине")
-            }
-        }
+        mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
     }
     func decreaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
-        Task {
-            do {
-                try await mercuryShopInteractor.stepShoppingCartQuantity(shopUIState: shopUIState, decrease: true)
-            }
-            catch {
-                print("Не удалось увеличить коичество товара \(shopUIState.product.title) в корзине")
-            }
-        }
+        mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
     }
     func bindShoppingCartQuantity(cartUIState : MercuryShopUIState) -> Binding<Float> {
         return Binding(
             get: {
-                shopUIState.cartQuantity
+                cartUIState.cartQuantity
             },
             set: { newValue in
-                shopUIState.cartQuantity = newValue
+                cartUIState.cartQuantity = newValue
             }
         )
     }

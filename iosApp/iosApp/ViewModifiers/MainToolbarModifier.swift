@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainToolbarModifier : ViewModifier {
     @Binding var navigationPath : [AppScreens]
+    @Binding var isShoppingCartOpen : Bool
+    @Binding var isOrderListOpen : Bool
     @Environment(\.dismiss) private var dismiss
     @State private var isMenuOpen : Bool = false
     func body(content: Content) -> some View {
@@ -28,9 +30,10 @@ struct MainToolbarModifier : ViewModifier {
                         }
                         Spacer()
                         HStack(alignment: .center, spacing: 1) {
-                            MainToolbarButton(appScreen: AppScreens.catalog, action: {navigationPath.append(AppScreens.catalog)})
-                            MainToolbarButton(appScreen: AppScreens.favorites, action: {navigationPath.append(AppScreens.favorites)})
-                            MainToolbarButton(appScreen: AppScreens.shoppingCart, action: {navigationPath.append(AppScreens.shoppingCart)})
+                            MainToolbarButton(appScreen: AppScreens.catalog, action: { navigationPath.append(AppScreens.catalog) })
+                            MainToolbarButton(appScreen: AppScreens.favorites, action: { navigationPath.append(AppScreens.favorites) })
+                            MainToolbarButton(appScreen: AppScreens.shoppingCart, action: { isShoppingCartOpen.toggle() })
+                            MainToolbarButton(appScreen: AppScreens.orders, action: { isOrderListOpen.toggle() })
                             Group {
                                 if isMenuOpen {
                                     MainToolbarButton(systemName: "multiply", description: "Меню", fgColor: .black, bkColor: .clear, action: { isMenuOpen.toggle() })
@@ -63,7 +66,7 @@ struct MainToolbarModifier : ViewModifier {
     }
 }
 extension View {
-    func mainToolbar(navigationPath: Binding<[AppScreens]>) -> some View {
-        modifier(MainToolbarModifier(navigationPath: navigationPath))
+    func mainToolbar(navigationPath: Binding<[AppScreens]>, isShoppingCartOpen: Binding<Bool>, isOrderListOpen: Binding<Bool>) -> some View {
+        modifier(MainToolbarModifier(navigationPath: navigationPath, isShoppingCartOpen: isShoppingCartOpen, isOrderListOpen: isOrderListOpen))
     }
 }

@@ -36,8 +36,8 @@ data class OrderEntity (
     val id : Int = 0,
     val productId : Int,
     val quantity : Float = 0f,
-    val amount : Float = 0f,
-    val creationDate : LocalDateTime,
-    val completionDate : LocalDateTime,
-    val state : OrderState = OrderState.None
+    val amount : Float = 0f//,
+    //val creationDate : LocalDateTime,
+    //val completionDate : LocalDateTime,
+    //val state : OrderState = OrderState.None
 )

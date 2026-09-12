@@ -14,7 +14,7 @@ import app.mercury.data.local.entities.ProductEntity
 import app.mercury.data.local.entities.ShoppingCartEntity
 import app.mercury.data.local.entities.OrderEntity
 
-@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class], version = 7, exportSchema = false)
+@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class], version = 8, exportSchema = false)
 @ConstructedBy(MercuryShopDatabaseConstructor::class)
 abstract class MercuryShopDatabase : RoomDatabase() {
 	abstract fun productsDao(): ProductsDao

@@ -33,7 +33,7 @@ enum AppScreens : Hashable, CaseIterable {
         case .catalog: "Catalog"
         case .favorites: "Favorites"
         case .shoppingCart: "ShoppingCart"
-        case .orders: "Orders"
+        case .orders: "OrderList"
         default: ""
         }
     }
@@ -52,13 +52,15 @@ enum AppScreens : Hashable, CaseIterable {
  }
 
 struct ContentView: View {
-    @State private var navigationPath : [AppScreens] = []
     @State private var mercuryShopViewModel : MercuryShopViewModel = MercuryShopViewModel()
+    @State private var navigationPath : [AppScreens] = []
+    @State private var isShoppingCartOpen : Bool = false
+    @State private var isOrderListOpen : Bool = false
     var body: some View {
         NavigationStack(path: $navigationPath) {
             MainView(navigationPath: $navigationPath)
                 .navigationBarTitleDisplayMode(.automatic)
-                .mainToolbar(navigationPath: $navigationPath)
+                .mainToolbar(navigationPath: $navigationPath, isShoppingCartOpen: $isShoppingCartOpen, isOrderListOpen: $isOrderListOpen)
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
                         switch screen {
@@ -69,7 +71,9 @@ struct ContentView: View {
                         case .favorites:
                             FavoritesView()
                         case .shoppingCart:
-                            ShoppingCartView()
+                            EmptyView()
+                        case .orders:
+                            EmptyView()
                         case .about:
                             AboutView()
                         case .contacts:
@@ -78,9 +82,10 @@ struct ContentView: View {
                             QuestionsView()
                         }
                     }
-                    .mainToolbar(navigationPath: $navigationPath)
+                    .mainToolbar(navigationPath: $navigationPath, isShoppingCartOpen: $isShoppingCartOpen, isOrderListOpen: $isOrderListOpen)
                 }
         }
+        .shoppingCart(mercuryShopViewModel: $mercuryShopViewModel, isShoppingCartOpen: $isShoppingCartOpen)
     }
 }
 /*
