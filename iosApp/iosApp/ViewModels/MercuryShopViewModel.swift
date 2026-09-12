@@ -7,6 +7,7 @@ final class MercuryShopViewModel {
     var shopUIStates : [MercuryShopUIState] = []
     var cartUIStates : [MercuryShopUIState] = []
     var orderUIStates : [MercuryShopUIState] = []
+    val enteredQuantityDictionary : [Int : Float] = [:]
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
@@ -26,6 +27,11 @@ final class MercuryShopViewModel {
                     orderUIStates = curOrderUIStates
                 }
             }
+            for await curEnteredQuantityMap in mercuryShopInteractor.orderUIStates {
+                await MainActor.run {
+                    enteredQuantityDictionary = curEnteredQuantityMap
+                }
+            }
 
         }
     }
@@ -41,7 +47,7 @@ final class MercuryShopViewModel {
                 shopUIState.enteredQuantity
             },
             set: { newValue in
-                shopUIState.enteredQuantity = newValue
+                enteredQuantityDictionary[shopUIState.product.id] = newValue
             }
         )
     }
@@ -60,7 +66,7 @@ final class MercuryShopViewModel {
                 cartUIState.cartQuantity
             },
             set: { newValue in
-                cartUIState.cartQuantity = newValue
+                enteredQuantityDictionary[shopUIState.product.id] = newValue
             }
         )
     }
