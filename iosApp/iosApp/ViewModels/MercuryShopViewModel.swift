@@ -7,7 +7,6 @@ final class MercuryShopViewModel {
     var shopUIStates : [MercuryShopUIState] = []
     var cartUIStates : [MercuryShopUIState] = []
     var orderUIStates : [MercuryShopUIState] = []
-    val enteredQuantityDictionary : [Int : Float] = [:]
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
@@ -27,27 +26,21 @@ final class MercuryShopViewModel {
                     orderUIStates = curOrderUIStates
                 }
             }
-            for await curEnteredQuantityMap in mercuryShopInteractor.orderUIStates {
-                await MainActor.run {
-                    enteredQuantityDictionary = curEnteredQuantityMap
-                }
-            }
-
         }
     }
-    func increaseEnteredQuantity(shopUIState : MercuryShopUIState) {
+    func increaseEnteredQuantity(shopUIState: MercuryShopUIState) {
         mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: false)
     }
-    func decreaseEnteredQuantity(shopUIState : MercuryShopUIState) {
+    func decreaseEnteredQuantity(shopUIState: MercuryShopUIState) {
         mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: true)
     }
-    func bindEnteredQuantity(shopUIState : MercuryShopUIState) -> Binding<Float> {
+    func bindEnteredQuantity(shopUIState: MercuryShopUIState) -> Binding<Float> {
         return Binding(
             get: {
                 shopUIState.enteredQuantity
             },
             set: { newValue in
-                enteredQuantityDictionary[shopUIState.product.id] = newValue
+                self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: shopUIState, quantity: newValue)
             }
         )
     }
@@ -66,7 +59,7 @@ final class MercuryShopViewModel {
                 cartUIState.cartQuantity
             },
             set: { newValue in
-                enteredQuantityDictionary[shopUIState.product.id] = newValue
+                self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: cartUIState, quantity: newValue)
             }
         )
     }

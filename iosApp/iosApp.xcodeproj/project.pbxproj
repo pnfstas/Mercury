@@ -60,6 +60,7 @@
 		2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E8EB8F23055ACA7005156AC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E92D6BF302B396800836AEE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EA33A2F3049A3A000C156A9 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EAABCC93044731A000914DF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
+				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
@@ -287,7 +289,6 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-configuration.json",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-performance.json",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/specific-compiler-configuration.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/kotlin-framework/shared.framework",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Builtin_float-QSDS93NRLP7P.swiftmodule",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Concurrency-1OWVMYXMOUCBD.swiftmodule",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_DarwinFoundation1-WWMLL9N0SOQZ.swiftmodule",
@@ -406,8 +407,6 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.HttpClient_iosKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopDatabase_iosKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopDatabase_iosKt.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopInteractor.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopInteractor.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopModuleKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopModuleKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrdersDao.o",
@@ -498,7 +497,6 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.RoomDatabase.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.HttpClient_iosKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopDatabase_iosKt.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopInteractor.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopModuleKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrdersDao.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrderState.swift,
@@ -920,6 +918,11 @@
 			isa = PBXGroup;
 			children = (
 			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E8EB9323055ACA7005156AC /* Products */ = {
+			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -1381,6 +1384,10 @@
 				{
 					ProductGroup = 2EB03D6B30399E84001B3A8C /* Products */;
 					ProjectRef = 2EB03CBB30399E84001B3A8C /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E8EB9323055ACA7005156AC /* Products */;
+					ProjectRef = 2E8EB8F23055ACA7005156AC /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EC7F08F3052A7EC0041A707 /* Products */;

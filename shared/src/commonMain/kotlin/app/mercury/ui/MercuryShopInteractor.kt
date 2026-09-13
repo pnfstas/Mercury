@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.math.min
+import kotlin.math.max
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -83,14 +84,18 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		mercuryShopRepository.coroutineScope,
 		started = SharingStarted.WhileSubscribed(5000),
 		initialValue = emptyList())
+	fun updateEnteredQuantity(shopUIState : MercuryShopUIState, quantity: Float) {
+		val productId = shopUIState.product.id
+		enteredQuantityMap.value[productId] = max(quantity, 0f)
+	}
 	fun stepEnteredQuantity(shopUIState : MercuryShopUIState, decrease: Boolean = false) {
         val productId = shopUIState.product.id
-        val portion : Float = shopUIState?.let { it.portion } ?: 0f
+        val portion : Float = shopUIState.portion
         var enteredQuantity : Float = enteredQuantityMap.value[productId] ?: 0f
         if(decrease)
             enteredQuantityMap.value[productId] = min(enteredQuantity - portion, 0f)
         else {
-            val quantityInStock: Float = shopUIState?.let { it.quantityInStock } ?: 0f
+            val quantityInStock: Float = shopUIState.quantityInStock
             enteredQuantityMap.value[productId] = min(enteredQuantity + portion, quantityInStock)
         }
 	}
