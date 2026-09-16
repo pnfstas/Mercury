@@ -7,7 +7,11 @@
 package app.mercury.ui
 
 import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import app.mercury.data.local.database.MercuryShopRepository
+import app.mercury.data.local.entities.ContactType
+import app.mercury.data.local.entities.OrderEntity
+import app.mercury.data.local.entities.OrderStatus
 import app.mercury.data.local.entities.ProductEntity
 import app.mercury.data.local.entities.ShoppingCartEntity
 import kotlinx.coroutines.CoroutineScope
@@ -23,6 +27,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.datetime.LocalDateTime
 import kotlin.collections.set
 
 data class MercuryShopUIState (
@@ -83,6 +88,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
     val orderUIStates = shopUIStates.map { list ->
         list.filter { it.orderedQuantity > 0 }
     }
+    .onEach { println("orderUIStates.size: ${it.size}") }
 	.stateIn(
 		mercuryShopRepository.coroutineScope,
 		started = SharingStarted.WhileSubscribed(5000),
@@ -142,6 +148,18 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             else {
                 enteredQuantityMap.value.remove(productId)
             }
+        }
+    }
+    fun createOrder(orderEntity: OrderEntity) {
+        if(cartUIStates.value.size > 0) {
+            CoroutineScope(Dispatchers.IO).launch {
+                mercuryShopRepository.ordersDao.insertOne(orderEntity)
+            }
+        }
+    }
+    fun updateOrderStatus(orderEntity: OrderEntity) {
+        CoroutineScope(Dispatchers.IO).launch {
+            mercuryShopRepository.ordersDao.updateStatus(orderEntity.id, orderEntity.status)
         }
     }
 }

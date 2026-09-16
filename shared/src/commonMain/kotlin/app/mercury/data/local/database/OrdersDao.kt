@@ -11,14 +11,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import app.mercury.data.local.entities.ContactType
 import app.mercury.data.local.entities.OrderEntity
 import app.mercury.data.local.entities.OrderStatus
+import app.mercury.data.local.entities.ProductEntity
+import app.mercury.data.local.entities.ShoppingCartEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.LocalDateTime
 
 @Dao
 interface OrdersDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOne(orderEntity : OrderEntity)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOneOrIgnore(orderEntity : OrderEntity)
 
@@ -30,6 +36,9 @@ interface OrdersDao {
 
     @Query("SELECT * FROM orders")
     fun getAll() : Flow<List<OrderEntity>>
+
+    @Query("SELECT * FROM orders WHERE productId = :productId")
+    fun getOne(productId : Int) : Flow<List<OrderEntity>>
 
     @Query("UPDATE orders SET quantity = :quantity WHERE id = :id")
     suspend fun updateQuantity(id : Int, quantity : Float)
@@ -51,4 +60,7 @@ interface OrdersDao {
 
     @Query("UPDATE orders SET status = :status WHERE id = :id")
     suspend fun updateStatus(id : Int, status : OrderStatus)
+
+    @Update
+    suspend fun updateOrder(orderEntity: OrderEntity)
 }
