@@ -10,12 +10,14 @@ import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import androidx.room.TypeConverters
 import app.mercury.data.local.entities.ProductEntity
 import app.mercury.data.local.entities.ShoppingCartEntity
 import app.mercury.data.local.entities.OrderEntity
 
-@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class], version = 8, exportSchema = false)
+@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class], version = 9, exportSchema = false)
 @ConstructedBy(MercuryShopDatabaseConstructor::class)
+@TypeConverters(MercuryShopTypeConverters::class)
 abstract class MercuryShopDatabase : RoomDatabase() {
 	abstract fun productsDao(): ProductsDao
 	abstract fun shoppingCartDao(): ShoppingCartDao

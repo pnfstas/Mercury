@@ -1,3 +1,9 @@
+//
+//  ShoppingCartDao.kt
+//  iosApp
+//
+//  Created by Panferov Stanislav on 03.08.2026.
+//
 package app.mercury.data.local.database
 
 import androidx.room.Dao

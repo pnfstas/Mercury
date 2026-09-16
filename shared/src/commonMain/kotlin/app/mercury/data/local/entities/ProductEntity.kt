@@ -25,7 +25,6 @@ data class ProductEntity(
 	val price : Float = 0f,
 	val oldPrice : Float = 0f,
 	val quantity : Float = 0f,
-	val amountInOrder : Float = 0f,
 	val image : String = "",
 	val url : String = ""
 ) {

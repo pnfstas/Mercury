@@ -1,3 +1,9 @@
+//
+//  MercuryShopViewModel.swift
+//  iosApp
+//
+//  Created by Panferov Stanislav on 03.08.2026.
+//
 import SwiftUI
 import shared
 

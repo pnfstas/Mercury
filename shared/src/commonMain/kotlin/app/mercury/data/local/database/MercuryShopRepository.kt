@@ -17,7 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
-//import kotlinx.serialization.Transient
 
 @Serializable
 data class TildaProduct (
@@ -57,7 +56,6 @@ data class TildaCatalog (
 						single = product.single == "y",
 						price = product.price?.toFloatOrNull() ?: 0f,
 						oldPrice = product.priceold?.toFloatOrNull() ?: 0f,
-						amountInOrder = 0f,
 						image = product.editions?.getOrNull(0)?.img ?: "",
 						url = product.url ?: ""
 					)
