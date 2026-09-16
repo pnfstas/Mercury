@@ -20,7 +20,8 @@ struct MainToolbarButton : View {
             let image : Image = systemName?.isEmpty == false ? Image(systemName: systemName ?? "") : Image(appScreen?.buttonImageName ?? imageName ?? "")
             image
                 .resizable()
-                .renderingMode(.template)
+                //.renderingMode(.template)
+                .renderingMode(.original)
                 .frame(width: 22, height: 22)
                 .scaledToFit()
                 .padding(.horizontal, 7)

@@ -11,6 +11,7 @@ struct ShoppingCartViewModifier: ViewModifier {
     @Binding var mercuryShopViewModel : MercuryShopViewModel
     @Binding var isShoppingCartOpen : Bool
     let screenWidth : CGFloat = UIScreen.main.bounds.width
+    let screenHeight : CGFloat = UIScreen.main.bounds.height
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .center) {
@@ -22,69 +23,75 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .onTapGesture {
                                 isShoppingCartOpen = false
                             }
-                        ScrollView {
-                            LazyVStack(alignment: .leading, spacing: 7) {
-                                ForEach(mercuryShopViewModel.cartUIStates, id: \.product.id) { cartUIState in
-                                    HStack(alignment: .center, spacing: 2) {
-                                        AsyncImage(url: URL(string: cartUIState.product.image)) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                        } placeholder: {
-                                            ProgressView()
-                                        }
-                                        .frame(width: screenWidth / 8, height: screenWidth / 8)
-                                        VStack(alignment: .center, spacing: 10) {
-                                            Text(cartUIState.product.title)
-                                            Text(cartUIState.product.descr)
+                        VStack(alignment: .center, spacing: 10) {
+                            HStack(alignment: .center) {
+                                IconButton(action: { isShoppingCartOpen = false }, image: "Closed", width: 15, height: 15, padding: 10, shape: Circle(), backgroundColor: .red)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            Divider()
+                                .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
+                            ScrollView {
+                                LazyVStack(alignment: .leading, spacing: 7) {
+                                    ForEach(mercuryShopViewModel.cartUIStates, id: \.product.id) { cartUIState in
+                                        HStack(alignment: .center, spacing: 2) {
+                                            AsyncImage(url: URL(string: cartUIState.product.image)) { image in
+                                                image
+                                                    .resizable()
+                                                    .scaledToFit()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .frame(width: screenWidth / 8, height: screenWidth / 8)
+                                            VStack(alignment: .center, spacing: 10) {
+                                                Text(cartUIState.product.title)
+                                                Text(cartUIState.product.descr)
+                                            }
+                                            .frame(maxWidth: .infinity)
+                                            Text(cartUIState.product.priceDescr)
+                                                .frame(width: screenWidth / 8)
+                                            HStack(alignment: .center) {
+                                                IconButton(action: { mercuryShopViewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
+                                                TextField("", value: mercuryShopViewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
+                                                    .keyboardType(.decimalPad)
+                                                    .frame(width: 20, height: 22)
+                                                IconButton(action: { mercuryShopViewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
+                                            }
+                                            .overlay(Rectangle().stroke(.black, lineWidth: 2))
                                         }
                                         .frame(maxWidth: .infinity)
-                                        Text(cartUIState.product.priceDescr)
-                                            .frame(width: screenWidth / 8)
-                                        HStack {
-                                            Button("", systemImage: "minus", action: { mercuryShopViewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) })
-                                                .buttonStyle(.plain)
-                                                .frame(width: 15, height: 22)
-                                            TextField("", value: mercuryShopViewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
-                                                .keyboardType(.decimalPad)
-                                                .frame(width: 20, height: 22)
-                                            Button("", systemImage: "plus", action: { mercuryShopViewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) })
-                                                .buttonStyle(.plain)
-                                                .frame(width: 15, height: 22)
-                                        }
-                                        .overlay(Rectangle().stroke(.black, lineWidth: 2))
+                                        .foregroundStyle(.black)
+                                        .background(.clear)
+                                        .font(.custom("Arial", size: 12).weight(.regular))
                                     }
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundStyle(.black)
-                                    .background(.clear)
-                                    .font(.custom("Arial", size: 12).weight(.regular))
                                 }
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .scrollIndicators(.automatic, axes: .horizontal)
+                            .scrollIndicators(.automatic, axes: .vertical)
+                            .background(.clear)
+                            Button(action: { mercuryShopViewModel.createOrder() }) {
+                                Text("Сформировать заказ")
+                                    .multilineTextAlignment(.center)
+                            }
+                            .buttonStyle(.plain)
+                            .frame(width: screenWidth / 3, height: 40)
+                            .padding(.horizontal, 7)
+                            .padding(.vertical, 5)
+                            .foregroundStyle(.white)
+                            .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
+                            .opacity(mercuryShopViewModel.cartUIStates.isEmpty ? 0.5 : 1)
+                            .font(.custom("Arial", size: 14).weight(.bold))
+
                         }
-                        .frame(maxWidth: UIScreen.main.bounds.width * 0.7, maxHeight: UIScreen.main.bounds.height * 0.7)
-                        .scrollIndicators(.automatic, axes: .horizontal)
-                        .scrollIndicators(.automatic, axes: .vertical)
+                        .frame(maxWidth: screenWidth * 0.8, maxHeight: screenHeight * 0.8)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                         .onTapGesture { }
+                        //.safeAreaInset(edge: .top, alignment: .center)
                     }
                 }
             }
-            /*
-            .background {
-                if isShoppingCartOpen {
-                    GeometryReader { proxy in
-                        Color.black.opacity(0.001)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                isShoppingCartOpen = false
-                            }
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                            .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
-                    }
-                    .ignoresSafeArea()
-                }
-            }
-            */
     }
 }
 extension View {

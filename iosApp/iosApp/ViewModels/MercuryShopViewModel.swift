@@ -10,17 +10,21 @@ final class MercuryShopViewModel {
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
-        Task {
+        Task {@MainActor in
             for await curShopUIStates in mercuryShopInteractor.shopUIStates {
                 await MainActor.run {
                     shopUIStates = curShopUIStates
                 }
             }
+        }
+        Task {@MainActor in
             for await curCartUIStates in mercuryShopInteractor.cartUIStates {
                 await MainActor.run {
                     cartUIStates = curCartUIStates
                 }
             }
+        }
+        Task {@MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 await MainActor.run {
                     orderUIStates = curOrderUIStates
@@ -62,6 +66,9 @@ final class MercuryShopViewModel {
                 self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: cartUIState, quantity: newValue)
             }
         )
+    }
+    func createOrder() {
+        //mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
     }
 
 }

@@ -32,15 +32,11 @@ struct CatalogView: View {
                         Text(shopUIState.product.priceDescr)
                             .frame(width: screenWidth / 8)
                         HStack {
-                            Button("", systemImage: "minus", action: { mercuryShopViewModel.decreaseEnteredQuantity(shopUIState: shopUIState) })
-                            .buttonStyle(.plain)
-                            .frame(width: 15, height: 22)
+                            IconButton(action: { mercuryShopViewModel.decreaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "minus")
                             TextField("", value: mercuryShopViewModel.bindEnteredQuantity(shopUIState: shopUIState), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 20, height: 22)
-                            Button("", systemImage: "plus", action: { mercuryShopViewModel.increaseEnteredQuantity(shopUIState: shopUIState) })
-                            .buttonStyle(.plain)
-                            .frame(width: 15, height: 22)
+                            IconButton(action: { mercuryShopViewModel.increaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "plus")
                         }
                         .overlay(Rectangle().stroke(.black, lineWidth: 2))
                         Button(action: { mercuryShopViewModel.addToShoppingCart(shopUIState: shopUIState) }) {

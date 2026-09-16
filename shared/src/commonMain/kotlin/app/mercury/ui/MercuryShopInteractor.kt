@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.collections.set
@@ -66,6 +67,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             )
         }
     }
+	.onEach { println("shopUIStates.size: ${it.size}") }
     .stateIn(
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
@@ -73,6 +75,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
     val cartUIStates = shopUIStates.map { list ->
         list.filter { it.cartQuantity > 0 }
     }
+	.onEach { println("cartUIStates.size: ${it.size}") }
     .stateIn(
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
