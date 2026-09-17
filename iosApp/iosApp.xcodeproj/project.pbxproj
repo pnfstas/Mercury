@@ -22,6 +22,7 @@
 		2E24EE5130115CE100A62C0B /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E24F50430115CE100A62C0B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E24F6BB30115CE100A62C0B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E254F78305BC03B00E15329 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E26737B304EA09F001D7829 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E2F533330493E340003F98F /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E3607CB30113F0C002163FF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -88,6 +89,8 @@
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC754630343C0200E100F2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBCB9CD3043E66A00876C53 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBD4F64305BBC37001B1A51 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBD521D305BCEF500C7F1EB /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBFF1D63052E6A8003BBD90 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		2EDAB9133052AD26001FAD71 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EE453A930518B640058386A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EEA4DC1305AE6C300108DD4 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EEB581A30483F880087959C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		D956FD5E37CBEB87E7ABFAA6 /* Mercury.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mercury.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,13 +196,13 @@
 				iosApp/iosApp/Views/ContactsView.swift,
 				iosApp/iosApp/Views/ContentView.swift,
 				iosApp/iosApp/Views/FavoritesView.swift,
+				iosApp/iosApp/Views/IconButton.swift,
 				iosApp/iosApp/Views/MainToolbar.swift,
 				iosApp/iosApp/Views/MainView.swift,
 				local.properties,
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
-				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
@@ -227,6 +231,7 @@
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/08_database.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/09_database.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/10_database.knm,
+				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/11_database.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/0_entities.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/1_entities.knm,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/2_entities.knm,
@@ -242,6 +247,11 @@
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/compose-multiplatform.xml",
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabase_Impl.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabaseConstructor.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/OrdersDao_Impl.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
+				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ShoppingCartDao_Impl.kt,
 				shared/build/konan.txt,
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
@@ -291,6 +301,7 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-configuration.json",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-performance.json",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/specific-compiler-configuration.json",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/kotlin-framework/shared.framework",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Builtin_float-QSDS93NRLP7P.swiftmodule",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Concurrency-1OWVMYXMOUCBD.swiftmodule",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_DarwinFoundation1-WWMLL9N0SOQZ.swiftmodule",
@@ -365,6 +376,28 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause2.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectInstance.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectInstance.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormat.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormat.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDate.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDate.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithTime.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithTime.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DayOfWeek.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DayOfWeek.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Month.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Month.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Padding.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Padding.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Sink.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Sink.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Source.o",
@@ -405,6 +438,8 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.JournalMode.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ContactType.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ContactType.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.HttpClient_iosKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.HttpClient_iosKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopDatabase_iosKt.o",
@@ -413,8 +448,8 @@
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopModuleKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrdersDao.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrdersDao.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderState.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderState.swiftdeps",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderStatus.o",
+				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderStatus.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.Platform_iosKt.o",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.Platform_iosKt.swiftdeps",
 				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDao.o",
@@ -477,6 +512,17 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause1.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause2.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectInstance.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormat.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDate.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithTime.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DayOfWeek.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.Month.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.Padding.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxIoCore/KotlinxIoCore.Sink.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxIoCore/KotlinxIoCore.Source.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.PolymorphicKind.swift,
@@ -497,11 +543,12 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.InvalidationTracker.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.RoomDatabase.JournalMode.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.RoomDatabase.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ContactType.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.HttpClient_iosKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopDatabase_iosKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopModuleKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrdersDao.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrderState.swift,
+				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrderStatus.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.Platform_iosKt.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsDao.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ShoppingCartDao.swift,
@@ -537,6 +584,7 @@
 				shared/src/commonMain/kotlin/app/mercury/App.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopDatabase.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopRepository.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopTypeConverters.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/OrdersDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ShoppingCartDao.kt,
@@ -557,6 +605,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				iOSApp.swift,
 				ViewModifiers/MainToolbarButton.swift,
 				ViewModifiers/MainToolbarModifier.swift,
 				ViewModifiers/ShoppingCartViewModifier.swift,
@@ -694,6 +743,11 @@
 			isa = PBXGroup;
 			children = (
 			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E2551BB305BC03B00E15329 /* Products */ = {
+			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -1069,6 +1123,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBD5189305BBC37001B1A51 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBD546C305BCEF500C7F1EB /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBE402030357D6F00AC7712 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1155,6 +1219,11 @@
 			sourceTree = "<group>";
 		};
 		2EE4579930518B640058386A /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EEA4E02305AE6C300108DD4 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1334,12 +1403,20 @@
 					ProjectRef = 2EE453A930518B640058386A /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EBD546C305BCEF500C7F1EB /* Products */;
+					ProjectRef = 2EBD521D305BCEF500C7F1EB /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB286CB301136E7003901EF /* Products */;
 					ProjectRef = 2EB283D2301136E7003901EF /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EC0D04D3053CC8B006BB31B /* Products */;
 					ProjectRef = 2EC0CC893053CC8B006BB31B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EEA4E02305AE6C300108DD4 /* Products */;
+					ProjectRef = 2EEA4DC1305AE6C300108DD4 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E79421E3031BE07007DE2A1 /* Products */;
@@ -1474,6 +1551,10 @@
 					ProjectRef = 2E7FC3A33053FC9F004F6CA5 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EBD5189305BBC37001B1A51 /* Products */;
+					ProjectRef = 2EBD4F64305BBC37001B1A51 /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2E8EA4E9301135E00039A83E /* Products */;
 					ProjectRef = 2E8E9234301135E00039A83E /* iosApp.xcodeproj */;
 				},
@@ -1496,6 +1577,10 @@
 				{
 					ProductGroup = 2E840E56304D4142001A3A23 /* Products */;
 					ProjectRef = 2E840E16304D4142001A3A23 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E2551BB305BC03B00E15329 /* Products */;
+					ProjectRef = 2E254F78305BC03B00E15329 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB0BDCB30304CBA00FE865D /* Products */;

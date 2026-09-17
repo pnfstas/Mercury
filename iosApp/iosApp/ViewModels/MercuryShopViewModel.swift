@@ -73,10 +73,10 @@ final class MercuryShopViewModel {
             }
         )
     }
-    func createOrder(orderEntity: OrderEntity) {
-        mercuryShopInteractor.createOrder(orderEntity: orderEntity)
+    func createOrder(orderUIState: OrderUIState) {
+        mercuryShopInteractor.createOrder(orderUIState: orderUIState)
     }
-    func updateOrderStatus(orderEntity: OrderEntity) {
-        mercuryShopInteractor.updateOrderStatus(orderEntity: orderEntity)
+    func updateOrderStatus(orderUIState: OrderUIState) {
+        mercuryShopInteractor.updateOrderStatus(orderUIState: orderUIState)
     }
 }

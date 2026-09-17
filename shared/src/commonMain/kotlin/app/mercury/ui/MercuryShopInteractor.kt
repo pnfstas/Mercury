@@ -48,6 +48,31 @@ data class EnteredQuantity (
 	var quantity : Float = 0f
 )
 
+data class OrderUIState (
+	val productId : Int,
+	val quantity : Float = 0f,
+	val amount : Float = 0f,
+	val clientName : String = "",
+	val clientContacts : Map<ContactType, String> = mapOf(),
+	val creationDate : LocalDateTime,
+	val completionDate : LocalDateTime,
+	val status : OrderStatus = OrderStatus.None
+) {
+	fun toOrderEntity() : OrderEntity {
+		return OrderEntity(
+			productId = this.productId,
+			quantity = this.quantity,
+			amount = this.amount,
+			clientName = this.clientName,
+			clientContacts = this.clientContacts,
+			creationDate = this.creationDate,
+			completionDate = this.completionDate,
+			status = this.status
+		)
+	}
+}
+
+
 class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopRepository) {
     val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
 	val shopUIStates : StateFlow<List<MercuryShopUIState>> = combine(
@@ -150,15 +175,17 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             }
         }
     }
-    fun createOrder(orderEntity: OrderEntity) {
+    fun createOrder(orderUIState: OrderUIState) {
         if(cartUIStates.value.size > 0) {
             CoroutineScope(Dispatchers.IO).launch {
+				val orderEntity : OrderEntity = orderUIState.toOrderEntity()
                 mercuryShopRepository.ordersDao.insertOne(orderEntity)
             }
         }
     }
-    fun updateOrderStatus(orderEntity: OrderEntity) {
+    fun updateOrderStatus(orderUIState: OrderUIState) {
         CoroutineScope(Dispatchers.IO).launch {
+			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
             mercuryShopRepository.ordersDao.updateStatus(orderEntity.id, orderEntity.status)
         }
     }
