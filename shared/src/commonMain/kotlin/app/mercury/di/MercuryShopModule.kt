@@ -34,11 +34,15 @@ val mercuryShopModule = module {
 		get<MercuryShopDatabase>().ordersDao()
 	}
 	single {
+		get<MercuryShopDatabase>().orderItemsDao()
+	}
+	single {
 		MercuryShopRepository(
 			coroutineScope = get(),
 			productsDao = get(),
 			shoppingCartDao = get(),
 			ordersDao = get(),
+			orderItemsDao = get(),
 			httpClient = get()
 		)
 	}

@@ -75,6 +75,7 @@ class MercuryShopRepository(
 	val productsDao: ProductsDao,
 	val shoppingCartDao: ShoppingCartDao,
 	val ordersDao: OrdersDao,
+	val orderItemsDao: OrderItemsDao,
 	val httpClient : HttpClient
 ) {
 	fun updateProducts() {

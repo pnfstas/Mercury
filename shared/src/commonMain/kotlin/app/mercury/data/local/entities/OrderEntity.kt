@@ -1,18 +1,15 @@
-//
-//  OrderEntity.kt
-//  iosApp
-//
-//  Created by Panferov Stanislav on 03.08.2026.
-//
 package app.mercury.data.local.entities
 
+import androidx.room.Embedded
+import app.mercury.ui.OrderUIState
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.ForeignKey.Companion.CASCADE
-import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
+import kotlin.Float
+import kotlin.time.Instant
 
 @Serializable
 enum class OrderStatus {
@@ -33,28 +30,26 @@ enum class ContactType {
 }
 
 @Serializable
-@Entity(
-    tableName = "orders",
-    foreignKeys = [
-        ForeignKey(
-            entity = ProductEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["productId"],
-            onDelete = CASCADE,
-            onUpdate = CASCADE
-        )
-    ],
-	indices = [Index(value = ["productId"])]
-)
+@Entity(tableName = "orders")
 data class OrderEntity (
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
-    val productId : Int,
-    val quantity : Float = 0f,
     val amount : Float = 0f,
     val clientName : String = "",
     val clientContacts : Map<ContactType, String> = mapOf(),
-    val creationDate : LocalDateTime,
-    val completionDate : LocalDateTime,
+    val creationDate : LocalDateTime = Instant.fromEpochMilliseconds(0).toLocalDateTime(TimeZone.currentSystemDefault()),
+    val completionDate : LocalDateTime = Instant.fromEpochMilliseconds(0).toLocalDateTime(TimeZone.currentSystemDefault()),
     val status : OrderStatus = OrderStatus.None
-)
+) {
+    fun toOrderUIState() : OrderUIState {
+        return OrderUIState (
+            order = this,
+            amount = amount,
+            clientName = clientName,
+            clientContacts = clientContacts,
+            creationDate = creationDate,
+            completionDate = completionDate,
+            status = status
+        )
+    }
+}

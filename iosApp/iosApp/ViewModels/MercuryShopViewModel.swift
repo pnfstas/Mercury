@@ -12,7 +12,8 @@ final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
     var shopUIStates : [MercuryShopUIState] = []
     var cartUIStates : [MercuryShopUIState] = []
-    var orderUIStates : [MercuryShopUIState] = []
+    var orderUIStates : [OrderUIState] = []
+    var allOrderItemUIStates : [OrderItemUIState] = []
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
@@ -34,6 +35,13 @@ final class MercuryShopViewModel {
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 await MainActor.run {
                     orderUIStates = curOrderUIStates
+                }
+            }
+        }
+        Task { @MainActor in
+            for await curOrderItemUIStates in mercuryShopInteractor.allOrderItemUIStates {
+                await MainActor.run {
+                    allOrderItemUIStates = curOrderItemUIStates
                 }
             }
         }
@@ -72,6 +80,9 @@ final class MercuryShopViewModel {
                 self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: cartUIState, quantity: newValue)
             }
         )
+    }
+    func getOrderItemUIStates(orderUIState: OrderUIState) -> [OrderItemUIState] {
+        return allOrderItemUIStates.filter { $0.order.id == orderUIState.order.id }
     }
     func createOrder(orderUIState: OrderUIState) {
         mercuryShopInteractor.createOrder(orderUIState: orderUIState)
