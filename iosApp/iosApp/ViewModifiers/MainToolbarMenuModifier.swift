@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct MainToolbarMenuModifier : ViewModifier {
-    @Binding var navigationPath : [AppScreens]
-    @Binding var isMenuOpen : Bool
+    @Environment(MercuryShopViewModel.self) private var viewModel
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .bottomTrailing) {
-                if isMenuOpen {
+                if viewModel.isMenuOpen {
                     VStack(alignment: .leading, spacing: 5) {
-                         MainToolbarMenuButton(navigationPath: $navigationPath, appScreen: AppScreens.about, isMenuOpen: $isMenuOpen)
-                         MainToolbarMenuButton(navigationPath: $navigationPath, appScreen: AppScreens.catalog, isMenuOpen: $isMenuOpen)
-                         MainToolbarMenuButton(navigationPath: $navigationPath, appScreen: AppScreens.contacts, isMenuOpen: $isMenuOpen)
-                         MainToolbarMenuButton(navigationPath: $navigationPath, appScreen: AppScreens.questions, isMenuOpen: $isMenuOpen)
+                        MainToolbarMenuButton(appScreen: AppScreens.about)
+                        MainToolbarMenuButton(appScreen: AppScreens.catalog)
+                        MainToolbarMenuButton(appScreen: AppScreens.contacts)
+                        MainToolbarMenuButton(appScreen: AppScreens.questions)
                     }
                     .frame(width: 200)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.menu))
@@ -28,12 +27,12 @@ struct MainToolbarMenuModifier : ViewModifier {
                 }
             }
             .background {
-                if isMenuOpen {
+                if viewModel.isMenuOpen {
                     GeometryReader { proxy in
                         Color.black.opacity(0.001)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                isMenuOpen = false
+                                viewModel.isMenuOpen = false
                             }
                             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                             .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
@@ -45,15 +44,16 @@ struct MainToolbarMenuModifier : ViewModifier {
 }
 
 struct MainToolbarMenuButton : View {
-    @Binding var navigationPath : [AppScreens]
+    @Environment(MercuryShopViewModel.self) private var viewModel
     var appScreen : AppScreens
-    @Binding var isMenuOpen : Bool
     var body : some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        viewModel.currentScreen = appScreen
         Button(action: {
-            isMenuOpen = false
-            navigationPath.append(appScreen)
+            viewModel.isMenuOpen = false
+            viewModel.navigationPath.append(appScreen)
         }) {
-            Text(appScreen.description)
+            Text(viewModel.appScreen.description)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .contentShape(Rectangle())
                 .padding(.horizontal, 15)
@@ -69,9 +69,7 @@ struct MainToolbarMenuButton : View {
 }
 
 extension View {
-    func mainToolbarMenu(navigationPath : Binding<[AppScreens]>,
-                         isMenuOpen : Binding<Bool>) -> some View {
-        modifier(MainToolbarMenuModifier(navigationPath: navigationPath,
-                                         isMenuOpen: isMenuOpen))
+    func mainToolbarMenu() -> some View {
+        modifier(MainToolbarMenuModifier())
     }
 }

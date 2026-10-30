@@ -9,12 +9,13 @@ import SwiftUI
 import shared
 
 struct CatalogView: View {
-    @Binding var mercuryShopViewModel : MercuryShopViewModel
+    @Environment(MercuryShopViewModel.self) var viewModel
     let screenWidth : CGFloat = UIScreen.main.bounds.width
     var body: some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(mercuryShopViewModel.shopUIStates, id: \.product.id) { shopUIState in
+                ForEach(viewModel.shopUIStates, id: \.product.id) { shopUIState in
                     HStack(alignment: .center, spacing: 2) {
                         AsyncImage(url: URL(string: shopUIState.product.image)) { image in
                             image
@@ -32,14 +33,14 @@ struct CatalogView: View {
                         Text(shopUIState.product.priceDescr)
                             .frame(width: screenWidth / 8)
                         HStack {
-                            IconButton(action: { mercuryShopViewModel.decreaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "minus")
-                            TextField("", value: mercuryShopViewModel.bindEnteredQuantity(shopUIState: shopUIState), format: .number)
+                            IconButton(action: { viewModel.decreaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "minus")
+                            TextField("", value: viewModel.bindEnteredQuantity(shopUIState: shopUIState), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 20, height: 22)
-                            IconButton(action: { mercuryShopViewModel.increaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "plus")
+                            IconButton(action: { viewModel.increaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "plus")
                         }
                         .overlay(Rectangle().stroke(.black, lineWidth: 2))
-                        Button(action: { mercuryShopViewModel.addToShoppingCart(shopUIState: shopUIState) }) {
+                        Button(action: { viewModel.addToShoppingCart(shopUIState: shopUIState) }) {
                             Text(shopUIState.inStock ? "Добавить в корзину" : "Нет в наличии")
                         }
                         .buttonStyle(.plain)

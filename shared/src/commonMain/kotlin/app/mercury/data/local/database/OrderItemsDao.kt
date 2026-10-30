@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import androidx.room.Upsert
 import app.mercury.data.local.entities.OrderItemEntity
@@ -32,18 +33,20 @@ interface OrderItemsDao {
     suspend fun deleteAll(orderItemEntities : List<OrderItemEntity>) : Int
 
     @Query("DELETE FROM order_items WHERE orderId = :orderId")
-    fun deleteAllOfOrder(orderId : Int)
+    suspend fun deleteAllOfOrder(orderId : Int)
 
     @Query("SELECT * FROM order_items")
     fun getAll() : Flow<List<OrderItemEntity>>
 
-    @Query("SELECT * FROM order_items")
+    @Transaction
+	@Query("SELECT * FROM order_items")
     fun getAllWithDetails() : Flow<List<OrderItemWithDetails>>
 
     @Query("SELECT * FROM order_items WHERE orderId = :orderId")
     fun getAllOfOrder(orderId : Int) : Flow<List<OrderItemEntity>>
 
-    @Query("SELECT * FROM order_items WHERE orderId = :orderId")
+    @Transaction
+	@Query("SELECT * FROM order_items WHERE orderId = :orderId")
     fun getAllOfOrderWithDetails(orderId : Int) : Flow<List<OrderItemWithDetails>>
 
     @Query("SELECT * FROM order_items WHERE orderId = :orderId AND productId = :productId LIMIT 1")

@@ -12,13 +12,13 @@ import kotlin.Float
 import kotlin.time.Instant
 
 @Serializable
-enum class OrderStatus {
-    None,
-    Created,
-    Assembled,
-    InTransit,
-    IsReady,
-    Completed
+enum class OrderStatus(val description : String) {
+    None("None"),
+    Created("Created"),
+    Assembled("Assembled"),
+    InTransit("In transit"),
+    IsReady("Is ready"),
+    Completed("Completed")
 }
 
 @Serializable

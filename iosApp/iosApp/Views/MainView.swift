@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @Binding var navigationPath : [AppScreens]
+    @Environment(MercuryShopViewModel.self) var viewModel
     var body: some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
         VStack(alignment: .center, spacing: 20) {
             VStack(alignment: .center, spacing: 10) {
                 Text("МАГАЗИН\nПРОДУКТОВ ПИТАНИЯ\nЭЛИТНЫХ СОРТОВ\nСЫРА И МЯСА")
@@ -53,7 +54,7 @@ struct MainView: View {
                 //.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .foregroundStyle(Color(.fgColorLight))
                 .font(.custom("Arial", size: 16).weight(.bold))
-                 Button(action: {navigationPath.append(AppScreens.catalog)}) {
+                Button(action: { viewModel.navigationPath.append(AppScreens.catalog)}) {
                     HStack(alignment: .center) {
                         Text("Каталог")
                         Image("OpenCatalog")

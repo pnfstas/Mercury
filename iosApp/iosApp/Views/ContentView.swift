@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/*
 enum AppScreens : Hashable, CaseIterable {
     case main
     case catalog
@@ -51,23 +52,34 @@ enum AppScreens : Hashable, CaseIterable {
     }
  }
 
+class AppRouter : ObservableObject {
+    @Published var mercuryShopViewModel : MercuryShopViewModel = MercuryShopViewModel()
+    @Published var navigationPath : [AppScreens] = []
+    @Published var currentScreen : AppScreens.main
+    @Published var isMenuOpen : Bool = false
+    @Published var isShoppingCartOpen : Bool = false
+    @Published var isOrderListOpen : Bool = false
+    @Published var isOrderOpen : Bool = false
+    @Published var isOrderItemsOpen : Bool = false
+}
+*/
+
 struct ContentView: View {
-    @State private var mercuryShopViewModel : MercuryShopViewModel = MercuryShopViewModel()
-    @State private var navigationPath : [AppScreens] = []
-    @State private var isShoppingCartOpen : Bool = false
-    @State private var isOrderListOpen : Bool = false
+    @State private var viewModel : MercuryShopViewModel = MercuryShopViewModel()
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            MainView(navigationPath: $navigationPath)
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        NavigationStack(path: $viewModel.navigationPath) {
+            MainView()
                 .navigationBarTitleDisplayMode(.automatic)
-                .mainToolbar(navigationPath: $navigationPath, isShoppingCartOpen: $isShoppingCartOpen, isOrderListOpen: $isOrderListOpen)
+                .environment(viewModel)
+                .mainToolbar()
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
                         switch screen {
                         case .main:
-                            MainView(navigationPath: $navigationPath)
+                            MainView()
                         case .catalog:
-                            CatalogView(mercuryShopViewModel: $mercuryShopViewModel)
+                            CatalogView()
                         case .favorites:
                             FavoritesView()
                         case .shoppingCart:
@@ -82,10 +94,10 @@ struct ContentView: View {
                             QuestionsView()
                         }
                     }
-                    .mainToolbar(navigationPath: $navigationPath, isShoppingCartOpen: $isShoppingCartOpen, isOrderListOpen: $isOrderListOpen)
+                    .mainToolbar()
                 }
         }
-        .shoppingCart(mercuryShopViewModel: $mercuryShopViewModel, isShoppingCartOpen: $isShoppingCartOpen)
+        .shoppingCart()
     }
 }
 /*

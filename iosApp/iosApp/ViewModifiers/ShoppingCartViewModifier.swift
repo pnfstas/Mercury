@@ -8,31 +8,31 @@
 import SwiftUI
 
 struct ShoppingCartViewModifier: ViewModifier {
-    @Binding var mercuryShopViewModel : MercuryShopViewModel
-    @Binding var isShoppingCartOpen : Bool
+    @Environment(MercuryShopViewModel.self) var viewModel
     let screenWidth : CGFloat = UIScreen.main.bounds.width
     let screenHeight : CGFloat = UIScreen.main.bounds.height
     func body(content: Content) -> some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
         content
             .overlay(alignment: .center) {
-                if isShoppingCartOpen {
+                if viewModel.isShoppingCartOpen {
                     ZStack {
                         Color.black.opacity(0.4)
                             .contentShape(Rectangle())
                             .ignoresSafeArea()
                             .onTapGesture {
-                                isShoppingCartOpen = false
+                                viewModel.isShoppingCartOpen = false
                             }
                         VStack(alignment: .center, spacing: 10) {
                             HStack(alignment: .center) {
-                                IconButton(action: { isShoppingCartOpen = false }, image: "Closed", width: 15, height: 15, padding: 10, shape: Circle(), backgroundColor: .red)
+                                IconButton(action: { viewModel.isShoppingCartOpen = false }, image: "Closed", width: 15, height: 15, padding: 10, shape: Circle(), backgroundColor: .red)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
                             ScrollView {
                                 LazyVStack(alignment: .leading, spacing: 7) {
-                                    ForEach(mercuryShopViewModel.cartUIStates, id: \.product.id) { cartUIState in
+                                    ForEach(viewModel.cartUIStates, id: \.product.id) { cartUIState in
                                         HStack(alignment: .center, spacing: 2) {
                                             AsyncImage(url: URL(string: cartUIState.product.image)) { image in
                                                 image
@@ -50,11 +50,11 @@ struct ShoppingCartViewModifier: ViewModifier {
                                             Text(cartUIState.product.priceDescr)
                                                 .frame(width: screenWidth / 8)
                                             HStack(alignment: .center) {
-                                                IconButton(action: { mercuryShopViewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
-                                                TextField("", value: mercuryShopViewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
+                                                IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
+                                                TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
                                                     .keyboardType(.decimalPad)
                                                     .frame(width: 20, height: 22)
-                                                IconButton(action: { mercuryShopViewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
+                                                IconButton(action: { viewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
                                             }
                                             .overlay(Rectangle().stroke(.black, lineWidth: 2))
                                         }
@@ -69,7 +69,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
-                            Button(action: { mercuryShopViewModel.createOrder() }) {
+                            Button(action: { viewModel.createOrder() }) {
                                 Text("Сформировать заказ")
                                     .multilineTextAlignment(.center)
                             }
@@ -79,7 +79,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .padding(.vertical, 5)
                             .foregroundStyle(.white)
                             .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                            .opacity(mercuryShopViewModel.cartUIStates.isEmpty ? 0.5 : 1)
+                            .opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
                             .font(.custom("Arial", size: 14).weight(.bold))
 
                         }
@@ -95,7 +95,7 @@ struct ShoppingCartViewModifier: ViewModifier {
     }
 }
 extension View {
-    func shoppingCart(mercuryShopViewModel: Binding<MercuryShopViewModel>, isShoppingCartOpen: Binding<Bool>) -> some View {
-        modifier(ShoppingCartViewModifier(mercuryShopViewModel: mercuryShopViewModel, isShoppingCartOpen: isShoppingCartOpen))
+    func shoppingCart() -> some View {
+        modifier(ShoppingCartViewModifier())
     }
 }

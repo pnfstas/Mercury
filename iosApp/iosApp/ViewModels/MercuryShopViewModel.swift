@@ -7,6 +7,50 @@
 import SwiftUI
 import shared
 
+enum AppScreens : Hashable, CaseIterable {
+    case main
+    case catalog
+    case favorites
+    case shoppingCart
+    case orders
+    case about
+    case contacts
+    case questions
+    var description : String {
+        return switch self {
+        case .main: "Главная"
+        case .catalog: "Каталог"
+        case .favorites: "Избранное"
+        case .shoppingCart: "Корзина"
+        case .orders: "Заказы"
+        case .about: "Об организации"
+        case .contacts: "Контакты"
+        case .questions: "Частые вопросы"
+        }
+    }
+    var buttonImageName : String {
+        return switch self {
+        case .catalog: "Catalog"
+        case .favorites: "Favorites"
+        case .shoppingCart: "ShoppingCart"
+        case .orders: "OrderList"
+        default: ""
+        }
+    }
+    var buttonBackgroundColor : Color {
+        return switch self {
+        case .catalog: .main
+        default: .clear
+        }
+    }
+    var buttonForegroundColor : Color {
+        return switch self {
+        case .catalog: Color.white
+        default: Color.black
+        }
+    }
+ }
+
 @Observable
 final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
@@ -14,6 +58,14 @@ final class MercuryShopViewModel {
     var cartUIStates : [MercuryShopUIState] = []
     var orderUIStates : [OrderUIState] = []
     var allOrderItemUIStates : [OrderItemUIState] = []
+    var navigationPath : [AppScreens] = []
+    var currentScreen : AppScreens.main
+    var currentOrder : OrderUIState? = nil
+    var isMenuOpen : Bool = false
+    var isShoppingCartOpen : Bool = false
+    var isOrderListOpen : Bool = false
+    var isOrderOpen : Bool = false
+    var isOrderItemsOpen : Bool = false
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()

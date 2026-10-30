@@ -16,7 +16,7 @@ import app.mercury.data.local.entities.ShoppingCartEntity
 import app.mercury.data.local.entities.OrderEntity
 import app.mercury.data.local.entities.OrderItemEntity
 
-@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class, OrderItemEntity::class], version = 9, exportSchema = false)
+@Database(entities = [ProductEntity::class, ShoppingCartEntity::class, OrderEntity::class, OrderItemEntity::class], version = 10, exportSchema = false)
 @ConstructedBy(MercuryShopDatabaseConstructor::class)
 @TypeConverters(MercuryShopTypeConverters::class)
 abstract class MercuryShopDatabase : RoomDatabase() {

@@ -24,6 +24,7 @@
 		2E24F6BB30115CE100A62C0B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E254F78305BC03B00E15329 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E26737B304EA09F001D7829 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E2C10733091D5D50063B951 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E2F533330493E340003F98F /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E3607CB30113F0C002163FF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E36098230113F0C002163FF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		2E88D5B230121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E88D76930121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8A4F243020BAD60038841A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E8B2608305FA87D00A38929 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9234301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -65,10 +67,13 @@
 		2E8EB8F23055ACA7005156AC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E92D6BF302B396800836AEE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EA33A2F3049A3A000C156A9 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EA51077307A345200421E34 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EA71C17305D844B00EBDB76 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EAABCC93044731A000914DF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB03CBB30399E84001B3A8C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB0B79930318ACF0081A995 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB156FC30938D1500D341BE /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB1A1A930443BCB004B8A9C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB2408D303C1C6D003D7F4B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB273B7301136E7003901EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -85,29 +90,67 @@
 		2EB9968A3045451500E86162 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB9AF0530430EC100055E9E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBA525F3053353B00025547 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBB53413089E6D100D899EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBBC388302EE9FB00E94228 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBC688D3070CF34009F342A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBC754630343C0200E100F2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBC9C9D3080A6E1006A946C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBCB9CD3043E66A00876C53 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBD07B830721F9300ADE10D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBD4F64305BBC37001B1A51 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBD521D305BCEF500C7F1EB /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBE06593074D78B00889154 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBEAE98306508B200710B38 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBEE56D3084962B00D242AD /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EBF248930836692001317C3 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EBFF1D63052E6A8003BBD90 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC0CC893053CC8B006BB31B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC105C93067C1060065A2C5 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC13F83307675030094667C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC15049305E61B0008780B0 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC2D4013051203B00E7EC09 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC30728306253EC000A9BE3 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC357D9306CF6C300E65F3B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC36684307F7505004AF28E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC3A3BF3068F2150089CA84 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC44EBF306B9CE40032359C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC4BD77304FF80100199A2D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC52069308F36B9002649AF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC54AAF30889FB700615762 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC54D0E308CA4F100AFDD68 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC5540D308604BD0023779E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC5AABB3087498100C38EC4 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC6A322306644E200E4EF5A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC6CE8F307619A2004CC2E7 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC6E35D304055EA001979F6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC7242B30515BB40085E86B /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC739D4306F8A4B0075B0E7 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC7EC9F3052A7EC0041A707 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC7EED130821C44000C3693 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EC85E79305522F4002BD775 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC9281B307E0F760094730D /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EC9DB97307B5E680029D2EF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECA1DD6308DDFFE009F4CD0 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECA45D33061056200302798 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECAD4D93079059800F225A7 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECAFEB6307A250900457BE6 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECB399F30736B8000866DE3 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECBAE73306E496900081E78 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECBD3833090921B00EB6120 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECC51D03051E509009265BF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECEFCD3307CDBFD0079942E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ED1A9533051A43F003974A2 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ED251053052B704001DDBA9 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ED6210F3046B9B8007EE001 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDA1DB73051F4D900A78A5A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDAB9133052AD26001FAD71 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EDB3BD430639C56000DE016 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EDF55A930212CE600AC8391 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EDFA974308B198600327B37 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EE1443C307B62000056B479 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EE453A930518B640058386A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EEA4DC1305AE6C300108DD4 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EEB581A30483F880087959C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -188,9 +231,11 @@
 				iosApp/iosApp/iOSApp.swift,
 				"iosApp/iosApp/Preview Content/Preview Assets.xcassets",
 				iosApp/iosApp/StartKoin.swift,
+				iosApp/iosApp/Styles/IconButtonStyle.swift,
 				iosApp/iosApp/ViewModels/MercuryShopViewModel.swift,
 				iosApp/iosApp/ViewModifiers/ContactsMenuModifier.swift,
 				iosApp/iosApp/ViewModifiers/MainToolbarMenuModifier.swift,
+				iosApp/iosApp/ViewModifiers/OrderItemsViewModifier.swift,
 				iosApp/iosApp/ViewModifiers/OrderListViewModifier.swift,
 				iosApp/iosApp/ViewModifiers/OrderViewModifier.swift,
 				iosApp/iosApp/Views/ContactsView.swift,
@@ -203,55 +248,10 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/files.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/irDeclarations.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/signatures.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/strings.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/types.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/bodies.knb,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/debugInfo.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/fileEntries.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/files.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/irDeclarations.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/signatures.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/strings.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/types.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/module,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/00_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/01_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/02_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/03_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/04_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/05_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/06_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/07_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/08_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/09_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/10_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.database/11_database.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/0_entities.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/1_entities.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.data.local.entities/2_entities.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.di/0_di.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.di/1_di.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury.ui/0_ui.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/0_mercury.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/1_mercury.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/2_mercury.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/linkdata/package_app.mercury/3_mercury.knm,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/manifest,
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/compose-multiplatform.xml",
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabase_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabaseConstructor.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/OrdersDao_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ShoppingCartDao_Impl.kt,
 				shared/build/konan.txt,
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
@@ -259,323 +259,10 @@
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosSimulatorArm64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/assemble-hierarchically/iosX64ResolveSelfResources/composeResources/app.mercury/drawable/compose-multiplatform.xml",
-				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/MercuryShopDatabase_Impl.kt,
-				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/MercuryShopDatabaseConstructor.kt,
-				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/OrdersDao_Impl.kt,
-				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
-				shared/build/kspCaches/iosX64/iosX64Main/backups/kotlin/app/mercury/data/local/database/ShoppingCartDao_Impl.kt,
-				shared/build/kspCaches/iosX64/iosX64Main/caches.uptodate,
 				shared/build/kspCaches/iosX64/iosX64Main/sealed,
 				shared/build/kspCaches/iosX64/iosX64Main/sourceToOutputs,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/counters.tab,
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab_i",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab_i.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.keystream",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.keystream.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/file-to-id.tab.values.at",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab_i",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab_i.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.keystream",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.keystream.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.len",
-				"shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/id-to-file.tab.values.at",
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab_i,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab_i.len,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.keystream,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.keystream.len,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.len,
-				shared/build/kspCaches/iosX64/iosX64Main/symbolLookups/lookups.tab.values.at,
 				shared/build/kspCaches/iosX64/iosX64Main/symbols,
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/common-compiler-configuration.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/compiler-environment.json",
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/git.json,
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/gradle-environment.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/gradle-performance.json",
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/hardware.json,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/modules.json,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/project.json,
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-configuration.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/skie-performance.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/analytics/specific-compiler-configuration.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/kotlin-framework/shared.framework",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Builtin_float-QSDS93NRLP7P.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_Concurrency-1OWVMYXMOUCBD.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_DarwinFoundation1-WWMLL9N0SOQZ.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_DarwinFoundation2-40BI7GRB05II.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_DarwinFoundation3-22BXGXJFHZDB4.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/_StringProcessing-3UX39MP3JLKY4.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_AvailabilityInternal-1VVNCHK8CCI1.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_float-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_inttypes-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_limits-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_stdarg-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_stdbool-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_stddef-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_Builtin_stdint-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_DarwinFoundation1-1VVNCHK8CCI1.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_DarwinFoundation2-VWZR1UH1FZG0.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_DarwinFoundation3-15DVCJU77XYIF.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/_SwiftConcurrencyShims-ETMZL06LU75E.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/CFNetwork-3MVTA3VYEJCA3.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/CoreFoundation-3PRXEYCYTZ0ZF.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/Darwin-3OSIGR9MJU32L.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/Dispatch-D5NPGC7AJE6P.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/Foundation-2D6I54GZO0EPV.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/ObjectiveC-2PWORDSQEHK5X.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/os_object-35YBQJQ2YC966.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/os_workgroup-35YBQJQ2YC966.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/ptrauth-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/ptrcheck-2OQWMRBVRD4OJ.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/Security-4T9WYUES29A1.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/shared-12DE93Q7L6TUS.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/SwiftShims-ETMZL06LU75E.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/sys_types-VWZR1UH1FZG0.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/3FERQ6UHUZNBI/XPC-1VUX2ZXXZNY4I.pcm",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Combine-1YZ3HJLL74YC0.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/CoreFoundation-1HCGH7Q1ZNDSX.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Darwin-1WN6A9OJW9KBG.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Dispatch-1K3EWJKQ84JYN.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Foundation-3TM45CWWC5H27.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/modules.timestamp",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/ObjectiveC-238EQDQPTBFW4.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Observation-32CGSGL9I33ZA.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/Swift-2ARMRI7I4LNRP.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/SwiftOnoneSupport-30C79ZIUIY2O1.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/System-3HUQUJF159M2M.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/cache/swift-module-cache/XPC-2M8KSTZSH3AOZ.swiftmodule",
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/configuration.json,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/debug/logs/swiftc.log,
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/config/OutputFileMap.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/config/shared.SwiftFileList",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/headers/shared.abi.json",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/headers/shared.swiftdoc",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/headers/shared.swiftmodule",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/headers/shared.swiftsourceinfo",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/module/shared.priors",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KoinCore.Kind.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KoinCore.Kind.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KoinCore.Level.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KoinCore.Level.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.Flow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.Flow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.FlowCollector.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.FlowCollector.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.Job.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.Job.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause0.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause0.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause1.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause1.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause2.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectClause2.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectInstance.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxCoroutinesCore.SelectInstance.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormat.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormat.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDate.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDate.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithTime.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithTime.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DayOfWeek.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.DayOfWeek.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Month.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Month.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Padding.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxDatetime.Padding.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Sink.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Sink.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Source.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxIoCore.Source.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.PolymorphicKind.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.PolymorphicKind.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.PrimitiveKind.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.PrimitiveKind.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.SerializersModule.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.SerializersModule.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.SerialKind.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.SerialKind.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.StructureKind.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KotlinxSerializationCore.StructureKind.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorClientCore.HttpClientCall.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorClientCore.HttpClientCall.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorClientCore.HttpClientEngine.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorClientCore.HttpClientEngine.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.ProtocolUpgrade.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.ProtocolUpgrade.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.WriteChannelContent.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorHttp.OutgoingContent.WriteChannelContent.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorIo.ByteReadChannel.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorIo.ByteReadChannel.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorIo.ByteWriteChannel.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorIo.ByteWriteChannel.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.Month.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.Month.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.Pipeline.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.Pipeline.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.WeekDay.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/KtorUtils.WeekDay.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.InvalidationTracker.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.InvalidationTracker.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.JournalMode.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.JournalMode.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/RoomRuntime.RoomDatabase.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ContactType.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ContactType.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.HttpClient_iosKt.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.HttpClient_iosKt.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopDatabase_iosKt.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopDatabase_iosKt.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopModuleKt.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.MercuryShopModuleKt.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrdersDao.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrdersDao.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderStatus.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.OrderStatus.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.Platform_iosKt.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.Platform_iosKt.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDao.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ProductsDao.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ShoppingCartDao.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Shared.ShoppingCartDao.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.AsyncStreamDispatcherDelegate.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.AsyncStreamDispatcherDelegate.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.bridgeSubscriptionCount.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.bridgeSubscriptionCount.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.FlowConversions.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.FlowConversions.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.Namespace.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.Namespace.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.Skie_SuspendResult.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.Skie_SuspendResult.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieColdFlowIterator.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieColdFlowIterator.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlowIterator.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlowIterator.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlowProtocol.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftFlowProtocol.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftMutableSharedFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftMutableSharedFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftMutableStateFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftMutableStateFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalMutableSharedFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalMutableSharedFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalMutableStateFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalMutableStateFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalSharedFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalSharedFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalStateFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftOptionalStateFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftSharedFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftSharedFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftStateFlow.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SkieSwiftStateFlow.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SwiftCoroutineDispatcher.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Skie.SwiftCoroutineDispatcher.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.KVariance.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.KVariance.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.LazyThreadSafetyMode.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.LazyThreadSafetyMode.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.SuspendFunction1.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.SuspendFunction1.swiftdeps",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.SuspendFunction2.o",
-				"shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift-compiler/object-files/Stdlib.SuspendFunction2.swiftdeps",
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KoinCore/KoinCore.Kind.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KoinCore/KoinCore.Level.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.Flow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.FlowCollector.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.Job.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause0.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause1.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectClause2.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxCoroutinesCore/KotlinxCoroutinesCore.SelectInstance.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormat.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDate.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDateTime.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithDateTimeComponents.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithTime.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithUtcOffset.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DateTimeFormatBuilder.WithYearMonth.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.DayOfWeek.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.Month.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxDatetime/KotlinxDatetime.Padding.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxIoCore/KotlinxIoCore.Sink.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxIoCore/KotlinxIoCore.Source.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.PolymorphicKind.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.PrimitiveKind.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.SerializersModule.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.SerialKind.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KotlinxSerializationCore/KotlinxSerializationCore.StructureKind.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorClientCore/KtorClientCore.HttpClientCall.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorClientCore/KtorClientCore.HttpClientEngine.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorHttp/KtorHttp.OutgoingContent.ProtocolUpgrade.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorHttp/KtorHttp.OutgoingContent.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorHttp/KtorHttp.OutgoingContent.WriteChannelContent.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorIo/KtorIo.ByteReadChannel.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorIo/KtorIo.ByteWriteChannel.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorUtils/KtorUtils.Month.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorUtils/KtorUtils.Pipeline.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/KtorUtils/KtorUtils.WeekDay.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.InvalidationTracker.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.RoomDatabase.JournalMode.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/RoomRuntime/RoomRuntime.RoomDatabase.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ContactType.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.HttpClient_iosKt.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopDatabase_iosKt.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.MercuryShopModuleKt.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrdersDao.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.OrderStatus.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.Platform_iosKt.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ProductsDao.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Shared/Shared.ShoppingCartDao.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.AsyncStreamDispatcherDelegate.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.bridgeSubscriptionCount.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.FlowConversions.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.Namespace.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.Skie_SuspendResult.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieColdFlowIterator.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftFlowIterator.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftFlowProtocol.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftMutableSharedFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftMutableStateFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftOptionalFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftOptionalMutableSharedFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftOptionalMutableStateFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftOptionalSharedFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftOptionalStateFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftSharedFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SkieSwiftStateFlow.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Skie/Skie.SwiftCoroutineDispatcher.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.KVariance.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.LazyThreadSafetyMode.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction1.swift,
-				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction2.swift,
-				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/MercuryShopDatabase.android.kt,
 				shared/src/androidMain/kotlin/app/mercury/di/HttpClient.android.kt,
@@ -585,10 +272,12 @@
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopDatabase.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopRepository.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/MercuryShopTypeConverters.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/database/OrderItemsDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/OrdersDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ProductsDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/database/ShoppingCartDao.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/entities/OrderEntity.kt,
+				shared/src/commonMain/kotlin/app/mercury/data/local/entities/OrderItemEntity.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/entities/ProductEntity.kt,
 				shared/src/commonMain/kotlin/app/mercury/data/local/entities/ShoppingCartEntity.kt,
 				shared/src/commonMain/kotlin/app/mercury/di/MercuryShopModule.kt,
@@ -605,12 +294,12 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				iOSApp.swift,
-				ViewModifiers/MainToolbarButton.swift,
 				ViewModifiers/MainToolbarModifier.swift,
 				ViewModifiers/ShoppingCartViewModifier.swift,
 				Views/AboutView.swift,
 				Views/CatalogView.swift,
+				Views/MainToolbarButton.swift,
+				Views/OrderView.swift,
 				Views/QuestionsView.swift,
 			);
 			target = 474263D4B11B924EA02484E9 /* iosApp */;
@@ -752,6 +441,11 @@
 			sourceTree = "<group>";
 		};
 		2E2673BB304EA09F001D7829 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E2C11433091D5D50063B951 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -956,6 +650,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E8B26B6305FA87D00A38929 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E8EA4E7301135E00039A83E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -997,6 +696,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EA51147307A345200421E34 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EA71C5A305D844B00EBDB76 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EAABD053044731A000914DF /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1013,6 +722,11 @@
 			sourceTree = "<group>";
 		};
 		2EB0BDCB30304CBA00FE865D /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EB157CC30938D1500D341BE /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1103,6 +817,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBB54113089E6D100D899EF /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBBC45C302EE9FB00E94228 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1113,12 +832,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBC695D3070CF34009F342A /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBC763830343C0200E100F2 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBC9D6D3080A6E1006A946C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBCBBD23043E66A00876C53 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBD088830721F9300ADE10D /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1133,12 +867,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EBE07293074D78B00889154 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EBE402030357D6F00AC7712 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
 		2EBE82BF302E426D00BF5E29 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBEAF68306508B200710B38 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBEE63D3084962B00D242AD /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBF255930836692001317C3 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1153,12 +907,87 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EC106993067C1060065A2C5 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC14053307675030094667C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC150F7305E61B0008780B0 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EC2D6293051203B00E7EC09 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EC307D6306253EC000A9BE3 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC358A9306CF6C300E65F3B /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC36754307F7505004AF28E /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC3A48F3068F2150089CA84 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC44F8F306B9CE40032359C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EC4BF6F304FF80100199A2D /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC52139308F36B9002649AF /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC54B7F30889FB700615762 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC54DDE308CA4F100AFDD68 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC554DD308604BD0023779E /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC5AB8B3087498100C38EC4 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC6A3F2306644E200E4EF5A /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC6CF5F307619A2004CC2E7 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1173,6 +1002,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EC73AA4306F8A4B0075B0E7 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC7EFA130821C44000C3693 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EC7F08F3052A7EC0041A707 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1183,7 +1022,57 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EC928EB307E0F760094730D /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EC9DC67307B5E680029D2EF /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECA1EA6308DDFFE009F4CD0 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECA46813061056200302798 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECAD5A93079059800F225A7 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECAFF86307A250900457BE6 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECB3A6F30736B8000866DE3 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECBAF43306E496900081E78 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECBD4533090921B00EB6120 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2ECC55BF3051E509009265BF /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECEFDA3307CDBFD0079942E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1213,7 +1102,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EDB3C8230639C56000DE016 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EDF563F30212CE600AC8391 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EDFAA44308B198600327B37 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EE14509307B62000056B479 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1311,10 +1215,6 @@
 					ProjectRef = 2EC7242B30515BB40085E86B /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2ECC55BF3051E509009265BF /* Products */;
-					ProjectRef = 2ECC51D03051E509009265BF /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E56EF1D304A8EDD00C77FAA /* Products */;
 					ProjectRef = 2E56ED0C304A8EDD00C77FAA /* iosApp.xcodeproj */;
 				},
@@ -1323,24 +1223,16 @@
 					ProjectRef = 2EB1A1A930443BCB004B8A9C /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E453CBA3011556A000E0AB6 /* Products */;
-					ProjectRef = 2E4539C13011556A000E0AB6 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EB0B89C30318ACF0081A995 /* Products */;
-					ProjectRef = 2EB0B79930318ACF0081A995 /* iosApp.xcodeproj */;
+					ProductGroup = 2EC307D6306253EC000A9BE3 /* Products */;
+					ProjectRef = 2EC30728306253EC000A9BE3 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EC4BF6F304FF80100199A2D /* Products */;
 					ProjectRef = 2EC4BD77304FF80100199A2D /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E24F7FD30115CE100A62C0B /* Products */;
-					ProjectRef = 2E24EE5030115CE100A62C0B /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E06A3FE30514546003DA007 /* Products */;
-					ProjectRef = 2E06A10D30514546003DA007 /* iosApp.xcodeproj */;
+					ProductGroup = 2EBEE63D3084962B00D242AD /* Products */;
+					ProjectRef = 2EBEE56D3084962B00D242AD /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E88D95530121A52008A7446 /* Products */;
@@ -1355,12 +1247,12 @@
 					ProjectRef = 2EB5B92E303D8B0B001CA2A1 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E8EA4EB301135E00039A83E /* Products */;
-					ProjectRef = 2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */;
+					ProductGroup = 2EBC695D3070CF34009F342A /* Products */;
+					ProjectRef = 2EBC688D3070CF34009F342A /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E554AC43011411F00D8B116 /* Products */;
-					ProjectRef = 2E5547CF3011411F00D8B116 /* iosApp.xcodeproj */;
+					ProductGroup = 2EBF255930836692001317C3 /* Products */;
+					ProjectRef = 2EBF248930836692001317C3 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EBBC45C302EE9FB00E94228 /* Products */;
@@ -1371,28 +1263,8 @@
 					ProjectRef = 2EBCB9CD3043E66A00876C53 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E8EA4E7301135E00039A83E /* Products */;
-					ProjectRef = 2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EC2D6293051203B00E7EC09 /* Products */;
-					ProjectRef = 2EC2D4013051203B00E7EC09 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EB2413D303C1C6D003D7F4B /* Products */;
-					ProjectRef = 2EB2408D303C1C6D003D7F4B /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E0F45F030113C9100EC26A5 /* Products */;
-					ProjectRef = 2E0F304530113C9100EC26A5 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E24F7FB30115CE100A62C0B /* Products */;
-					ProjectRef = 2E24F50430115CE100A62C0B /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E554AC83011411F00D8B116 /* Products */;
-					ProjectRef = 2E5549863011411F00D8B116 /* iosApp.xcodeproj */;
+					ProductGroup = 2EC150F7305E61B0008780B0 /* Products */;
+					ProjectRef = 2EC15049305E61B0008780B0 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E651A1C3011567000E4B3F6 /* Products */;
@@ -1403,36 +1275,12 @@
 					ProjectRef = 2EE453A930518B640058386A /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EBD546C305BCEF500C7F1EB /* Products */;
-					ProjectRef = 2EBD521D305BCEF500C7F1EB /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EB286CB301136E7003901EF /* Products */;
-					ProjectRef = 2EB283D2301136E7003901EF /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EC0D04D3053CC8B006BB31B /* Products */;
-					ProjectRef = 2EC0CC893053CC8B006BB31B /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EEA4E02305AE6C300108DD4 /* Products */;
-					ProjectRef = 2EEA4DC1305AE6C300108DD4 /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E79421E3031BE07007DE2A1 /* Products */;
 					ProjectRef = 2E7941E03031BE07007DE2A1 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E0F45F630113C9100EC26A5 /* Products */;
-					ProjectRef = 2E0F42FD30113C9100EC26A5 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E360ABE30113F0C002163FF /* Products */;
-					ProjectRef = 2E3607CB30113F0C002163FF /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EB9989B3045451500E86162 /* Products */;
-					ProjectRef = 2EB9968A3045451500E86162 /* iosApp.xcodeproj */;
+					ProductGroup = 2EC106993067C1060065A2C5 /* Products */;
+					ProjectRef = 2EC105C93067C1060065A2C5 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EDF563F30212CE600AC8391 /* Products */;
@@ -1451,24 +1299,8 @@
 					ProjectRef = 2EBE8209302E426D00BF5E29 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EEB585630483F880087959C /* Products */;
-					ProjectRef = 2EEB581A30483F880087959C /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EAABD053044731A000914DF /* Products */;
-					ProjectRef = 2EAABCC93044731A000914DF /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E651A1E3011567000E4B3F6 /* Products */;
 					ProjectRef = 2E6518DC3011567000E4B3F6 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E01B120304B16CB00180E17 /* Products */;
-					ProjectRef = 2E01B0E4304B16CB00180E17 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2ED1AD433051A43F003974A2 /* Products */;
-					ProjectRef = 2ED1A9533051A43F003974A2 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB03D6B30399E84001B3A8C /* Products */;
@@ -1477,10 +1309,6 @@
 				{
 					ProductGroup = 2E8EB9323055ACA7005156AC /* Products */;
 					ProjectRef = 2E8EB8F23055ACA7005156AC /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EC7F08F3052A7EC0041A707 /* Products */;
-					ProjectRef = 2EC7EC9F3052A7EC0041A707 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EDABD023052AD26001FAD71 /* Products */;
@@ -1495,52 +1323,28 @@
 					ProjectRef = 2E82E6403051FF7500A8F169 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E3885F03025E3EA000555E0 /* Products */;
-					ProjectRef = 2E38854E3025E3EA000555E0 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EBC410C30132C0F00540CB1 /* Products */;
-					ProjectRef = 2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E249182301152AB000DC9BF /* Products */;
-					ProjectRef = 2E24886C301152AB000DC9BF /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E453CB83011556A000E0AB6 /* Products */;
 					ProjectRef = 2E453B783011556A000E0AB6 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EA33A6B3049A3A000C156A9 /* Products */;
-					ProjectRef = 2EA33A2F3049A3A000C156A9 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E453CB43011556A000E0AB6 /* Products */;
 					ProjectRef = 2E4533773011556A000E0AB6 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E3FE8953040A83200543B13 /* Products */;
-					ProjectRef = 2E3FE69E3040A83200543B13 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EBE402030357D6F00AC7712 /* Products */;
-					ProjectRef = 2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */;
+					ProductGroup = 2EBEAF68306508B200710B38 /* Products */;
+					ProjectRef = 2EBEAE98306508B200710B38 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EBA56533053353B00025547 /* Products */;
 					ProjectRef = 2EBA525F3053353B00025547 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E2F536F30493E340003F98F /* Products */;
-					ProjectRef = 2E2F533330493E340003F98F /* iosApp.xcodeproj */;
+					ProductGroup = 2EC6CF5F307619A2004CC2E7 /* Products */;
+					ProjectRef = 2EC6CE8F307619A2004CC2E7 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E72F6D9303ACF20002CAB5F /* Products */;
 					ProjectRef = 2E72F629303ACF20002CAB5F /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E6513F83057E5DF0053B57C /* Products */;
-					ProjectRef = 2E6511D03057E5DF0053B57C /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E249184301152AB000DC9BF /* Products */;
@@ -1563,14 +1367,6 @@
 					ProjectRef = 2E248E8F301152AB000DC9BF /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E88D95730121A52008A7446 /* Products */;
-					ProjectRef = 2E88C7C730121A52008A7446 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E2673BB304EA09F001D7829 /* Products */;
-					ProjectRef = 2E26737B304EA09F001D7829 /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E8A4FBA3020BAD60038841A /* Products */;
 					ProjectRef = 2E8A4F243020BAD60038841A /* iosApp.xcodeproj */;
 				},
@@ -1583,8 +1379,296 @@
 					ProjectRef = 2E254F78305BC03B00E15329 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2ECBAF43306E496900081E78 /* Products */;
+					ProjectRef = 2ECBAE73306E496900081E78 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECEFDA3307CDBFD0079942E /* Products */;
+					ProjectRef = 2ECEFCD3307CDBFD0079942E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ED254F43052B704001DDBA9 /* Products */;
+					ProjectRef = 2ED251053052B704001DDBA9 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E360AC430113F0C002163FF /* Products */;
+					ProjectRef = 2E36098230113F0C002163FF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E88D95330121A52008A7446 /* Products */;
+					ProjectRef = 2E88D5B230121A52008A7446 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E554AC23011411F00D8B116 /* Products */;
+					ProjectRef = 2E5547973011411F00D8B116 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC6E40D304055EA001979F6 /* Products */;
+					ProjectRef = 2EC6E35D304055EA001979F6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECB3A6F30736B8000866DE3 /* Products */;
+					ProjectRef = 2ECB399F30736B8000866DE3 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC36754307F7505004AF28E /* Products */;
+					ProjectRef = 2EC36684307F7505004AF28E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB69F7B3056651400DA8436 /* Products */;
+					ProjectRef = 2EB69D533056651400DA8436 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBE07293074D78B00889154 /* Products */;
+					ProjectRef = 2EBE06593074D78B00889154 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E360AC030113F0C002163FF /* Products */;
+					ProjectRef = 2E36F4FE30113F0C002163FF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBFF5C63052E6A8003BBD90 /* Products */;
+					ProjectRef = 2EBFF1D63052E6A8003BBD90 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB9AF4130430EC100055E9E /* Products */;
+					ProjectRef = 2EB9AF0530430EC100055E9E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC860D4305522F4002BD775 /* Products */;
+					ProjectRef = 2EC85E79305522F4002BD775 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBD088830721F9300ADE10D /* Products */;
+					ProjectRef = 2EBD07B830721F9300ADE10D /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC54DDE308CA4F100AFDD68 /* Products */;
+					ProjectRef = 2EC54D0E308CA4F100AFDD68 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBB54113089E6D100D899EF /* Products */;
+					ProjectRef = 2EBB53413089E6D100D899EF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC928EB307E0F760094730D /* Products */;
+					ProjectRef = 2EC9281B307E0F760094730D /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB45249301F02C500C816B8 /* Products */;
+					ProjectRef = 2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC358A9306CF6C300E65F3B /* Products */;
+					ProjectRef = 2EC357D9306CF6C300E65F3B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E24F7F730115CE100A62C0B /* Products */;
+					ProjectRef = 2E24F6BB30115CE100A62C0B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB286C7301136E7003901EF /* Products */;
+					ProjectRef = 2EB28589301136E7003901EF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC554DD308604BD0023779E /* Products */;
+					ProjectRef = 2EC5540D308604BD0023779E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECC55BF3051E509009265BF /* Products */;
+					ProjectRef = 2ECC51D03051E509009265BF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EDFAA44308B198600327B37 /* Products */;
+					ProjectRef = 2EDFA974308B198600327B37 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E453CBA3011556A000E0AB6 /* Products */;
+					ProjectRef = 2E4539C13011556A000E0AB6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB0B89C30318ACF0081A995 /* Products */;
+					ProjectRef = 2EB0B79930318ACF0081A995 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECA46813061056200302798 /* Products */;
+					ProjectRef = 2ECA45D33061056200302798 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECAFF86307A250900457BE6 /* Products */;
+					ProjectRef = 2ECAFEB6307A250900457BE6 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E24F7FD30115CE100A62C0B /* Products */;
+					ProjectRef = 2E24EE5030115CE100A62C0B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EA51147307A345200421E34 /* Products */;
+					ProjectRef = 2EA51077307A345200421E34 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E06A3FE30514546003DA007 /* Products */;
+					ProjectRef = 2E06A10D30514546003DA007 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E8EA4EB301135E00039A83E /* Products */;
+					ProjectRef = 2E8EA3AB301135E00039A83E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E554AC43011411F00D8B116 /* Products */;
+					ProjectRef = 2E5547CF3011411F00D8B116 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E8EA4E7301135E00039A83E /* Products */;
+					ProjectRef = 2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC52139308F36B9002649AF /* Products */;
+					ProjectRef = 2EC52069308F36B9002649AF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC2D6293051203B00E7EC09 /* Products */;
+					ProjectRef = 2EC2D4013051203B00E7EC09 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EE14509307B62000056B479 /* Products */;
+					ProjectRef = 2EE1443C307B62000056B479 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB2413D303C1C6D003D7F4B /* Products */;
+					ProjectRef = 2EB2408D303C1C6D003D7F4B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EA71C5A305D844B00EBDB76 /* Products */;
+					ProjectRef = 2EA71C17305D844B00EBDB76 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E0F45F030113C9100EC26A5 /* Products */;
+					ProjectRef = 2E0F304530113C9100EC26A5 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E24F7FB30115CE100A62C0B /* Products */;
+					ProjectRef = 2E24F50430115CE100A62C0B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E554AC83011411F00D8B116 /* Products */;
+					ProjectRef = 2E5549863011411F00D8B116 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBD546C305BCEF500C7F1EB /* Products */;
+					ProjectRef = 2EBD521D305BCEF500C7F1EB /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB286CB301136E7003901EF /* Products */;
+					ProjectRef = 2EB283D2301136E7003901EF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC0D04D3053CC8B006BB31B /* Products */;
+					ProjectRef = 2EC0CC893053CC8B006BB31B /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EEA4E02305AE6C300108DD4 /* Products */;
+					ProjectRef = 2EEA4DC1305AE6C300108DD4 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E0F45F630113C9100EC26A5 /* Products */;
+					ProjectRef = 2E0F42FD30113C9100EC26A5 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E360ABE30113F0C002163FF /* Products */;
+					ProjectRef = 2E3607CB30113F0C002163FF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB9989B3045451500E86162 /* Products */;
+					ProjectRef = 2EB9968A3045451500E86162 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EEB585630483F880087959C /* Products */;
+					ProjectRef = 2EEB581A30483F880087959C /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EAABD053044731A000914DF /* Products */;
+					ProjectRef = 2EAABCC93044731A000914DF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC54B7F30889FB700615762 /* Products */;
+					ProjectRef = 2EC54AAF30889FB700615762 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E01B120304B16CB00180E17 /* Products */;
+					ProjectRef = 2E01B0E4304B16CB00180E17 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ED1AD433051A43F003974A2 /* Products */;
+					ProjectRef = 2ED1A9533051A43F003974A2 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC7F08F3052A7EC0041A707 /* Products */;
+					ProjectRef = 2EC7EC9F3052A7EC0041A707 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E3885F03025E3EA000555E0 /* Products */;
+					ProjectRef = 2E38854E3025E3EA000555E0 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBC410C30132C0F00540CB1 /* Products */;
+					ProjectRef = 2EBC40EA30132C0F00540CB1 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E249182301152AB000DC9BF /* Products */;
+					ProjectRef = 2E24886C301152AB000DC9BF /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EA33A6B3049A3A000C156A9 /* Products */;
+					ProjectRef = 2EA33A2F3049A3A000C156A9 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E3FE8953040A83200543B13 /* Products */;
+					ProjectRef = 2E3FE69E3040A83200543B13 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBE402030357D6F00AC7712 /* Products */;
+					ProjectRef = 2EBE3F2E30357D6F00AC7712 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E6513F83057E5DF0053B57C /* Products */;
+					ProjectRef = 2E6511D03057E5DF0053B57C /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E2F536F30493E340003F98F /* Products */;
+					ProjectRef = 2E2F533330493E340003F98F /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC44F8F306B9CE40032359C /* Products */;
+					ProjectRef = 2EC44EBF306B9CE40032359C /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E2C11433091D5D50063B951 /* Products */;
+					ProjectRef = 2E2C10733091D5D50063B951 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC6A3F2306644E200E4EF5A /* Products */;
+					ProjectRef = 2EC6A322306644E200E4EF5A /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E88D95730121A52008A7446 /* Products */;
+					ProjectRef = 2E88C7C730121A52008A7446 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E2673BB304EA09F001D7829 /* Products */;
+					ProjectRef = 2E26737B304EA09F001D7829 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBC9D6D3080A6E1006A946C /* Products */;
+					ProjectRef = 2EBC9C9D3080A6E1006A946C /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB0BDCB30304CBA00FE865D /* Products */;
 					ProjectRef = 2EB0BCC830304CBA00FE865D /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC5AB8B3087498100C38EC4 /* Products */;
+					ProjectRef = 2EC5AABB3087498100C38EC4 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB88D5530381DD700AF0812 /* Products */;
@@ -1599,20 +1683,16 @@
 					ProjectRef = 2EB344B53032F2EC00257568 /* iosApp.xcodeproj */;
 				},
 				{
+					ProductGroup = 2EC9DC67307B5E680029D2EF /* Products */;
+					ProjectRef = 2EC9DB97307B5E680029D2EF /* iosApp.xcodeproj */;
+				},
+				{
 					ProductGroup = 2EB452E0304172FE00CD1866 /* Products */;
 					ProjectRef = 2EB450E9304172FE00CD1866 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E4870F53052EBC1009FE205 /* Products */;
 					ProjectRef = 2E486D063052EBC1009FE205 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2ED254F43052B704001DDBA9 /* Products */;
-					ProjectRef = 2ED251053052B704001DDBA9 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E360AC430113F0C002163FF /* Products */;
-					ProjectRef = 2E36098230113F0C002163FF /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E1DAA76305143690060D2BC /* Products */;
@@ -1623,68 +1703,60 @@
 					ProjectRef = 2E3BAFA8303F8D37001025A9 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E88D95330121A52008A7446 /* Products */;
-					ProjectRef = 2E88D5B230121A52008A7446 /* iosApp.xcodeproj */;
+					ProductGroup = 2ECA1EA6308DDFFE009F4CD0 /* Products */;
+					ProjectRef = 2ECA1DD6308DDFFE009F4CD0 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC3A48F3068F2150089CA84 /* Products */;
+					ProjectRef = 2EC3A3BF3068F2150089CA84 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E71E7763045A8A200278F2C /* Products */;
 					ProjectRef = 2E71E5653045A8A200278F2C /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E554AC23011411F00D8B116 /* Products */;
-					ProjectRef = 2E5547973011411F00D8B116 /* iosApp.xcodeproj */;
+					ProductGroup = 2EC7EFA130821C44000C3693 /* Products */;
+					ProjectRef = 2EC7EED130821C44000C3693 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EC6E40D304055EA001979F6 /* Products */;
-					ProjectRef = 2EC6E35D304055EA001979F6 /* iosApp.xcodeproj */;
+					ProductGroup = 2EC14053307675030094667C /* Products */;
+					ProjectRef = 2EC13F83307675030094667C /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EB69F7B3056651400DA8436 /* Products */;
-					ProjectRef = 2EB69D533056651400DA8436 /* iosApp.xcodeproj */;
+					ProductGroup = 2EB157CC30938D1500D341BE /* Products */;
+					ProjectRef = 2EB156FC30938D1500D341BE /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E360AC030113F0C002163FF /* Products */;
-					ProjectRef = 2E36F4FE30113F0C002163FF /* iosApp.xcodeproj */;
+					ProductGroup = 2EDB3C8230639C56000DE016 /* Products */;
+					ProjectRef = 2EDB3BD430639C56000DE016 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EBFF5C63052E6A8003BBD90 /* Products */;
-					ProjectRef = 2EBFF1D63052E6A8003BBD90 /* iosApp.xcodeproj */;
+					ProductGroup = 2E8B26B6305FA87D00A38929 /* Products */;
+					ProjectRef = 2E8B2608305FA87D00A38929 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC73AA4306F8A4B0075B0E7 /* Products */;
+					ProjectRef = 2EC739D4306F8A4B0075B0E7 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB5428530208195007DDEFC /* Products */;
 					ProjectRef = 2EB541F130208195007DDEFC /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EB9AF4130430EC100055E9E /* Products */;
-					ProjectRef = 2EB9AF0530430EC100055E9E /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EC860D4305522F4002BD775 /* Products */;
-					ProjectRef = 2EC85E79305522F4002BD775 /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2EDA21A73051F4D900A78A5A /* Products */;
 					ProjectRef = 2EDA1DB73051F4D900A78A5A /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EB45249301F02C500C816B8 /* Products */;
-					ProjectRef = 2EB451B9301F02C500C816B8 /* iosApp.xcodeproj */;
+					ProductGroup = 2ECBD4533090921B00EB6120 /* Products */;
+					ProjectRef = 2ECBD3833090921B00EB6120 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E92D76B302B396800836AEE /* Products */;
 					ProjectRef = 2E92D6BF302B396800836AEE /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E24F7F730115CE100A62C0B /* Products */;
-					ProjectRef = 2E24F6BB30115CE100A62C0B /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EB286C7301136E7003901EF /* Products */;
-					ProjectRef = 2EB28589301136E7003901EF /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E651A183011567000E4B3F6 /* Products */;
-					ProjectRef = 2E6510C63011567000E4B3F6 /* iosApp_copy.xcodeproj */;
+					ProductGroup = 2ECAD5A93079059800F225A7 /* Products */;
+					ProjectRef = 2ECAD4D93079059800F225A7 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E249186301152AB000DC9BF /* Products */;
@@ -1693,6 +1765,22 @@
 				{
 					ProductGroup = 2EB286C9301136E7003901EF /* Products */;
 					ProjectRef = 2EB273B8301136E7003901EF /* iosApp_copy.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E0F45F430113C9100EC26A5 /* Products */;
+					ProjectRef = 2E0F304630113C9100EC26A5 /* iosApp_copy.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E360AC230113F0C002163FF /* Products */;
+					ProjectRef = 2E36F4FF30113F0C002163FF /* iosApp_copy.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E453CB63011556A000E0AB6 /* Products */;
+					ProjectRef = 2E4533783011556A000E0AB6 /* iosApp_copy.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E651A183011567000E4B3F6 /* Products */;
+					ProjectRef = 2E6510C63011567000E4B3F6 /* iosApp_copy.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E24F7F930115CE100A62C0B /* Products */;
@@ -1707,20 +1795,8 @@
 					ProjectRef = 2E5547983011411F00D8B116 /* iosApp_copy.xcodeproj */;
 				},
 				{
-					ProductGroup = 2E0F45F430113C9100EC26A5 /* Products */;
-					ProjectRef = 2E0F304630113C9100EC26A5 /* iosApp_copy.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E360AC230113F0C002163FF /* Products */;
-					ProjectRef = 2E36F4FF30113F0C002163FF /* iosApp_copy.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E8EA4ED301135E00039A83E /* Products */;
 					ProjectRef = 2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */;
-				},
-				{
-					ProductGroup = 2E453CB63011556A000E0AB6 /* Products */;
-					ProjectRef = 2E4533783011556A000E0AB6 /* iosApp_copy.xcodeproj */;
 				},
 			);
 			projectRoot = "";

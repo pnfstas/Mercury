@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct MainToolbarModifier : ViewModifier {
-    @Binding var navigationPath : [AppScreens]
-    @Binding var isShoppingCartOpen : Bool
-    @Binding var isOrderListOpen : Bool
+    @Environment(MercuryShopViewModel.self) private var viewModel
     @Environment(\.dismiss) private var dismiss
-    @State private var isMenuOpen : Bool = false
     func body(content: Content) -> some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .toolbar(.hidden, for: .navigationBar)
             .safeAreaInset(edge: .top, spacing: 0) {
                 VStack(alignment: .center, spacing: 0) {
                     HStack(alignment: .center) {
-                        if navigationPath.count > 0 {
-                            Button(action: {navigationPath.removeLast()}) {
+                        if viewModel.navigationPath.count > 0 {
+                            Button(action: {viewModel.navigationPath.removeLast()}) {
                                 Image(systemName: "chevron.left")
                                     .font(.system(size: 20, weight: .semibold))
                                     .foregroundColor(.black)
@@ -30,17 +28,19 @@ struct MainToolbarModifier : ViewModifier {
                         }
                         Spacer()
                         HStack(alignment: .center, spacing: 1) {
-                            MainToolbarButton(appScreen: AppScreens.catalog, action: { navigationPath.append(AppScreens.catalog) })
-                            MainToolbarButton(appScreen: AppScreens.favorites, action: { navigationPath.append(AppScreens.favorites) })
-                            MainToolbarButton(appScreen: AppScreens.shoppingCart, action: { isShoppingCartOpen.toggle() })
-                            MainToolbarButton(appScreen: AppScreens.orders, action: { isOrderListOpen.toggle() })
+                            MainToolbarButton(appScreen: AppScreens.catalog, action: { viewModel.navigationPath.append(AppScreens.catalog) })
+                            MainToolbarButton(appScreen: AppScreens.favorites, action: { viewModel.navigationPath.append(AppScreens.favorites) })
+                            MainToolbarButton(appScreen: AppScreens.shoppingCart, action: { viewModel.isShoppingCartOpen.toggle() })
+                            MainToolbarButton(appScreen: AppScreens.orders, action: { viewModel.isOrderOpen.toggle() })
                             Group {
-                                if isMenuOpen {
-                                    MainToolbarButton(systemName: "multiply", description: "Меню", fgColor: .black, bkColor: .clear, action: { isMenuOpen.toggle() })
+                                if viewModel.isMenuOpen {
+                                    MainToolbarButton(systemName: "multiply", description: "Меню", fgColor: .black, bkColor: .clear,
+                                                      action: { viewModel.isMenuOpen.toggle() })
                                     .font(.system(size: 20, weight: .semibold))
                                 }
                                 else {
-                                    MainToolbarButton(imageName: "Menu", description: "Меню", fgColor: .black, bkColor: .clear, action: { isMenuOpen.toggle() })
+                                    MainToolbarButton(imageName: "Menu", description: "Меню", fgColor: .black, bkColor: .clear,
+                                                      action: { viewModel.isMenuOpen.toggle() })
                                 }
                             }
                         }
@@ -56,17 +56,17 @@ struct MainToolbarModifier : ViewModifier {
                     Divider()
                 }
                 .background(.menu)
-                .mainToolbarMenu(navigationPath: $navigationPath, isMenuOpen: $isMenuOpen)
+                .mainToolbarMenu()
             }
             .frame(maxWidth: .infinity, alignment: .top)
             //.mainToolbarMenu(navigationPath: $navigationPath, isMenuOpen: $isMenuOpen)
-            .navigationTitle(navigationPath.last?.description ?? "")
-            .navigationBarBackButtonHidden(navigationPath.count > 0)
+            .navigationTitle(viewModel.navigationPath.last?.description ?? "")
+            .navigationBarBackButtonHidden(viewModel.navigationPath.count > 0)
         
     }
 }
 extension View {
-    func mainToolbar(navigationPath: Binding<[AppScreens]>, isShoppingCartOpen: Binding<Bool>, isOrderListOpen: Binding<Bool>) -> some View {
-        modifier(MainToolbarModifier(navigationPath: navigationPath, isShoppingCartOpen: isShoppingCartOpen, isOrderListOpen: isOrderListOpen))
+    func mainToolbar() -> some View {
+        modifier(MainToolbarModifier())
     }
 }
