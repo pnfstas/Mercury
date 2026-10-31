@@ -48,12 +48,12 @@ struct MainToolbarMenuButton : View {
     var appScreen : AppScreens
     var body : some View {
         @Bindable var viewModel : MercuryShopViewModel = viewModel
-        viewModel.currentScreen = appScreen
+        //viewModel.currentScreen = appScreen
         Button(action: {
             viewModel.isMenuOpen = false
             viewModel.navigationPath.append(appScreen)
         }) {
-            Text(viewModel.appScreen.description)
+            Text(viewModel.currentScreen.description)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .contentShape(Rectangle())
                 .padding(.horizontal, 15)

@@ -71,6 +71,22 @@ data class OrderUIState (
     val completionDate : LocalDateTime,
     val status : OrderStatus = OrderStatus.None
 ) {
+	val amountStr : String
+		get() {
+			return amount.toString()
+		}
+	val creationDateStr : String
+		get() {
+			return creationDate.toString()
+		}
+	val completionDateStr : String
+		get() {
+			return completionDate.toString()
+		}
+	val statusDesc : String
+		get() {
+			return status.description
+		}
 	fun toOrderEntity() : OrderEntity {
 		return OrderEntity(
 			amount = this.amount,
@@ -89,7 +105,7 @@ data class OrderItemUIState (
     val quantity : Float = 0f,
     val amount : Float = 0f
 ) {
-    fun toOrderItemEntity() : OrderItemEntity {
+	fun toOrderItemEntity() : OrderItemEntity {
         return OrderItemEntity (
             orderId = order.id,
             productId = product.id,

@@ -59,7 +59,7 @@ final class MercuryShopViewModel {
     var orderUIStates : [OrderUIState] = []
     var allOrderItemUIStates : [OrderItemUIState] = []
     var navigationPath : [AppScreens] = []
-    var currentScreen : AppScreens.main
+    var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false

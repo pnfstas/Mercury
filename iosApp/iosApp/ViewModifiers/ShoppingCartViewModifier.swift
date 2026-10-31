@@ -69,6 +69,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
+                            /*
                             Button(action: { viewModel.createOrder() }) {
                                 Text("Сформировать заказ")
                                     .multilineTextAlignment(.center)
@@ -81,7 +82,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
                             .opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
                             .font(.custom("Arial", size: 14).weight(.bold))
-
+                            */
                         }
                         .frame(maxWidth: screenWidth * 0.8, maxHeight: screenHeight * 0.8)
                         .padding(.horizontal, 10)

@@ -9,8 +9,9 @@ import SwiftUI
 import shared
 
 struct OrderView: View {
-    @Binding var order : OrderUIState
+    @Environment(MercuryShopViewModel.self) var viewModel
     var body : some View {
+        @Bindable var viewModel : MercuryShopViewModel = viewModel
         VStack {
             Text("Корзина")
         }

@@ -34,13 +34,13 @@ struct OrderListViewModifier: ViewModifier {
                                 LazyVStack(alignment: .leading, spacing: 7) {
                                     ForEach(viewModel.orderUIStates, id: \.order.id) { orderUIState in
                                         HStack(alignment: .center, spacing: 2) {
-                                            Text(orderUIState.creationDate)
+                                            Text(orderUIState.creationDateStr)
                                                 .frame(width: screenWidth / 6)
                                             Text(orderUIState.clientName)
                                                 .frame(maxWidth: .infinity)
-                                            Text(orderUIState.amount)
+                                            Text(orderUIState.amountStr)
                                                 .frame(width: screenWidth / 6)
-                                            Text(orderUIState.status.description)
+                                            Text(orderUIState.statusDesc)
                                                 .frame(width: screenWidth / 6)
                                       }
                                         .frame(maxWidth: .infinity)
@@ -50,7 +50,7 @@ struct OrderListViewModifier: ViewModifier {
                                         .highPriorityGesture(
                                             TapGesture(count: 2)
                                                 .onEnded {
-                                                    OrderView(orderUIState: orderUIState)
+                                                    OrderView()
                                                 }
                                         )
                                     }

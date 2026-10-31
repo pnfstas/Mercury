@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared;
 
 struct OrderViewModifier: ViewModifier {
     var orderUIState : OrderUIState
@@ -14,7 +15,6 @@ struct OrderViewModifier: ViewModifier {
     let screenHeight : CGFloat = UIScreen.main.bounds.height
     func body(content: Content) -> some View {
         @Bindable var viewModel : MercuryShopViewModel = viewModel
-        viewModel.currentOrder = order
         content
             .overlay(alignment: .center) {
                 if viewModel.isOrderOpen {
@@ -27,20 +27,20 @@ struct OrderViewModifier: ViewModifier {
                             }
                         VStack(alignment: .center, spacing: 10) {
                             HStack(alignment: .center) {
-                                IconButton(action: { isOrderListOpen = false }, image: "Closed", width: 15, height: 15, padding: 10, shape: Circle(), backgroundColor: .red)
+                                IconButton(action: { viewModel.isOrderListOpen = false }, image: "Closed", width: 15, height: 15, padding: 10, shape: Circle(), backgroundColor: .red)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
                             ScrollView {
                                 HStack(alignment: .center, spacing: 2) {
-                                    Text(orderUIState.creationDate)
+                                    Text(orderUIState.creationDateStr)
                                         .frame(width: screenWidth / 6)
                                     Text(orderUIState.clientName)
                                         .frame(maxWidth: .infinity)
-                                    Text(orderUIState.amount)
+                                    Text(orderUIState.amountStr)
                                         .frame(width: screenWidth / 6)
-                                    Text(orderUIState.status.description)
+                                    Text(orderUIState.statusDesc)
                                         .frame(width: screenWidth / 6)
                                 }
                                 .frame(maxWidth: .infinity)
@@ -61,6 +61,9 @@ struct OrderViewModifier: ViewModifier {
                         //.safeAreaInset(edge: .top, alignment: .center)
                     }
                 }
+            }
+            .onAppear {
+                viewModel.currentOrder = orderUIState
             }
     }
 }
