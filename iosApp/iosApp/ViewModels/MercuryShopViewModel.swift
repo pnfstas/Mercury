@@ -139,7 +139,10 @@ final class MercuryShopViewModel {
     func createOrder(orderUIState: OrderUIState) {
         mercuryShopInteractor.createOrder(orderUIState: orderUIState)
     }
-    func updateOrderStatus(orderUIState: OrderUIState) {
-        mercuryShopInteractor.updateOrderStatus(orderUIState: orderUIState)
+    func updateOrderClientName(orderUIState: OrderUIState, clientName : String) {
+         mercuryShopInteractor.updateOrder(orderUIState: orderUIState)
+    }
+    func updateOrderStatus(orderUIState: OrderUIState, status : OrderStatus) {
+        mercuryShopInteractor.updateOrder(orderUIState: orderUIState)
     }
 }

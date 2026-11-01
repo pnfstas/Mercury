@@ -226,6 +226,12 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             }
         }
     }
+	fun updateOrder(orderUIState: OrderUIState) {
+		CoroutineScope(Dispatchers.IO).launch {
+			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
+			mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
+		}
+	}
     fun updateOrderStatus(orderUIState: OrderUIState) {
         CoroutineScope(Dispatchers.IO).launch {
 			val orderEntity : OrderEntity = orderUIState.toOrderEntity()

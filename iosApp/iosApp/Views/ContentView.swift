@@ -71,7 +71,6 @@ struct ContentView: View {
         NavigationStack(path: $viewModel.navigationPath) {
             MainView()
                 .navigationBarTitleDisplayMode(.automatic)
-                .environment(viewModel)
                 .mainToolbar()
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
@@ -97,6 +96,7 @@ struct ContentView: View {
                     .mainToolbar()
                 }
         }
+        .environment(viewModel)
         .shoppingCart()
     }
 }

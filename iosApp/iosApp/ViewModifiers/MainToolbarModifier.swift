@@ -56,6 +56,7 @@ struct MainToolbarModifier : ViewModifier {
                     Divider()
                 }
                 .background(.menu)
+                .environment(viewModel)
                 .mainToolbarMenu()
             }
             .frame(maxWidth: .infinity, alignment: .top)

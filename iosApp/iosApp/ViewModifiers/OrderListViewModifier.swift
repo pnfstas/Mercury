@@ -50,6 +50,7 @@ struct OrderListViewModifier: ViewModifier {
                                         .highPriorityGesture(
                                             TapGesture(count: 2)
                                                 .onEnded {
+                                                    viewModel.currentOrder = orderUIState
                                                     OrderView()
                                                 }
                                         )
