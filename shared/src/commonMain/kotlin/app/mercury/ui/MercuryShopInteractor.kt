@@ -6,6 +6,7 @@
 //
 package app.mercury.ui
 
+import androidx.lifecycle.ViewModel
 import androidx.room.Ignore
 import app.mercury.data.local.database.MercuryShopRepository
 import app.mercury.data.local.entities.ContactType
@@ -14,9 +15,6 @@ import app.mercury.data.local.entities.OrderItemEntity
 import app.mercury.data.local.entities.OrderStatus
 import app.mercury.data.local.entities.ProductEntity
 import app.mercury.data.local.entities.ShoppingCartEntity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.math.min
 import kotlin.math.max
@@ -28,8 +26,14 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlin.Int
 import kotlin.collections.set
+import kotlin.reflect.KClass
+import kotlin.reflect.KFunction
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 data class MercuryShopUIState (
     val product : ProductEntity,
@@ -63,7 +67,7 @@ data class MercuryShopUIState (
 }
 
 data class OrderUIState (
-    val order : OrderEntity = OrderEntity(),
+    val id : Int = 0,
     val amount : Float = 0f,
     val clientName : String = "",
     val clientContacts : Map<ContactType, String> = mapOf(),
@@ -71,7 +75,8 @@ data class OrderUIState (
     val completionDate : LocalDateTime,
     val status : OrderStatus = OrderStatus.None
 ) {
-	val amountStr : String
+	private val reflectionHelper = ReflectionHelper()
+    val amountStr : String
 		get() {
 			return amount.toString()
 		}
@@ -97,25 +102,35 @@ data class OrderUIState (
 			status = this.status
 		)
 	}
+    fun copyWith(propertyName : String, propertyValue : Any?) : OrderUIState? {
+        return reflectionHelper.copyWith(instance = this, propertyName = propertyName, propertyValue = propertyValue)
+    }
+}
+
+expect class ReflectionHelper() {
+    fun <T : Any> copyWith(instance: T, propertyName: String, propertyValue: Any?) : T?
+}
+inline fun <reified T : Any> ReflectionHelper.copyWith(instance: T, propertyName: String, propertyValue: Any?) : T? {
+    return this.copyWith(instance = instance, propertyName = propertyName, propertyValue = propertyValue);
 }
 
 data class OrderItemUIState (
-    val order : OrderEntity = OrderEntity(),
-    val product : ProductEntity = ProductEntity(),
+    val orderId : Int = 0,
+    val productId : Int = 0,
     val quantity : Float = 0f,
     val amount : Float = 0f
 ) {
 	fun toOrderItemEntity() : OrderItemEntity {
         return OrderItemEntity (
-            orderId = order.id,
-            productId = product.id,
+            orderId = orderId,
+            productId = productId,
             quantity = quantity,
-            amount = if(amount > 0) amount else quantity * product.price
+            amount = amount
         )
     }
 }
 
-class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopRepository) {
+class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopRepository) : ViewModel() {
     val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
 	val shopUIStates : StateFlow<List<MercuryShopUIState>> = combine(
         mercuryShopRepository.productsDao.getAll(),
@@ -183,14 +198,12 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             enteredQuantityMap.value[productId] = min(enteredQuantity + portion, quantityInStock)
         }
 	}
-    fun addToShoppingCart(shopUIState : MercuryShopUIState) {
+    suspend fun addToShoppingCart(shopUIState : MercuryShopUIState) {
         val shoppingCartEntity = shopUIState.toShoppingCartEntity()
-        CoroutineScope(Dispatchers.IO).launch {
-            mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
-        }
+        mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
         enteredQuantityMap.value.remove(shopUIState.product.id)
     }
-    fun stepShoppingCartQuantity(cartUIState : MercuryShopUIState, decrease: Boolean = false) {
+    suspend fun stepShoppingCartQuantity(cartUIState : MercuryShopUIState, decrease: Boolean = false) {
         val productId = cartUIState.product.id
         val cartQuantity : Float = if(decrease) min(cartUIState.cartQuantity - cartUIState.portion, 0f)
             else min(cartUIState.cartQuantity + cartUIState.portion, cartUIState.quantityInStock)
@@ -200,9 +213,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
                 quantity = cartQuantity,
                 amount = cartQuantity * cartUIState.product.price
             )
-            CoroutineScope(Dispatchers.IO).launch {
-                mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
-            }
+            mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
             if(cartQuantity > 0) {
                 enteredQuantityMap.value[productId] = cartQuantity
             }
@@ -211,31 +222,40 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             }
         }
     }
-    fun getOrderItemUIStates(orderUIState: OrderUIState) : List<OrderItemUIState> {
-        return allOrderItemUIStates.value.filter { it.order.id == orderUIState.order.id }
+    fun getOrderItemUIStates(orderUIState: OrderUIState) : StateFlow<List<OrderItemUIState>> {
+        return mercuryShopRepository.orderItemsDao.getAllOfOrderWithDetails(orderId = orderUIState.id).map { list ->
+            list.map { it.toOrderItemUIState() }
+        }
+        .stateIn(
+            mercuryShopRepository.coroutineScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList())
     }
-    fun createOrder(orderUIState: OrderUIState) {
+    suspend fun createOrder() {
         val amount : Float = cartUIStates.value.sumOf { it.cartAmount.toDouble() }.toFloat()
         if(amount > 0) {
-            CoroutineScope(Dispatchers.IO).launch {
-				val orderEntity : OrderEntity = orderUIState.copy(amount = amount).toOrderEntity()
-                val orderId : Int = mercuryShopRepository.ordersDao.insertOne(orderEntity).toInt()
-                //val newOrderEntity = orderEntity.copy(id = orderId)
-                val orderItems : List<OrderItemEntity> = cartUIStates.value.map { it.toOrderItemEntity(orderId = orderId) }
-                mercuryShopRepository.orderItemsDao.insertAll(orderItems)
-            }
+            val orderUIState = OrderUIState(
+                id = 0,
+                creationDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+                completionDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+                amount = amount,
+                status = OrderStatus.Created)
+            val orderEntity : OrderEntity = orderUIState.toOrderEntity()
+            val orderId : Int = mercuryShopRepository.ordersDao.insertOne(orderEntity).toInt()
+            updateOrderProperty(orderUIState = orderUIState, propertyName = "id", propertyValue = orderId)
+            val orderItems : List<OrderItemEntity> = cartUIStates.value.map { it.toOrderItemEntity(orderId = orderId) }
+            mercuryShopRepository.orderItemsDao.insertAll(orderItems)
         }
     }
-	fun updateOrder(orderUIState: OrderUIState) {
-		CoroutineScope(Dispatchers.IO).launch {
-			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
-			mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
-		}
+	suspend fun updateOrder(orderUIState: OrderUIState) {
+        val orderEntity : OrderEntity = orderUIState.toOrderEntity()
+        mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
 	}
-    fun updateOrderStatus(orderUIState: OrderUIState) {
-        CoroutineScope(Dispatchers.IO).launch {
-			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
-            mercuryShopRepository.ordersDao.updateStatus(orderEntity.id, orderEntity.status)
+    suspend fun updateOrderProperty(orderUIState: OrderUIState, propertyName : String, propertyValue : Any?) {
+        val newOrderUIState : OrderUIState? = orderUIState.copyWith(propertyName = propertyName, propertyValue = propertyValue)
+        if(newOrderUIState != null) {
+            val orderEntity: OrderEntity = orderUIState.toOrderEntity()
+            mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
         }
     }
 }

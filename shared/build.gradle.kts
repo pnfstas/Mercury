@@ -41,6 +41,7 @@ kotlin {
     
     sourceSets {
         androidMain.dependencies {
+            implementation(libs.kotlin.reflect)
             implementation(libs.compose.uiToolingPreview)
             //перенесено из commonMain
             implementation(libs.compose.foundation)
@@ -53,6 +54,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
+            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.compose.runtime)

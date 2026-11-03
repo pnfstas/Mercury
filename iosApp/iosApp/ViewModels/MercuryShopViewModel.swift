@@ -57,7 +57,8 @@ final class MercuryShopViewModel {
     var shopUIStates : [MercuryShopUIState] = []
     var cartUIStates : [MercuryShopUIState] = []
     var orderUIStates : [OrderUIState] = []
-    var allOrderItemUIStates : [OrderItemUIState] = []
+    //var allOrderItemUIStates : [OrderItemUIState] = []
+    var orderItemUIStates : [OrderItemUIState] = []
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
@@ -115,13 +116,19 @@ final class MercuryShopViewModel {
         )
     }
     func addToShoppingCart(shopUIState : MercuryShopUIState) {
-        mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
+        Task {
+            try? await mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
+        }
     }
     func increaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
-        mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
+        Task {
+            try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
+        }
     }
     func decreaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
-        mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
+        Task {
+            try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
+        }
     }
     func bindShoppingCartQuantity(cartUIState : MercuryShopUIState) -> Binding<Float> {
         return Binding(
@@ -133,16 +140,27 @@ final class MercuryShopViewModel {
             }
         )
     }
-    func getOrderItemUIStates(orderUIState: OrderUIState) -> [OrderItemUIState] {
-        return allOrderItemUIStates.filter { $0.order.id == orderUIState.order.id }
+    func updateOrderItemUIStates(orderUIState: OrderUIState) {
+        Task { @MainActor in
+            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: OrderUIState)
+            for await curOrderItemUIStates in stateFlowOrderItemUIStates {
+                await MainActor.run {
+                    orderItemUIStates = curOrderItemUIStates
+                }
+            }
+        }
     }
     func createOrder(orderUIState: OrderUIState) {
-        mercuryShopInteractor.createOrder(orderUIState: orderUIState)
+        Task {
+            try? await mercuryShopInteractor.createOrder(orderUIState: orderUIState)
+        }
     }
-    func updateOrderClientName(orderUIState: OrderUIState, clientName : String) {
-         mercuryShopInteractor.updateOrder(orderUIState: orderUIState)
-    }
-    func updateOrderStatus(orderUIState: OrderUIState, status : OrderStatus) {
-        mercuryShopInteractor.updateOrder(orderUIState: orderUIState)
+    func updateOrderProperty(orderUIState: OrderUIState, propertyName : String, propertyValue : Any?) {
+         Task {
+            try? await mercuryShopInteractor.updateOrderProperty(
+                orderUIState: orderUIState,
+                propertyName: propertyName,
+                propertyValue: propertyValue)
+         }
     }
 }

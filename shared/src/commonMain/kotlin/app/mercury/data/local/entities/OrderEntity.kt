@@ -43,7 +43,7 @@ data class OrderEntity (
 ) {
     fun toOrderUIState() : OrderUIState {
         return OrderUIState (
-            order = this,
+            id = id,
             amount = amount,
             clientName = clientName,
             clientContacts = clientContacts,

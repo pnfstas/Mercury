@@ -12,7 +12,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.Companion.CASCADE
 import androidx.room.Index
-import androidx.room.Junction
 import androidx.room.Relation
 import kotlinx.serialization.Serializable
 
@@ -61,8 +60,8 @@ data class OrderItemWithDetails(
 ) {
     fun toOrderItemUIState() : OrderItemUIState {
         return OrderItemUIState(
-            order = order,
-            product = product,
+            orderId = order.id,
+            productId = product.id,
             quantity = orderItem.quantity,
             amount = orderItem.amount
         )
