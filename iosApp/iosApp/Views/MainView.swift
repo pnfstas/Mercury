@@ -51,8 +51,7 @@ struct MainView: View {
                         Text("Без ограничений\nпо мин. сумме\nзаказа")
                     }
                 }
-                //.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .foregroundStyle(Color(.fgColorLight))
+                 .foregroundStyle(Color(.fgColorLight))
                 .font(.custom("Arial", size: 16).weight(.bold))
                 Button(action: { viewModel.navigationPath.append(AppScreens.catalog)}) {
                     HStack(alignment: .center) {
@@ -97,7 +96,6 @@ struct MainView: View {
             .padding(10)
         }
         .padding(16)
-        //.frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image("MainBackground"))
     }
 }

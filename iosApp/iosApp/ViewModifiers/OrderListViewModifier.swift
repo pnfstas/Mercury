@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct OrderListViewModifier: ViewModifier {
-    @Environment(MercuryShopViewModel.self) var viewModel
+    //@Environment(MercuryShopViewModel.self) var viewModel
+    var mercuryViewModel : MercuryShopViewModel
     let screenWidth : CGFloat = UIScreen.main.bounds.width
     let screenHeight : CGFloat = UIScreen.main.bounds.height
     func body(content: Content) -> some View {
-        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .overlay(alignment: .center) {
                 if viewModel.isOrderListOpen {
@@ -32,7 +33,7 @@ struct OrderListViewModifier: ViewModifier {
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
                             ScrollView {
                                 LazyVStack(alignment: .leading, spacing: 7) {
-                                    ForEach(viewModel.orderUIStates, id: \.order.id) { orderUIState in
+                                    ForEach(viewModel.orderUIStates, id: \.id) { orderUIState in
                                         HStack(alignment: .center, spacing: 2) {
                                             Text(orderUIState.creationDateStr)
                                                 .frame(width: screenWidth / 6)
@@ -51,7 +52,7 @@ struct OrderListViewModifier: ViewModifier {
                                             TapGesture(count: 2)
                                                 .onEnded {
                                                     viewModel.currentOrder = orderUIState
-                                                    OrderView()
+                                                    viewModel.isOrderOpen = true
                                                 }
                                         )
                                     }
@@ -67,14 +68,16 @@ struct OrderListViewModifier: ViewModifier {
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                         .onTapGesture { }
-                        //.safeAreaInset(edge: .top, alignment: .center)
                     }
                 }
+            }
+            .onAppear {
+                viewModel.updateOrderUIStates()
             }
     }
 }
 extension View {
-    func orderList() -> some View {
-        modifier(OrderListViewModifier())
+    func orderList(mercuryViewModel : MercuryShopViewModel) -> some View {
+        modifier(OrderListViewModifier(mercuryViewModel : mercuryViewModel))
     }
 }

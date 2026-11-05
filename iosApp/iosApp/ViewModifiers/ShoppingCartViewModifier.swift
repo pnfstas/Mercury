@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ShoppingCartViewModifier: ViewModifier {
-    @Environment(MercuryShopViewModel.self) var viewModel
+    //@Environment(MercuryShopViewModel.self) var viewModel
+    var mercuryViewModel : MercuryShopViewModel
     let screenWidth : CGFloat = UIScreen.main.bounds.width
     let screenHeight : CGFloat = UIScreen.main.bounds.height
     func body(content: Content) -> some View {
-        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .overlay(alignment: .center) {
                 if viewModel.isShoppingCartOpen {
@@ -69,7 +70,6 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
-                            /*
                             Button(action: { viewModel.createOrder() }) {
                                 Text("Сформировать заказ")
                                     .multilineTextAlignment(.center)
@@ -82,21 +82,22 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
                             .opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
                             .font(.custom("Arial", size: 14).weight(.bold))
-                            */
                         }
                         .frame(maxWidth: screenWidth * 0.8, maxHeight: screenHeight * 0.8)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                         .onTapGesture { }
-                        //.safeAreaInset(edge: .top, alignment: .center)
                     }
                 }
+            }
+            .onAppear {
+                viewModel.updateCartUIStates()
             }
     }
 }
 extension View {
-    func shoppingCart() -> some View {
-        modifier(ShoppingCartViewModifier())
+    func shoppingCart(mercuryViewModel : MercuryShopViewModel) -> some View {
+        modifier(ShoppingCartViewModifier(mercuryViewModel : mercuryViewModel))
     }
 }

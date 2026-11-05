@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MainToolbarModifier : ViewModifier {
-    @Environment(MercuryShopViewModel.self) private var viewModel
+    var mercuryViewModel : MercuryShopViewModel
+    //@Environment(MercuryShopViewModel.self) private var viewModel
     @Environment(\.dismiss) private var dismiss
     func body(content: Content) -> some View {
-        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .toolbar(.hidden, for: .navigationBar)
@@ -31,7 +32,7 @@ struct MainToolbarModifier : ViewModifier {
                             MainToolbarButton(appScreen: AppScreens.catalog, action: { viewModel.navigationPath.append(AppScreens.catalog) })
                             MainToolbarButton(appScreen: AppScreens.favorites, action: { viewModel.navigationPath.append(AppScreens.favorites) })
                             MainToolbarButton(appScreen: AppScreens.shoppingCart, action: { viewModel.isShoppingCartOpen.toggle() })
-                            MainToolbarButton(appScreen: AppScreens.orders, action: { viewModel.isOrderOpen.toggle() })
+                            MainToolbarButton(appScreen: AppScreens.orders, action: { viewModel.isOrderListOpen.toggle() })
                             Group {
                                 if viewModel.isMenuOpen {
                                     MainToolbarButton(systemName: "multiply", description: "Меню", fgColor: .black, bkColor: .clear,
@@ -56,18 +57,16 @@ struct MainToolbarModifier : ViewModifier {
                     Divider()
                 }
                 .background(.menu)
-                .environment(viewModel)
-                .mainToolbarMenu()
+                .mainToolbarMenu(mercuryViewModel : viewModel)
             }
             .frame(maxWidth: .infinity, alignment: .top)
-            //.mainToolbarMenu(navigationPath: $navigationPath, isMenuOpen: $isMenuOpen)
             .navigationTitle(viewModel.navigationPath.last?.description ?? "")
             .navigationBarBackButtonHidden(viewModel.navigationPath.count > 0)
         
     }
 }
 extension View {
-    func mainToolbar() -> some View {
-        modifier(MainToolbarModifier())
+    func mainToolbar(mercuryViewModel : MercuryShopViewModel) -> some View {
+        modifier(MainToolbarModifier(mercuryViewModel : mercuryViewModel))
     }
 }

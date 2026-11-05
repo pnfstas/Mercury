@@ -71,10 +71,19 @@ data class OrderUIState (
     val amount : Float = 0f,
     val clientName : String = "",
     val clientContacts : Map<ContactType, String> = mapOf(),
-    val creationDate : LocalDateTime,
-    val completionDate : LocalDateTime,
+    val creationDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+    val completionDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
     val status : OrderStatus = OrderStatus.None
 ) {
+	constructor() : this(
+		id = 0,
+		amount = 0f,
+		clientName = "",
+		clientContacts = mapOf(),
+		creationDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+		completionDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+		status = OrderStatus.None
+	)
 	private val reflectionHelper = ReflectionHelper()
     val amountStr : String
 		get() {
@@ -90,7 +99,7 @@ data class OrderUIState (
 		}
 	val statusDesc : String
 		get() {
-			return status.description
+			return status.label
 		}
 	fun toOrderEntity() : OrderEntity {
 		return OrderEntity(
@@ -102,9 +111,37 @@ data class OrderUIState (
 			status = this.status
 		)
 	}
+	fun getPropertyValue(propertyName : String) : Any? {
+		return when(propertyName) {
+			"amount" -> amount
+			"clientName" -> clientName
+			"clientContacts" -> clientContacts
+			"creationDate" -> creationDate
+			"completionDate" -> completionDate
+			"status" -> status
+			else -> null
+		}
+	}
     fun copyWith(propertyName : String, propertyValue : Any?) : OrderUIState? {
         return reflectionHelper.copyWith(instance = this, propertyName = propertyName, propertyValue = propertyValue)
     }
+	fun with(
+		id : Int = this.id,
+		amount : Float = this.amount,
+		clientName : String = this.clientName,
+		clientContacts : Map<ContactType, String> = this.clientContacts,
+		creationDate : LocalDateTime = this.creationDate,
+		completionDate : LocalDateTime = this.completionDate,
+		status : OrderStatus = this.status) : OrderUIState {
+		return this.copy(
+			id = id,
+			amount = amount,
+			clientName = clientName,
+			clientContacts = clientContacts,
+			creationDate = creationDate,
+			completionDate = completionDate,
+			status = status)
+	}
 }
 
 expect class ReflectionHelper() {
@@ -231,8 +268,9 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList())
     }
-    suspend fun createOrder() {
-        val amount : Float = cartUIStates.value.sumOf { it.cartAmount.toDouble() }.toFloat()
+    suspend fun createOrder() : OrderUIState? {
+		var orderUIState : OrderUIState? = null
+		val amount : Float = cartUIStates.value.sumOf { it.cartAmount.toDouble() }.toFloat()
         if(amount > 0) {
             val orderUIState = OrderUIState(
                 id = 0,
@@ -242,17 +280,33 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
                 status = OrderStatus.Created)
             val orderEntity : OrderEntity = orderUIState.toOrderEntity()
             val orderId : Int = mercuryShopRepository.ordersDao.insertOne(orderEntity).toInt()
-            updateOrderProperty(orderUIState = orderUIState, propertyName = "id", propertyValue = orderId)
+            updateOrderProperty(orderUIState = orderUIState, id = orderId)
             val orderItems : List<OrderItemEntity> = cartUIStates.value.map { it.toOrderItemEntity(orderId = orderId) }
             mercuryShopRepository.orderItemsDao.insertAll(orderItems)
         }
+		return orderUIState
     }
 	suspend fun updateOrder(orderUIState: OrderUIState) {
         val orderEntity : OrderEntity = orderUIState.toOrderEntity()
         mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
 	}
-    suspend fun updateOrderProperty(orderUIState: OrderUIState, propertyName : String, propertyValue : Any?) {
-        val newOrderUIState : OrderUIState? = orderUIState.copyWith(propertyName = propertyName, propertyValue = propertyValue)
+    suspend fun updateOrderProperty(
+		orderUIState: OrderUIState,
+		id : Int = 0,
+		amount : Float = 0f,
+		clientName : String = "",
+		clientContacts : Map<ContactType, String> = mapOf(),
+		creationDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+		completionDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+		status : OrderStatus = OrderStatus.None) {
+        val newOrderUIState : OrderUIState? = orderUIState.with(
+			id = id,
+			amount = amount,
+			clientName = clientName,
+			clientContacts = clientContacts,
+			creationDate = creationDate,
+			completionDate = completionDate,
+			status = status)
         if(newOrderUIState != null) {
             val orderEntity: OrderEntity = orderUIState.toOrderEntity()
             mercuryShopRepository.ordersDao.upsertOrder(orderEntity)

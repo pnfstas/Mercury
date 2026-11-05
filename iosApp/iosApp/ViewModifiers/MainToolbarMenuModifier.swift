@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct MainToolbarMenuModifier : ViewModifier {
-    @Environment(MercuryShopViewModel.self) private var viewModel
+    var mercuryViewModel : MercuryShopViewModel
     func body(content: Content) -> some View {
+        let viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .overlay(alignment: .bottomTrailing) {
                 if viewModel.isMenuOpen {
                     VStack(alignment: .leading, spacing: 5) {
-                        MainToolbarMenuButton(appScreen: AppScreens.about)
-                        MainToolbarMenuButton(appScreen: AppScreens.catalog)
-                        MainToolbarMenuButton(appScreen: AppScreens.contacts)
-                        MainToolbarMenuButton(appScreen: AppScreens.questions)
+                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.about)
+                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.catalog)
+                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.contacts)
+                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.questions)
                     }
                     .frame(width: 200)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.menu))
@@ -44,11 +45,11 @@ struct MainToolbarMenuModifier : ViewModifier {
 }
 
 struct MainToolbarMenuButton : View {
-    @Environment(MercuryShopViewModel.self) private var viewModel
+    //@Environment(MercuryShopViewModel.self) private var viewModel
+    var mercuryViewModel : MercuryShopViewModel
     var appScreen : AppScreens
     var body : some View {
-        @Bindable var viewModel : MercuryShopViewModel = viewModel
-        //viewModel.currentScreen = appScreen
+        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         Button(action: {
             viewModel.isMenuOpen = false
             viewModel.navigationPath.append(appScreen)
@@ -58,8 +59,6 @@ struct MainToolbarMenuButton : View {
                 .contentShape(Rectangle())
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
-                //.foregroundStyle(.main)
-                //.font(.custom("Arial", size: 16).weight(.regular))
                 .foregroundStyle(.black)
                 .font(.custom("Arial", size: 20).weight(.semibold))
                 .background(.menu)
@@ -69,7 +68,7 @@ struct MainToolbarMenuButton : View {
 }
 
 extension View {
-    func mainToolbarMenu() -> some View {
-        modifier(MainToolbarMenuModifier())
+    func mainToolbarMenu(mercuryViewModel : MercuryShopViewModel) -> some View {
+        modifier(MainToolbarMenuModifier(mercuryViewModel : mercuryViewModel))
     }
 }

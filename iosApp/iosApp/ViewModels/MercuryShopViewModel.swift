@@ -51,6 +51,50 @@ enum AppScreens : Hashable, CaseIterable {
     }
  }
 
+extension Date {
+    func toLocalDateTime() -> Kotlinx_datetimeLocalDateTime {
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: self)
+        let year : Int32 = Int32(components.year ?? 1970)
+        let month : Int32 = Int32(components.month ?? 1)
+        let day : Int32 = Int32(components.day ?? 1)
+        let hour : Int32 = Int32(components.hour ?? 0)
+        let minute : Int32 = Int32(components.minute ?? 0)
+        let second : Int32 = Int32(components.second ?? 0)
+        let nanosecond : Int32 = Int32(components.nanosecond ?? 0)
+        return Kotlinx_datetimeLocalDateTime(
+            year: year,
+            month: month,
+            day: day,
+            hour: hour,
+            minute: minute,
+            second: second,
+            nanosecond: nanosecond)
+    }
+}
+extension Kotlinx_datetimeLocalDateTime {
+    func toDate() -> Date {
+        let calendar : Calendar = Calendar.current
+        let year : Int = Int(self.year)
+        let month : Int = Int(self.month.ordinal) + 1
+        let day : Int = Int(self.day)
+        let hour : Int = Int(self.hour)
+        let minute : Int = Int(self.minute)
+        let second : Int = Int(self.second)
+        let nanosecond : Int = Int(self.nanosecond)
+        let components : DateComponents = DateComponents(
+            calendar: calendar,
+            year: year,
+            month: month,
+            day: day,
+            hour: hour,
+            minute: minute,
+            second: second,
+            nanosecond: nanosecond
+        )
+        return Calendar.current.date(from: components) ?? Date()
+    }
+}
+
 @Observable
 final class MercuryShopViewModel {
     private var mercuryShopInteractor : MercuryShopInteractor
@@ -61,7 +105,7 @@ final class MercuryShopViewModel {
     var orderItemUIStates : [OrderItemUIState] = []
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
-    var currentOrder : OrderUIState? = nil
+    var currentOrder : OrderUIState
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false
     var isOrderListOpen : Bool = false
@@ -70,6 +114,9 @@ final class MercuryShopViewModel {
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
+        currentOrder = OrderUIState()
+    }
+    func updateShopUIStates() {
         Task { @MainActor in
             for await curShopUIStates in mercuryShopInteractor.shopUIStates {
                 await MainActor.run {
@@ -77,6 +124,8 @@ final class MercuryShopViewModel {
                 }
             }
         }
+    }
+    func updateCartUIStates() {
         Task { @MainActor in
             for await curCartUIStates in mercuryShopInteractor.cartUIStates {
                 await MainActor.run {
@@ -84,17 +133,12 @@ final class MercuryShopViewModel {
                 }
             }
         }
+    }
+    func updateOrderUIStates() {
         Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 await MainActor.run {
                     orderUIStates = curOrderUIStates
-                }
-            }
-        }
-        Task { @MainActor in
-            for await curOrderItemUIStates in mercuryShopInteractor.allOrderItemUIStates {
-                await MainActor.run {
-                    allOrderItemUIStates = curOrderItemUIStates
                 }
             }
         }
@@ -142,7 +186,7 @@ final class MercuryShopViewModel {
     }
     func updateOrderItemUIStates(orderUIState: OrderUIState) {
         Task { @MainActor in
-            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: OrderUIState)
+            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: orderUIState)
             for await curOrderItemUIStates in stateFlowOrderItemUIStates {
                 await MainActor.run {
                     orderItemUIStates = curOrderItemUIStates
@@ -150,17 +194,65 @@ final class MercuryShopViewModel {
             }
         }
     }
-    func createOrder(orderUIState: OrderUIState) {
+    func createOrder() {
         Task {
-            try? await mercuryShopInteractor.createOrder(orderUIState: orderUIState)
+            var orderUIState : OrderUIState? = nil
+            try? orderUIState = await mercuryShopInteractor.createOrder()
+            if orderUIState != nil {
+                isOrderOpen = true
+            }
         }
     }
-    func updateOrderProperty(orderUIState: OrderUIState, propertyName : String, propertyValue : Any?) {
+    func updateOrderProperty(
+        orderUIState: OrderUIState,
+        id : Int32 = 0,
+        amount : Float = 0.0,
+        clientName : String = "",
+        clientContacts : [shared.ContactType : String] = [ : ],
+        creationDate : Date = Date(),
+        completionDate : Date = Date(),
+        status : shared.OrderStatus = .none) {
          Task {
             try? await mercuryShopInteractor.updateOrderProperty(
                 orderUIState: orderUIState,
-                propertyName: propertyName,
-                propertyValue: propertyValue)
+                id : id,
+                amount : amount,
+                clientName : clientName,
+                clientContacts : clientContacts,
+                creationDate : creationDate.toLocalDateTime(),
+                completionDate : completionDate.toLocalDateTime(),
+                status : status)
          }
+    }
+    func bindOrderClientName() -> Binding<String> {
+        return Binding(
+            get: {
+                self.currentOrder.clientName
+            },
+            set: { newValue in
+                self.updateOrderProperty(orderUIState: self.currentOrder, clientName: newValue)
+            }
+        )
+    }
+    func bindOrderAmount() -> Binding<Float> {
+        return Binding(
+            get: {
+                self.currentOrder.amount
+            },
+            set: { newValue in
+                self.updateOrderProperty(orderUIState: self.currentOrder, amount: newValue)
+            }
+        )
+    }
+    func bindOrderStatus() -> Binding<String> {
+        return Binding(
+            get: {
+                self.currentOrder.status.label
+            },
+            set: { newValue in
+                let orderStatus : OrderStatus = OrderStatus.Companion().fromLabel(label: newValue)
+                self.updateOrderProperty(orderUIState: self.currentOrder, status: orderStatus)
+            }
+        )
     }
 }
