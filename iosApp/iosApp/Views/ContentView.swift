@@ -41,7 +41,12 @@ struct ContentView: View {
                     .mainToolbar(mercuryViewModel : viewModel)
                 }
         }
-        .environment(viewModel)
+        //.environment(viewModel)
+        .onAppear {
+            viewModel.observeShopUIStates()
+            viewModel.observeCartUIStates()
+            viewModel.observeOrderUIStates()
+        }
         if viewModel.isShoppingCartOpen {
             content
                 .shoppingCart(mercuryViewModel: viewModel)

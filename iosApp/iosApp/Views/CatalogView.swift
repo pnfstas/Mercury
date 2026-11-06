@@ -61,8 +61,5 @@ struct CatalogView: View {
         }
         .scrollIndicators(.automatic, axes: .horizontal)
         .scrollIndicators(.automatic, axes: .vertical)
-        .onAppear {
-            viewModel.updateShopUIStates()
-        }
     }
 }

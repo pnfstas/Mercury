@@ -103,21 +103,29 @@ final class MercuryShopViewModel {
     var orderUIStates : [OrderUIState] = []
     //var allOrderItemUIStates : [OrderItemUIState] = []
     var orderItemUIStates : [OrderItemUIState] = []
+    var taskObserveShopUIStates = Task<Void, Never>? = nil
+    var taskObserveCartUIStates = Task<Void, Never>? = nil
+    var taskObserveOrderUIStates = Task<Void, Never>? = nil
+    var taskObserveOrderItemUIStates = Task<Void, Never>? = nil
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
-    var currentOrder : OrderUIState
+    var currentOrderId : Int = 0
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false
     var isOrderListOpen : Bool = false
-    var isOrderOpen : Bool = false
     var isOrderItemsOpen : Bool = false
+    var currentOrder : OrderUIState {
+        get { return orderUIStates.first { $0.id == currentOrderId } }
+    }
+    var isOrderOpen : Bool {
+        get { return currentOrderId != null }
+    }
     init() {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
-        currentOrder = OrderUIState()
     }
-    func updateShopUIStates() {
-        Task { @MainActor in
+    func observeShopUIStates() {
+        taskObserveShopUIStates = Task { @MainActor in
             for await curShopUIStates in mercuryShopInteractor.shopUIStates {
                 await MainActor.run {
                     shopUIStates = curShopUIStates
@@ -125,8 +133,8 @@ final class MercuryShopViewModel {
             }
         }
     }
-    func updateCartUIStates() {
-        Task { @MainActor in
+    func observeCartUIStates() {
+        taskObserveCartUIStates = Task { @MainActor in
             for await curCartUIStates in mercuryShopInteractor.cartUIStates {
                 await MainActor.run {
                     cartUIStates = curCartUIStates
@@ -134,11 +142,21 @@ final class MercuryShopViewModel {
             }
         }
     }
-    func updateOrderUIStates() {
-        Task { @MainActor in
+    func observeOrderUIStates() {
+        taskObserveOrderUIStates = Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 await MainActor.run {
                     orderUIStates = curOrderUIStates
+                }
+            }
+        }
+    }
+    func observeOrderItemUIStates(orderUIState: OrderUIState) {
+        taskObserveOrderItemUIStates = Task { @MainActor in
+            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: orderUIState)
+            for await curOrderItemUIStates in stateFlowOrderItemUIStates {
+                await MainActor.run {
+                    orderItemUIStates = curOrderItemUIStates
                 }
             }
         }
@@ -184,27 +202,12 @@ final class MercuryShopViewModel {
             }
         )
     }
-    func updateOrderItemUIStates(orderUIState: OrderUIState) {
-        Task { @MainActor in
-            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: orderUIState)
-            for await curOrderItemUIStates in stateFlowOrderItemUIStates {
-                await MainActor.run {
-                    orderItemUIStates = curOrderItemUIStates
-                }
-            }
-        }
-    }
     func createOrder() {
         Task {
-            var orderUIState : OrderUIState? = nil
-            try? orderUIState = await mercuryShopInteractor.createOrder()
-            if orderUIState != nil {
-                isOrderOpen = true
-            }
+            try? currentOrderId = await mercuryShopInteractor.createOrder()
         }
     }
     func updateOrderProperty(
-        orderUIState: OrderUIState,
         id : Int32 = 0,
         amount : Float = 0.0,
         clientName : String = "",
@@ -214,7 +217,6 @@ final class MercuryShopViewModel {
         status : shared.OrderStatus = .none) {
          Task {
             try? await mercuryShopInteractor.updateOrderProperty(
-                orderUIState: orderUIState,
                 id : id,
                 amount : amount,
                 clientName : clientName,
@@ -230,7 +232,7 @@ final class MercuryShopViewModel {
                 self.currentOrder.clientName
             },
             set: { newValue in
-                self.updateOrderProperty(orderUIState: self.currentOrder, clientName: newValue)
+                self.updateOrderProperty(id: self.currentOrderId, clientName: newValue)
             }
         )
     }
@@ -240,7 +242,7 @@ final class MercuryShopViewModel {
                 self.currentOrder.amount
             },
             set: { newValue in
-                self.updateOrderProperty(orderUIState: self.currentOrder, amount: newValue)
+                self.updateOrderProperty(id: self.currentOrderId, amount: newValue)
             }
         )
     }
@@ -251,7 +253,7 @@ final class MercuryShopViewModel {
             },
             set: { newValue in
                 let orderStatus : OrderStatus = OrderStatus.Companion().fromLabel(label: newValue)
-                self.updateOrderProperty(orderUIState: self.currentOrder, status: orderStatus)
+                self.updateOrderProperty(id: self.currentOrderId, status: orderStatus)
             }
         )
     }

@@ -71,9 +71,6 @@ struct OrderListViewModifier: ViewModifier {
                     }
                 }
             }
-            .onAppear {
-                viewModel.updateOrderUIStates()
-            }
     }
 }
 extension View {

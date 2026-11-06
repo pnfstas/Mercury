@@ -58,7 +58,6 @@ struct OrderViewModifier: ViewModifier {
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))
                         .onTapGesture { }
-                        //.safeAreaInset(edge: .top, alignment: .center)
                     }
                 }
             }
