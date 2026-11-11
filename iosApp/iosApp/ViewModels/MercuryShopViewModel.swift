@@ -52,6 +52,11 @@ enum AppScreens : Hashable, CaseIterable {
  }
 
 extension Date {
+    private static let defaultDateFormatter : DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        return dateFormatter
+    }()
     func toLocalDateTime() -> Kotlinx_datetimeLocalDateTime {
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond], from: self)
         let year : Int32 = Int32(components.year ?? 1970)
@@ -69,6 +74,9 @@ extension Date {
             minute: minute,
             second: second,
             nanosecond: nanosecond)
+    }
+    func toString() -> String {
+        return Self.defaultDateFormatter.string(from: self)
     }
 }
 extension Kotlinx_datetimeLocalDateTime {
@@ -93,32 +101,57 @@ extension Kotlinx_datetimeLocalDateTime {
         )
         return Calendar.current.date(from: components) ?? Date()
     }
+    func toFormattedString() -> String {
+        return self.toDate().toString()
+    }
+}
+
+extension OrderUIState {
+    func `with`(
+        id : Int32? = nil,
+        amount : Float? = nil,
+        clientName : String? = nil,
+        clientContacts : [ContactType : String]? = nil,
+        creationDate : Kotlinx_datetimeLocalDateTime? = nil,
+        completionDate : Kotlinx_datetimeLocalDateTime? = nil,
+        status : OrderStatus? = nil) -> OrderUIState {
+            return self.doCopy(
+                id: id ?? self.id,
+                amount: amount ?? self.amount,
+                clientName: clientName ?? self.clientName,
+                clientContacts: clientContacts ?? self.clientContacts,
+                creationDate: creationDate ?? self.creationDate,
+                completionDate: completionDate ?? self.completionDate,
+                status: status ?? self.status)
+        }
 }
 
 @Observable
 final class MercuryShopViewModel {
+    let defaultDateStr : String = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        return dateFormatter
+    }().string(from: Date())
     private var mercuryShopInteractor : MercuryShopInteractor
     var shopUIStates : [MercuryShopUIState] = []
     var cartUIStates : [MercuryShopUIState] = []
     var orderUIStates : [OrderUIState] = []
-    //var allOrderItemUIStates : [OrderItemUIState] = []
     var orderItemUIStates : [OrderItemUIState] = []
-    var taskObserveShopUIStates = Task<Void, Never>? = nil
-    var taskObserveCartUIStates = Task<Void, Never>? = nil
-    var taskObserveOrderUIStates = Task<Void, Never>? = nil
-    var taskObserveOrderItemUIStates = Task<Void, Never>? = nil
+    var taskObserveShopUIStates : Task<Void, Never>? = nil
+    var taskObserveCartUIStates : Task<Void, Never>? = nil
+    var taskObserveOrderUIStates : Task<Void, Never>? = nil
+    var taskObserveOrderItemUIStates : Task<Void, Never>? = nil
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
+    var currentOrder : OrderUIState? = nil
     var currentOrderId : Int = 0
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false
     var isOrderListOpen : Bool = false
     var isOrderItemsOpen : Bool = false
-    var currentOrder : OrderUIState {
-        get { return orderUIStates.first { $0.id == currentOrderId } }
-    }
     var isOrderOpen : Bool {
-        get { return currentOrderId != null }
+        get { return currentOrder != nil }
     }
     init() {
         let koinHelper : KoinHelper = KoinHelper()
@@ -145,9 +178,7 @@ final class MercuryShopViewModel {
     func observeOrderUIStates() {
         taskObserveOrderUIStates = Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
-                await MainActor.run {
-                    orderUIStates = curOrderUIStates
-                }
+                orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
             }
         }
     }
@@ -204,11 +235,23 @@ final class MercuryShopViewModel {
     }
     func createOrder() {
         Task {
-            try? currentOrderId = await mercuryShopInteractor.createOrder()
+            if let orderId = try? await mercuryShopInteractor.createOrder() {
+                let orderId : Int = Int(truncating: orderId)
+                if orderId > 0 {
+                    try? await Task.sleep(nanoseconds: 300_000_000)
+                    currentOrder = orderUIStates.first { $0.id == orderId }
+                }
+            }
+        }
+    }
+    func saveOrder() {
+        Task {
+            try? await mercuryShopInteractor.saveOrder(orderUIState : self.currentOrder)
+            currentOrder = nil
         }
     }
     func updateOrderProperty(
-        id : Int32 = 0,
+        id : Int = 0,
         amount : Float = 0.0,
         clientName : String = "",
         clientContacts : [shared.ContactType : String] = [ : ],
@@ -217,7 +260,7 @@ final class MercuryShopViewModel {
         status : shared.OrderStatus = .none) {
          Task {
             try? await mercuryShopInteractor.updateOrderProperty(
-                id : id,
+                id : Int32(id),
                 amount : amount,
                 clientName : clientName,
                 clientContacts : clientContacts,
@@ -229,31 +272,31 @@ final class MercuryShopViewModel {
     func bindOrderClientName() -> Binding<String> {
         return Binding(
             get: {
-                self.currentOrder.clientName
+                self.currentOrder?.clientName ?? ""
             },
             set: { newValue in
-                self.updateOrderProperty(id: self.currentOrderId, clientName: newValue)
+                self.currentOrder = self.currentOrder?.with(clientName: newValue)
             }
         )
     }
     func bindOrderAmount() -> Binding<Float> {
         return Binding(
             get: {
-                self.currentOrder.amount
+                self.currentOrder?.amount ?? 0.0
             },
             set: { newValue in
-                self.updateOrderProperty(id: self.currentOrderId, amount: newValue)
+                self.currentOrder = self.currentOrder?.with(amount: newValue)
             }
         )
     }
     func bindOrderStatus() -> Binding<String> {
         return Binding(
             get: {
-                self.currentOrder.status.label
+                self.currentOrder?.status.label ?? ""
             },
             set: { newValue in
                 let orderStatus : OrderStatus = OrderStatus.Companion().fromLabel(label: newValue)
-                self.updateOrderProperty(id: self.currentOrderId, status: orderStatus)
+                self.currentOrder = self.currentOrder?.with(status: orderStatus)
             }
         )
     }

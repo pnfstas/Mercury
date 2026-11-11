@@ -59,7 +59,7 @@ data class TildaCatalog (
 						image = product.editions?.getOrNull(0)?.img ?: "",
 						url = product.url ?: ""
 					)
-					println("productEntity: $productEntity")
+					//println("productEntity: $productEntity")
 					productEntities.add(productEntity)
 				}
 			}
@@ -78,30 +78,28 @@ class MercuryShopRepository(
 	val orderItemsDao: OrderItemsDao,
 	val httpClient : HttpClient
 ) {
-	fun updateProducts() {
-		coroutineScope.launch(Dispatchers.IO) {
-			try {
-				val catalogUrl = "https://store.tildaapi.com/api/getproductslist/?storepartuid=727848246912&recid=2349783881&c=1788418420998&slice=3&size=100"
-				val eliteCatalogUrl = "https://store.tildaapi.com/api/getproductslist/?storepartuid=727848246912&recid=2349783881&c=1788417818487&getallparts=true&getoptions=true&slice=1&size=100"
-				val httpResponseCatalog : HttpResponse = httpClient.get(catalogUrl)
-				val httpResponseEliteCatalog : HttpResponse = httpClient.get(eliteCatalogUrl)
-				if(httpResponseCatalog.status == HttpStatusCode.OK && httpResponseEliteCatalog.status == HttpStatusCode.OK) {
-					val tildaCatalog : TildaCatalog = httpResponseCatalog.body()
-					val tildaEliteCatalog : TildaCatalog = httpResponseEliteCatalog.body()
-					//println("tildaCatalog: $tildaCatalog")
-					//println("tildaEliteCatalog: $tildaEliteCatalog")
-					var productEntities = mutableListOf<ProductEntity>()
-					tildaEliteCatalog.appendToProductEntities(productEntities = productEntities, elite = true)
-					tildaCatalog.appendToProductEntities(productEntities = productEntities)
-					if(productEntities.size > 0) {
-						println("productEntities: $productEntities")
-						productsDao.insertAll(productEntities)
-					}
+	suspend fun updateProducts() {
+		try {
+			val catalogUrl = "https://store.tildaapi.com/api/getproductslist/?storepartuid=727848246912&recid=2349783881&c=1788418420998&slice=3&size=100"
+			val eliteCatalogUrl = "https://store.tildaapi.com/api/getproductslist/?storepartuid=727848246912&recid=2349783881&c=1788417818487&getallparts=true&getoptions=true&slice=1&size=100"
+			val httpResponseCatalog : HttpResponse = httpClient.get(catalogUrl)
+			val httpResponseEliteCatalog : HttpResponse = httpClient.get(eliteCatalogUrl)
+			if(httpResponseCatalog.status == HttpStatusCode.OK && httpResponseEliteCatalog.status == HttpStatusCode.OK) {
+				val tildaCatalog : TildaCatalog = httpResponseCatalog.body()
+				val tildaEliteCatalog : TildaCatalog = httpResponseEliteCatalog.body()
+				//println("tildaCatalog: $tildaCatalog")
+				//println("tildaEliteCatalog: $tildaEliteCatalog")
+				var productEntities = mutableListOf<ProductEntity>()
+				tildaEliteCatalog.appendToProductEntities(productEntities = productEntities, elite = true)
+				tildaCatalog.appendToProductEntities(productEntities = productEntities)
+				if(productEntities.size > 0) {
+					//println("productEntities: $productEntities")
+					productsDao.insertAll(productEntities)
 				}
 			}
-			catch(e: Exception) {
-				println(e)
-			}
+		}
+		catch(e: Exception) {
+			println(e)
 		}
 	}
 }

@@ -45,7 +45,6 @@ struct MainToolbarMenuModifier : ViewModifier {
 }
 
 struct MainToolbarMenuButton : View {
-    //@Environment(MercuryShopViewModel.self) private var viewModel
     var mercuryViewModel : MercuryShopViewModel
     var appScreen : AppScreens
     var body : some View {

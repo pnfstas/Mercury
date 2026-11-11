@@ -7,6 +7,7 @@
 package app.mercury.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.room.Ignore
 import app.mercury.data.local.database.MercuryShopRepository
 import app.mercury.data.local.entities.ContactType
@@ -24,6 +25,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -80,22 +82,6 @@ data class OrderUIState (
 		completionDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
 		status = OrderStatus.None
 	)
-    val amountStr : String
-		get() {
-			return amount.toString()
-		}
-	val creationDateStr : String
-		get() {
-			return creationDate.toString()
-		}
-	val completionDateStr : String
-		get() {
-			return completionDate.toString()
-		}
-	val statusDesc : String
-		get() {
-			return status.label
-		}
 	fun toOrderEntity() : OrderEntity {
 		return OrderEntity(
 			amount = this.amount,
@@ -117,7 +103,7 @@ data class OrderUIState (
 			else -> null
 		}
 	}
-	fun with(
+	fun copyAndInit(
 		id : Int = this.id,
 		amount : Float = this.amount,
 		clientName : String = this.clientName,
@@ -153,7 +139,12 @@ data class OrderItemUIState (
 }
 
 class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopRepository) : ViewModel() {
-    val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
+	init {
+		viewModelScope.launch {
+			mercuryShopRepository.updateProducts()
+		}
+	}
+	val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
 	val shopUIStates : StateFlow<List<MercuryShopUIState>> = combine(
         mercuryShopRepository.productsDao.getAll(),
         mercuryShopRepository.shoppingCartDao.getAll(),
@@ -256,6 +247,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
     suspend fun createOrder(): Int {
         var orderId: Int = 0
         val amount: Float = cartUIStates.value.sumOf { it.cartAmount.toDouble() }.toFloat()
+		println("Create order, amount = $amount")
         if (amount > 0) {
             val orderEntity: OrderEntity = OrderEntity(
                 creationDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
@@ -270,9 +262,12 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         }
         return orderId
     }
-	suspend fun updateOrder(orderUIState: OrderUIState) {
-        val orderEntity : OrderEntity = orderUIState.toOrderEntity()
-        mercuryShopRepository.ordersDao.upsertOrder(orderEntity)
+	suspend fun saveOrder(orderUIState: OrderUIState?) : OrderUIState? {
+		return orderUIState?.let {
+			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
+			val orderId : Int = mercuryShopRepository.ordersDao.upsertOrder(orderEntity).toInt()
+			mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState()
+		}
 	}
     suspend fun updateOrderProperty(
 		id : Int,

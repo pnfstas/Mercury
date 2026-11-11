@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainToolbarModifier : ViewModifier {
     var mercuryViewModel : MercuryShopViewModel
-    //@Environment(MercuryShopViewModel.self) private var viewModel
     @Environment(\.dismiss) private var dismiss
     func body(content: Content) -> some View {
         @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel

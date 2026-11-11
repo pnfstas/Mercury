@@ -10,19 +10,17 @@ import SwiftUI
 struct ContentView: View {
     @State private var viewModel : MercuryShopViewModel = MercuryShopViewModel()
     var body: some View {
-        let content =
         NavigationStack(path: $viewModel.navigationPath) {
-            MainView()
+            MainView(mercuryViewModel: viewModel)
                 .navigationBarTitleDisplayMode(.automatic)
-                //.environment(viewModel)
                 .mainToolbar(mercuryViewModel : viewModel)
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
                         switch screen {
                         case .main:
-                            MainView()
+                            MainView(mercuryViewModel: viewModel)
                         case .catalog:
-                            CatalogView()
+                            CatalogView(mercuryViewModel: viewModel)
                         case .favorites:
                             FavoritesView()
                         case .shoppingCart:
@@ -37,32 +35,17 @@ struct ContentView: View {
                             QuestionsView()
                         }
                     }
-                    //.environment(viewModel)
                     .mainToolbar(mercuryViewModel : viewModel)
                 }
         }
-        //.environment(viewModel)
+        .measureScreen()
+        .orderList(viewModel: viewModel)
+        .shoppingCart(viewModel: viewModel)
+        .order(viewModel: viewModel)
         .onAppear {
             viewModel.observeShopUIStates()
             viewModel.observeCartUIStates()
             viewModel.observeOrderUIStates()
         }
-        if viewModel.isShoppingCartOpen {
-            content
-                .shoppingCart(mercuryViewModel: viewModel)
-        }
-        else if viewModel.isOrderListOpen {
-            content
-                .orderList(mercuryViewModel: viewModel)
-        }
-        else if viewModel.isOrderOpen {
-            content
-                .order(mercuryViewModel: viewModel)
-        }
-    }
+     }
 }
-/*
-#Preview {
-    ContentView()
-}
-*/

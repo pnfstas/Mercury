@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(MercuryShopViewModel.self) var viewModel
+    var mercuryViewModel : MercuryShopViewModel
     var body: some View {
-        @Bindable var viewModel : MercuryShopViewModel = viewModel
+        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         VStack(alignment: .center, spacing: 20) {
             VStack(alignment: .center, spacing: 10) {
                 Text("МАГАЗИН\nПРОДУКТОВ ПИТАНИЯ\nЭЛИТНЫХ СОРТОВ\nСЫРА И МЯСА")
