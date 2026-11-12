@@ -34,7 +34,13 @@ interface OrdersDao {
     suspend fun upsertOrder(orderEntity: OrderEntity) : Long
 
     @Delete
-    suspend fun delete(orderEntity : OrderEntity)
+    suspend fun delete(orderEntity : OrderEntity) : Int
+
+	@Query("DELETE FROM orders WHERE id = :id")
+	suspend fun deleteById(id : Int) : Int
+
+	@Query("DELETE FROM orders")
+	suspend fun deleteAll() : Int
 
     @Query("SELECT * FROM orders")
     fun getAll() : Flow<List<OrderEntity>>

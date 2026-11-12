@@ -11,16 +11,16 @@ struct ContentView: View {
     @State private var viewModel : MercuryShopViewModel = MercuryShopViewModel()
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
-            MainView(mercuryViewModel: viewModel)
+            MainView(viewModel: viewModel)
                 .navigationBarTitleDisplayMode(.automatic)
-                .mainToolbar(mercuryViewModel : viewModel)
+                .mainToolbar(viewModel : viewModel)
                 .navigationDestination(for: AppScreens.self) { screen in
                     Group {
                         switch screen {
                         case .main:
-                            MainView(mercuryViewModel: viewModel)
+                            MainView(viewModel: viewModel)
                         case .catalog:
-                            CatalogView(mercuryViewModel: viewModel)
+                            CatalogView(viewModel: viewModel)
                         case .favorites:
                             FavoritesView()
                         case .shoppingCart:
@@ -35,7 +35,7 @@ struct ContentView: View {
                             QuestionsView()
                         }
                     }
-                    .mainToolbar(mercuryViewModel : viewModel)
+                    .mainToolbar(viewModel : viewModel)
                 }
         }
         .measureScreen()

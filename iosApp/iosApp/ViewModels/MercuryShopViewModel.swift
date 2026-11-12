@@ -213,6 +213,11 @@ final class MercuryShopViewModel {
             try? await mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
         }
     }
+    func clearShoppingCart() {
+        Task {
+            try? await mercuryShopInteractor.clearShoppingCart()
+        }
+    }
     func increaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
         Task {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
@@ -244,10 +249,29 @@ final class MercuryShopViewModel {
             }
         }
     }
-    func saveOrder() {
+    func saveOrder(_ close : Bool = false) {
         Task {
             try? await mercuryShopInteractor.saveOrder(orderUIState : self.currentOrder)
-            currentOrder = nil
+            if close {
+                currentOrder = nil
+            }
+        }
+    }
+    func deleteOrder(_ orderUIState : OrderUIState) {
+        Task {
+            let orderId = orderUIState.id
+            if let count = try? await mercuryShopInteractor.deleteOrder(orderUIState : orderUIState), count > 0 {
+                if let current_Order = self.currentOrder, current_Order.id == orderId {
+                    currentOrder = nil
+                }
+            }
+        }
+    }
+    func deleteAllOrders() {
+        Task {
+            if let count = try? await mercuryShopInteractor.deleteAllOrders(), count > 0 {
+                currentOrder = nil
+            }
         }
     }
     func updateOrderProperty(

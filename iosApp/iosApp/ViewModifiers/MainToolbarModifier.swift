@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MainToolbarModifier : ViewModifier {
-    var mercuryViewModel : MercuryShopViewModel
+    var viewModel : MercuryShopViewModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.screenSize) private var screenSize
     func body(content: Content) -> some View {
-        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
+        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .toolbar(.hidden, for: .navigationBar)
@@ -56,7 +57,8 @@ struct MainToolbarModifier : ViewModifier {
                     Divider()
                 }
                 .background(.menu)
-                .mainToolbarMenu(mercuryViewModel : viewModel)
+                .environment(\.screenSize, screenSize)
+                .mainToolbarMenu(viewModel : viewModel)
             }
             .frame(maxWidth: .infinity, alignment: .top)
             .navigationTitle(viewModel.navigationPath.last?.description ?? "")
@@ -65,7 +67,7 @@ struct MainToolbarModifier : ViewModifier {
     }
 }
 extension View {
-    func mainToolbar(mercuryViewModel : MercuryShopViewModel) -> some View {
-        modifier(MainToolbarModifier(mercuryViewModel : mercuryViewModel))
+    func mainToolbar(viewModel : MercuryShopViewModel) -> some View {
+        modifier(MainToolbarModifier(viewModel : viewModel))
     }
 }

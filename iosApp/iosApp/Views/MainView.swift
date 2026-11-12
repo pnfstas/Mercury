@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    var mercuryViewModel : MercuryShopViewModel
+    var viewModel : MercuryShopViewModel
     var body: some View {
-        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
+        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         VStack(alignment: .center, spacing: 20) {
             VStack(alignment: .center, spacing: 10) {
                 Text("МАГАЗИН\nПРОДУКТОВ ПИТАНИЯ\nЭЛИТНЫХ СОРТОВ\nСЫРА И МЯСА")
@@ -51,7 +51,7 @@ struct MainView: View {
                         Text("Без ограничений\nпо мин. сумме\nзаказа")
                     }
                 }
-                 .foregroundStyle(Color(.fgColorLight))
+                .foregroundStyle(Color(.fgColorLight))
                 .font(.custom("Arial", size: 16).weight(.bold))
                 Button(action: { viewModel.navigationPath.append(AppScreens.catalog)}) {
                     HStack(alignment: .center) {

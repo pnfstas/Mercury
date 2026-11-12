@@ -53,20 +53,12 @@ struct OrderViewModifier: ViewModifier {
                                             .textFieldStyle(.roundedBorder)
                                     }
                                     GridRow {
-                                        Button(action: { viewModel.saveOrder() }) {
-                                            Text("Сохранить")
-                                                .multilineTextAlignment(.center)
+                                        HStack(alignment: .center, spacing: 20) {
+                                            DialogButton(action: { viewModel.saveOrder() }, label: "Сохранить", width: screenSize.width / 3)
+                                            DialogButton(action: { viewModel.saveOrder(true) }, label: "Сохранить и закрыть", width: screenSize.width / 3)
                                         }
                                         .gridCellColumns(2)
-                                        .gridColumnAlignment(.center)
-                                        .buttonStyle(.plain)
-                                        .frame(width: screenWidthPortion(1 / 3), height: 40)
-                                        .padding(.horizontal, 7)
-                                        .padding(.vertical, 5)
-                                        .foregroundStyle(.white)
-                                        .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                                        //.opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
-                                        .font(.custom("Arial", size: 14).weight(.bold))
+                                        .frame(maxWidth: .infinity)
                                     }
                                 }
                                 .frame(maxWidth: .infinity)
@@ -79,7 +71,7 @@ struct OrderViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
                         }
-                        .frame(maxWidth: screenWidthPortion(0.8), maxHeight: screenHeightPortion(0.8))
+                        .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))

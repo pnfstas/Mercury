@@ -9,9 +9,10 @@ import SwiftUI
 import shared
 
 struct CatalogView: View {
-    var mercuryViewModel : MercuryShopViewModel
+    var viewModel : MercuryShopViewModel
+    @Environment(\.screenSize) private var screenSize
     var body: some View {
-        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
+        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
                 ForEach(viewModel.shopUIStates, id: \.product.id) { shopUIState in
@@ -23,14 +24,14 @@ struct CatalogView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                            .frame(width: screenWidthPortion(1 / 8), height: screenWidthPortion(1 / 8))
+                            .frame(width: screenSize.width / 8, height: screenSize.width / 8)
                          VStack(alignment: .center, spacing: 10) {
                             Text(shopUIState.product.title)
                             Text(shopUIState.product.descr)
                         }
                             .frame(maxWidth: .infinity)
                         Text(shopUIState.product.priceDescr)
-                            .frame(width: screenWidthPortion(1 / 8))
+                            .frame(width: screenSize.width / 8)
                         HStack {
                             IconButton(action: { viewModel.decreaseEnteredQuantity(shopUIState: shopUIState) }, systemImage: "minus")
                             TextField("", value: viewModel.bindEnteredQuantity(shopUIState: shopUIState), format: .number)
@@ -43,7 +44,7 @@ struct CatalogView: View {
                             Text(shopUIState.inStock ? "Добавить в корзину" : "Нет в наличии")
                         }
                         .buttonStyle(.plain)
-                        .frame(width: screenWidthPortion(1 / 4), height: 40)
+                        .frame(width: screenSize.width / 4, height: 40)
                         .padding(.horizontal, 7)
                         .padding(.vertical, 5)
                         .foregroundStyle(.white)

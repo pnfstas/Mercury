@@ -30,6 +30,7 @@ kotlin {
         minSdk = libs.versions.android.minSdk.get().toInt()
         compilerOptions {
             jvmTarget = JvmTarget.JVM_25
+            freeCompilerArgs.add("-Xexpect-actual-classes")
         }
         androidResources {
            enable = true

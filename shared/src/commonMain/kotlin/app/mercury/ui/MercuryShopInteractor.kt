@@ -216,6 +216,9 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
         enteredQuantityMap.value.remove(shopUIState.product.id)
     }
+	suspend fun clearShoppingCart() : Int {
+		return mercuryShopRepository.shoppingCartDao.deleteAll()
+	}
     suspend fun stepShoppingCartQuantity(cartUIState : MercuryShopUIState, decrease: Boolean = false) {
         val productId = cartUIState.product.id
         val cartQuantity : Float = if(decrease) min(cartUIState.cartQuantity - cartUIState.portion, 0f)
@@ -268,6 +271,14 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 			val orderId : Int = mercuryShopRepository.ordersDao.upsertOrder(orderEntity).toInt()
 			mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState()
 		}
+	}
+	suspend fun deleteOrder(orderUIState: OrderUIState?) : Int {
+		return orderUIState?.let {
+			mercuryShopRepository.ordersDao.deleteById(id = it.id)
+		} ?: 0
+	}
+	suspend fun deleteAllOrders() : Int {
+		return mercuryShopRepository.ordersDao.deleteAll()
 	}
     suspend fun updateOrderProperty(
 		id : Int,

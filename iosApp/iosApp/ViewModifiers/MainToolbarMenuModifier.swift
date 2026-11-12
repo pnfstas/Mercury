@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct MainToolbarMenuModifier : ViewModifier {
-    var mercuryViewModel : MercuryShopViewModel
+    var viewModel : MercuryShopViewModel
     func body(content: Content) -> some View {
-        let viewModel : MercuryShopViewModel = mercuryViewModel
         content
             .overlay(alignment: .bottomTrailing) {
                 if viewModel.isMenuOpen {
                     VStack(alignment: .leading, spacing: 5) {
-                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.about)
-                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.catalog)
-                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.contacts)
-                        MainToolbarMenuButton(mercuryViewModel: viewModel, appScreen: AppScreens.questions)
+                        MainToolbarMenuButton(viewModel: viewModel, appScreen: AppScreens.about)
+                        MainToolbarMenuButton(viewModel: viewModel, appScreen: AppScreens.catalog)
+                        MainToolbarMenuButton(viewModel: viewModel, appScreen: AppScreens.contacts)
+                        MainToolbarMenuButton(viewModel: viewModel, appScreen: AppScreens.questions)
                     }
                     .frame(width: 200)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.menu))
@@ -45,10 +44,10 @@ struct MainToolbarMenuModifier : ViewModifier {
 }
 
 struct MainToolbarMenuButton : View {
-    var mercuryViewModel : MercuryShopViewModel
+    var viewModel : MercuryShopViewModel
     var appScreen : AppScreens
     var body : some View {
-        @Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
+        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         Button(action: {
             viewModel.isMenuOpen = false
             viewModel.navigationPath.append(appScreen)
@@ -67,7 +66,7 @@ struct MainToolbarMenuButton : View {
 }
 
 extension View {
-    func mainToolbarMenu(mercuryViewModel : MercuryShopViewModel) -> some View {
-        modifier(MainToolbarMenuModifier(mercuryViewModel : mercuryViewModel))
+    func mainToolbarMenu(viewModel : MercuryShopViewModel) -> some View {
+        modifier(MainToolbarMenuModifier(viewModel : viewModel))
     }
 }

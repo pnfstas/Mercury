@@ -30,6 +30,9 @@ interface ShoppingCartDao {
     @Delete
     suspend fun delete(shoppingCartEntity : ShoppingCartEntity)
 
+	@Query("DELETE FROM shopping_cart")
+	suspend fun deleteAll() : Int
+
     @Query("SELECT * FROM shopping_cart")
     fun getAll() : Flow<List<ShoppingCartEntity>>
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShoppingCartViewModifier: ViewModifier {
     var viewModel : MercuryShopViewModel
+    @Environment(\.screenSize) private var screenSize
     func body(content: Content) -> some View {
         if viewModel.isShoppingCartOpen {
             content
@@ -38,14 +39,14 @@ struct ShoppingCartViewModifier: ViewModifier {
                                             } placeholder: {
                                                 ProgressView()
                                             }
-                                            .frame(width: screenWidthPortion(1 / 8), height: screenWidthPortion(1 / 8))
+                                            .frame(width: screenSize.width / 8, height: screenSize.width / 8)
                                             VStack(alignment: .center, spacing: 10) {
                                                 Text(cartUIState.product.title)
                                                 Text(cartUIState.product.descr)
                                             }
                                             .frame(maxWidth: .infinity)
                                             Text(cartUIState.product.priceDescr)
-                                                .frame(width: screenWidthPortion(1 / 8))
+                                                .frame(width: screenSize.width / 8)
                                             HStack(alignment: .center) {
                                                 IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
                                                 TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
@@ -71,7 +72,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                                     .multilineTextAlignment(.center)
                             }
                             .buttonStyle(.plain)
-                            .frame(width: screenWidthPortion(1 / 3), height: 40)
+                            .frame(width: screenSize.width / 3, height: 40)
                             .padding(.horizontal, 7)
                             .padding(.vertical, 5)
                             .foregroundStyle(.white)
@@ -79,7 +80,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
                             .font(.custom("Arial", size: 14).weight(.bold))
                         }
-                        .frame(maxWidth: screenWidthPortion(0.8), maxHeight: screenHeightPortion(0.8))
+                        .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.white))
