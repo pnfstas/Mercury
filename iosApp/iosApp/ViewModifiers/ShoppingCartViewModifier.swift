@@ -11,6 +11,7 @@ struct ShoppingCartViewModifier: ViewModifier {
     var viewModel : MercuryShopViewModel
     @Environment(\.screenSize) private var screenSize
     func body(content: Content) -> some View {
+        let buttonOpacity : CGFloat = viewModel.cartUIStates.isEmpty ? 0.5 : 1
         if viewModel.isShoppingCartOpen {
             content
                 .overlay(alignment: .center) {
@@ -67,18 +68,13 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
-                            Button(action: { viewModel.createOrder() }) {
-                                Text("Сформировать заказ")
-                                    .multilineTextAlignment(.center)
+                            HStack(alignment: .center, spacing: 20) {
+                                DialogButton(action: { viewModel.clearShoppingCart() }, label: "Очистить корзину", width: screenSize.width / 3,
+                                    opacity: buttonOpacity)
+                                DialogButton(action: { viewModel.createOrder() }, label: "Сформировать заказ", width: screenSize.width / 3,
+                                    opacity: buttonOpacity)
                             }
-                            .buttonStyle(.plain)
-                            .frame(width: screenSize.width / 3, height: 40)
-                            .padding(.horizontal, 7)
-                            .padding(.vertical, 5)
-                            .foregroundStyle(.white)
-                            .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                            .opacity(viewModel.cartUIStates.isEmpty ? 0.5 : 1)
-                            .font(.custom("Arial", size: 14).weight(.bold))
+                            .frame(maxWidth: .infinity)
                         }
                         .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)
                         .padding(.horizontal, 10)

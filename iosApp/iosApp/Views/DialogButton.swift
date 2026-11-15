@@ -50,6 +50,8 @@ struct DialogButton<S : Shape> : View {
     let shape : S
     let backgroundColor : Color
     let foregroundColor : Color
+    let borderColor : Color
+    let borderWidth : CGFloat
     let opacity : CGFloat
     let font : Font
     private static var defaultPadding : EdgeInsets {
@@ -69,6 +71,8 @@ struct DialogButton<S : Shape> : View {
         shape : S = RoundedRectangle(cornerRadius: 8),
         backgroundColor : Color = .main,
         foregroundColor : Color = .white,
+        borderColor : Color = .main,
+        borderWidth : CGFloat = 0.0,
         opacity : CGFloat = 1.0,
         font : Font = Font.custom("Arial", size: 14).weight(.bold)
     ) {
@@ -84,6 +88,8 @@ struct DialogButton<S : Shape> : View {
         self.shape = shape
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
         self.opacity = opacity
         self.font = font
     }
@@ -114,7 +120,8 @@ struct DialogButton<S : Shape> : View {
         .frame(width: buttonWidth, height: height, alignment: alignment)
         .padding(padding)
         .contentMargins(contentMargins)
-        .background(shape.fill(backgroundColor))
         .opacity(opacity)
+        .background(shape.fill(backgroundColor))
+        .overlay(shape.stroke(borderColor, lineWidth: borderWidth))
     }
 }

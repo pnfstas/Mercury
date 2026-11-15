@@ -33,28 +33,32 @@ struct OrderListViewModifier: ViewModifier {
                             ScrollView {
                                 LazyVStack(alignment: .leading, spacing: 7) {
                                     ForEach(viewModel.orderUIStates, id: \.id) { orderUIState in //rawOrderUIState in
-                                        //if let orderUIState = rawOrderUIState as? OrderUIState {
-                                            HStack(alignment: .center, spacing: 2) {
-                                                Text(orderUIState.creationDate.toFormattedString())
-                                                    .frame(width: screenSize.width / 6)
-                                                Text(orderUIState.clientName)
-                                                    .frame(maxWidth: .infinity)
-                                                Text(orderUIState.amount.formatted())
-                                                    .frame(width: screenSize.width / 6)
-                                                Text(orderUIState.status.label)
-                                                    .frame(width: screenSize.width / 6)
-                                            }
-                                            .frame(maxWidth: .infinity)
-                                            .foregroundStyle(.black)
-                                            .background(.clear)
-                                            .font(.custom("Arial", size: 12).weight(.regular))
-                                            .highPriorityGesture(
-                                                TapGesture(count: 2)
-                                                    .onEnded {
-                                                        viewModel.currentOrder = orderUIState
-                                                    }
-                                            )
-                                        //} //if
+                                        HStack(alignment: .center, spacing: 2) {
+                                            Text(orderUIState.creationDate.toFormattedString())
+                                                .frame(width: screenSize.width / 6)
+                                            Text(orderUIState.clientName)
+                                                .frame(maxWidth: .infinity)
+                                            Text(orderUIState.amount.formatted())
+                                                .frame(width: screenSize.width / 6)
+                                            Text(orderUIState.status.label)
+                                                .frame(width: screenSize.width / 6)
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .foregroundStyle(.black)
+                                        .background(orderUIState.id == viewModel.selectedOrder?.id ? Color.cyan : Color.clear)
+                                        .font(.custom("Arial", size: 12).weight(.regular))
+                                        .highPriorityGesture(
+                                            TapGesture(count: 2)
+                                                .onEnded {
+                                                    viewModel.currentOrder = orderUIState
+                                                }
+                                                .exclusively(before:
+                                                    TapGesture(count: 1)
+                                                        .onEnded {
+                                                            viewModel.updateSelectedOrder(orderUIState)
+                                                        }
+                                                )
+                                        )
                                     }
                                 }
                             }
@@ -62,6 +66,15 @@ struct OrderListViewModifier: ViewModifier {
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .scrollIndicators(.automatic, axes: .vertical)
                             .background(.clear)
+                            .safeAreaInset(edge: .top) {
+                                ControlGroup {
+                                    DialogButton(action: { viewModel.cancelOrder() }, label: "Отменить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .black, borderWidth: 2, opacity: viewModel.cancelOrderOpacity)
+                                    DialogButton(action: { viewModel.deleteOrder() }, label: "Удалить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteOrderOpacity)
+                                    DialogButton(action: { viewModel.deleteAllOrders() }, label: "Очистить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteAllOrdersOpacity)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .background(.menu)
+                            }
                         }
                         .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)
                         .padding(.horizontal, 10)

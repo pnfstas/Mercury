@@ -33,6 +33,9 @@ interface OrdersDao {
     @Upsert
     suspend fun upsertOrder(orderEntity: OrderEntity) : Long
 
+	@Query("UPDATE orders SET status = 'None' WHERE id = :id AND status = 'Created'")
+	suspend fun cancelOrder(id : Int) : Int
+
     @Delete
     suspend fun delete(orderEntity : OrderEntity) : Int
 

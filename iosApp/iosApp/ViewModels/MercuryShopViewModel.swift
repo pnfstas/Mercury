@@ -145,13 +145,22 @@ final class MercuryShopViewModel {
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
-    var currentOrderId : Int = 0
+    var selectedOrder : OrderUIState? = nil
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false
     var isOrderListOpen : Bool = false
     var isOrderItemsOpen : Bool = false
     var isOrderOpen : Bool {
         get { return currentOrder != nil }
+    }
+    var cancelOrderOpacity : CGFloat {
+        get { return if let selectedOrder, selectedOrder.status == OrderStatus.created  { 1 } else { 0.5 } }
+    }
+    var deleteOrderOpacity : CGFloat {
+        get { return selectedOrder != nil ? 1 : 0.5 }
+    }
+    var deleteAllOrdersOpacity : CGFloat {
+        get { return !orderUIStates.isEmpty ? 1 : 0.5 }
     }
     init() {
         let koinHelper : KoinHelper = KoinHelper()
@@ -179,6 +188,12 @@ final class MercuryShopViewModel {
         taskObserveOrderUIStates = Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
+                if let selectedOrder {
+                    self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
+                }
+                else {
+                    self.selectedOrder = orderUIStates.first
+                }
             }
         }
     }
@@ -190,6 +205,14 @@ final class MercuryShopViewModel {
                     orderItemUIStates = curOrderItemUIStates
                 }
             }
+        }
+    }
+    func updateSelectedOrder(_ selectedOrder: OrderUIState?) {
+        if let selectedOrder {
+            self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
+        }
+        else {
+            self.selectedOrder = orderUIStates.first
         }
     }
     func increaseEnteredQuantity(shopUIState: MercuryShopUIState) {
@@ -251,26 +274,37 @@ final class MercuryShopViewModel {
     }
     func saveOrder(_ close : Bool = false) {
         Task {
-            try? await mercuryShopInteractor.saveOrder(orderUIState : self.currentOrder)
+            _ = try? await mercuryShopInteractor.saveOrder(orderUIState : self.currentOrder)
             if close {
                 currentOrder = nil
             }
         }
     }
-    func deleteOrder(_ orderUIState : OrderUIState) {
+    func cancelOrder() {
         Task {
-            let orderId = orderUIState.id
-            if let count = try? await mercuryShopInteractor.deleteOrder(orderUIState : orderUIState), count > 0 {
-                if let current_Order = self.currentOrder, current_Order.id == orderId {
-                    currentOrder = nil
+            if let orderUIState = selectedOrder  {
+                _ = try? await mercuryShopInteractor.cancelOrder(orderUIState : orderUIState)
+            }
+        }
+    }
+    func deleteOrder() {
+        Task {
+            if let selectedOrder  {
+                let orderId = selectedOrder.id
+                if let count = try? await mercuryShopInteractor.deleteOrder(orderUIState : selectedOrder), Int(truncating : count) > 0 {
+                    if let currentOrder, currentOrder.id == orderId {
+                        self.currentOrder = nil
+                    }
+                    updateSelectedOrder(selectedOrder)
                 }
             }
         }
     }
     func deleteAllOrders() {
         Task {
-            if let count = try? await mercuryShopInteractor.deleteAllOrders(), count > 0 {
+            if let count = try? await mercuryShopInteractor.deleteAllOrders(), Int(truncating : count) > 0 {
                 currentOrder = nil
+                selectedOrder = nil
             }
         }
     }

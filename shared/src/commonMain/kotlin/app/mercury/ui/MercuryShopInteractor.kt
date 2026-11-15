@@ -272,6 +272,11 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 			mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState()
 		}
 	}
+	suspend fun cancelOrder(orderUIState: OrderUIState?) : Int {
+		return orderUIState?.let {
+			mercuryShopRepository.ordersDao.cancelOrder(id = it.id)
+		} ?: 0
+	}
 	suspend fun deleteOrder(orderUIState: OrderUIState?) : Int {
 		return orderUIState?.let {
 			mercuryShopRepository.ordersDao.deleteById(id = it.id)
