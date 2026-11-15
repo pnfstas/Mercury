@@ -115,13 +115,27 @@ struct DialogButton<S : Shape> : View {
                         .font(font)
                 }
             }
+            /*
+            .padding(padding)
+            .frame(width: buttonWidth, height: height, alignment: alignment)
+            .background(
+                ZStack {
+                    shape.fill(backgroundColor)
+                    shape.stroke(borderColor, lineWidth: borderWidth)
+                }
+            )
+            */
         }
         .buttonStyle(.plain)
-        .frame(width: buttonWidth, height: height, alignment: alignment)
         .padding(padding)
+        .frame(width: buttonWidth, height: height, alignment: alignment)
         .contentMargins(contentMargins)
         .opacity(opacity)
-        .background(shape.fill(backgroundColor))
-        .overlay(shape.stroke(borderColor, lineWidth: borderWidth))
+        .background(
+            ZStack {
+                shape.fill(backgroundColor)
+                shape.stroke(borderColor, lineWidth: borderWidth)
+            }
+        )
     }
 }

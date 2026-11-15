@@ -68,12 +68,13 @@ struct OrderListViewModifier: ViewModifier {
                             .background(.clear)
                             .safeAreaInset(edge: .top) {
                                 ControlGroup {
-                                    DialogButton(action: { viewModel.cancelOrder() }, label: "Отменить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .black, borderWidth: 2, opacity: viewModel.cancelOrderOpacity)
-                                    DialogButton(action: { viewModel.deleteOrder() }, label: "Удалить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteOrderOpacity)
-                                    DialogButton(action: { viewModel.deleteAllOrders() }, label: "Очистить", width: 100, height: 20, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteAllOrdersOpacity)
+                                    DialogButton(action: { viewModel.cancelOrder() }, label: "Отменить", width: 100, height: 30, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.cancelOrderOpacity)
+                                    DialogButton(action: { viewModel.deleteOrder() }, label: "Удалить", width: 100, height: 30, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteOrderOpacity)
+                                    DialogButton(action: { viewModel.deleteAllOrders() }, label: "Очистить", width: 100, height: 30, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteAllOrdersOpacity)
                                 }
                                 .frame(maxWidth: .infinity)
                                 .background(.menu)
+                                .controlGroupStyle(.navigation)
                             }
                         }
                         .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)

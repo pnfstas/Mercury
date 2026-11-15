@@ -34,11 +34,11 @@ class MercuryShopTypeConverters {
         return Instant.fromEpochMilliseconds(value).toLocalDateTime(TimeZone.currentSystemDefault())
     }
     @TypeConverter
-    fun fromOrderStatus(value: OrderStatus) : Int {
-        return value.ordinal
+    fun fromOrderStatus(value: OrderStatus) : String {
+        return value.name
     }
     @TypeConverter
-    fun toOrderStatus(value: Int) : OrderStatus {
-        return OrderStatus.entries.firstOrNull { it.ordinal == value } ?: OrderStatus.None
+    fun toOrderStatus(value: String) : OrderStatus {
+        return OrderStatus.entries.firstOrNull { value.equals(it.name) } ?: OrderStatus.None
     }
 }

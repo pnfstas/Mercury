@@ -39,10 +39,16 @@ interface OrdersDao {
     @Delete
     suspend fun delete(orderEntity : OrderEntity) : Int
 
-	@Query("DELETE FROM orders WHERE id = :id")
+	@Query("""
+		   DELETE FROM orders WHERE id = :id
+		   DELETE FROM order_items WHERE orderId = :orderId
+		   """)
 	suspend fun deleteById(id : Int) : Int
 
-	@Query("DELETE FROM orders")
+   @Query("""
+		  DELETE FROM orders
+		  DELETE FROM order_items
+		  """)
 	suspend fun deleteAll() : Int
 
     @Query("SELECT * FROM orders")

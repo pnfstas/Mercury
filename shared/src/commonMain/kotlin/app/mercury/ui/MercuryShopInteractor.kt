@@ -273,9 +273,12 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		}
 	}
 	suspend fun cancelOrder(orderUIState: OrderUIState?) : Int {
-		return orderUIState?.let {
-			mercuryShopRepository.ordersDao.cancelOrder(id = it.id)
+		//return orderUIState?.let {
+		val count : Int = orderUIState?.let {
+			val count : Int = mercuryShopRepository.ordersDao.cancelOrder(id = it.id)
+			count
 		} ?: 0
+		return count
 	}
 	suspend fun deleteOrder(orderUIState: OrderUIState?) : Int {
 		return orderUIState?.let {
