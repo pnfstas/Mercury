@@ -49,8 +49,14 @@ struct OrderViewModifier: ViewModifier {
                                     }
                                     GridRow {
                                         Text("Статус:")
-                                        TextField("", text: viewModel.bindOrderStatus())
-                                            .textFieldStyle(.roundedBorder)
+                                        //TextField("", text: viewModel.bindOrderStatus())
+                                        //    .textFieldStyle(.roundedBorder)
+                                        Picker("", selection: viewModel.bindOrderStatus()) {
+                                            ForEach(OrderStatus.allCases, id: \.self) { status in
+                                                Text(status.label)
+                                            }
+                                        }
+                                        .pickerStyle(.menu)
                                     }
                                     GridRow {
                                         HStack(alignment: .center, spacing: 20) {

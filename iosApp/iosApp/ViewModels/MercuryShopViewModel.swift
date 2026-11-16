@@ -347,14 +347,14 @@ final class MercuryShopViewModel {
             }
         )
     }
-    func bindOrderStatus() -> Binding<String> {
+    func bindOrderStatus() -> Binding<OrderStatus> {
         return Binding(
             get: {
-                self.currentOrder?.status.label ?? ""
+                self.currentOrder?.status ?? .none
             },
             set: { newValue in
-                let orderStatus : OrderStatus = OrderStatus.Companion().fromLabel(label: newValue)
-                self.currentOrder = self.currentOrder?.with(status: orderStatus)
+                //let orderStatus : OrderStatus = OrderStatus.Companion().fromLabel(label: newValue)
+                self.currentOrder = self.currentOrder?.with(status: newValue)
             }
         )
     }

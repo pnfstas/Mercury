@@ -72,6 +72,7 @@ data class OrderUIState (
     val creationDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
     val completionDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
     val status : OrderStatus = OrderStatus.None
+	val items : List<OrderItemUIState> = emptyList()
 ) {
 	constructor() : this(
 		id = 0,
@@ -247,16 +248,17 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = emptyList())
     }
-    suspend fun createOrder(): Int {
-        var orderId: Int = 0
+    suspend fun createOrder(): OrderUIState? {
+        var orderUIState: OrderUIState? = null
         val amount: Float = cartUIStates.value.sumOf { it.cartAmount.toDouble() }.toFloat()
 		println("Create order, amount = $amount")
         if (amount > 0) {
-            val orderEntity: OrderEntity = OrderEntity(
+			orderUIState = OrderUIState(
                 creationDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
                 completionDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
                 amount = amount,
-                status = OrderStatus.Created
+                status = OrderStatus.Created,
+				//items =
             )
             orderId = mercuryShopRepository.ordersDao.insertOne(orderEntity).toInt()
             val orderItems: List<OrderItemEntity> =
