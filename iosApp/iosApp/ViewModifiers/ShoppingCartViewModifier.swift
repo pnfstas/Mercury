@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct ShoppingCartViewModifier: ViewModifier {
     var viewModel : MercuryShopViewModel
@@ -31,36 +32,40 @@ struct ShoppingCartViewModifier: ViewModifier {
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
                             ScrollView {
                                 LazyVStack(alignment: .leading, spacing: 7) {
-                                    ForEach(viewModel.cartUIStates, id: \.product.id) { cartUIState in
-                                        HStack(alignment: .center, spacing: 2) {
-                                            AsyncImage(url: URL(string: cartUIState.product.image)) { image in
-                                                image
-                                                    .resizable()
-                                                    .scaledToFit()
-                                            } placeholder: {
-                                                ProgressView()
-                                            }
-                                            .frame(width: screenSize.width / 8, height: screenSize.width / 8)
-                                            VStack(alignment: .center, spacing: 10) {
-                                                Text(cartUIState.product.title)
-                                                Text(cartUIState.product.descr)
+                                    ForEach(viewModel.cartUIStates, id: \.productId) { cartUIState in
+                                        let productId : Int = Int(truncating: NSNumber(value: cartUIState.productId))
+                                        let element : ProductUIStateTuple? = viewModel.productUIStates.first { $0.productId == productId }
+                                        if let product = element?.uiState {
+                                            HStack(alignment: .center, spacing: 2) {
+                                                AsyncImage(url: URL(string: product.image)) { image in
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                } placeholder: {
+                                                    ProgressView()
+                                                }
+                                                .frame(width: screenSize.width / 8, height: screenSize.width / 8)
+                                                VStack(alignment: .center, spacing: 10) {
+                                                    Text(product.title)
+                                                    Text(product.descr)
+                                                }
+                                                .frame(maxWidth: .infinity)
+                                                Text(product.priceDescr)
+                                                    .frame(width: screenSize.width / 8)
+                                                HStack(alignment: .center) {
+                                                    IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
+                                                    TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
+                                                        .keyboardType(.decimalPad)
+                                                        .frame(width: 20, height: 22)
+                                                    IconButton(action: { viewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
+                                                }
+                                                .overlay(Rectangle().stroke(.black, lineWidth: 2))
                                             }
                                             .frame(maxWidth: .infinity)
-                                            Text(cartUIState.product.priceDescr)
-                                                .frame(width: screenSize.width / 8)
-                                            HStack(alignment: .center) {
-                                                IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
-                                                TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
-                                                    .keyboardType(.decimalPad)
-                                                    .frame(width: 20, height: 22)
-                                                IconButton(action: { viewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
-                                            }
-                                            .overlay(Rectangle().stroke(.black, lineWidth: 2))
+                                            .foregroundStyle(.black)
+                                            .background(.clear)
+                                            .font(.custom("Arial", size: 12).weight(.regular))
                                         }
-                                        .frame(maxWidth: .infinity)
-                                        .foregroundStyle(.black)
-                                        .background(.clear)
-                                        .font(.custom("Arial", size: 12).weight(.regular))
                                     }
                                 }
                             }

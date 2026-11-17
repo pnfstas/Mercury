@@ -15,9 +15,9 @@ struct CatalogView: View {
         //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
-                ForEach(viewModel.productUIStates, id: \.key) { key, value in
+                ForEach(viewModel.productUIStates, id: \.productId) { element in
                     HStack(alignment: .center, spacing: 2) {
-                        AsyncImage(url: URL(string: value.product.image)) { image in
+                        AsyncImage(url: URL(string: element.uiState.image)) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -26,22 +26,22 @@ struct CatalogView: View {
                         }
                             .frame(width: screenSize.width / 8, height: screenSize.width / 8)
                          VStack(alignment: .center, spacing: 10) {
-                            Text(value.product.title)
-                            Text(value.product.descr)
+                             Text(element.uiState.title)
+                             Text(element.uiState.descr)
                         }
                             .frame(maxWidth: .infinity)
-                        Text(value.product.priceDescr)
+                        Text(element.uiState.priceDescr)
                             .frame(width: screenSize.width / 8)
                         HStack {
-                            IconButton(action: { viewModel.decreaseEnteredQuantity(productUIState: value) }, systemImage: "minus")
-                            TextField("", value: viewModel.bindEnteredQuantity(productUIState: value), format: .number)
+                            IconButton(action: { viewModel.decreaseEnteredQuantity(productUIState: element.uiState) }, systemImage: "minus")
+                            TextField("", value: viewModel.bindEnteredQuantity(productUIState: element.uiState), format: .number)
                                 .keyboardType(.decimalPad)
                                 .frame(width: 20, height: 22)
-                            IconButton(action: { viewModel.increaseEnteredQuantity(productUIState: value) }, systemImage: "plus")
+                            IconButton(action: { viewModel.increaseEnteredQuantity(productUIState: element.uiState) }, systemImage: "plus")
                         }
                         .overlay(Rectangle().stroke(.black, lineWidth: 2))
-                        Button(action: { viewModel.addToShoppingCart(productUIState: value) }) {
-                            Text(value.inStock ? "Добавить в корзину" : "Нет в наличии")
+                        Button(action: { viewModel.addToShoppingCart(productUIState: element.uiState) }) {
+                            Text(element.uiState.inStock ? "Добавить в корзину" : "Нет в наличии")
                         }
                         .buttonStyle(.plain)
                         .frame(width: screenSize.width / 4, height: 40)
@@ -49,7 +49,7 @@ struct CatalogView: View {
                         .padding(.vertical, 5)
                         .foregroundStyle(.white)
                         .background(RoundedRectangle(cornerRadius: 8).fill(Color(.main)))
-                        .opacity(value.inStock ? 1 : 0.5)
+                        .opacity(element.uiState.inStock ? 1 : 0.5)
                         .font(.custom("Arial", size: 14).weight(.bold))
                     }
                     .frame(maxWidth: .infinity)

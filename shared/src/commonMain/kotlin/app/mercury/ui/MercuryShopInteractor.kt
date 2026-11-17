@@ -44,15 +44,9 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
     ) {
         products, enteredQuantities ->
         products.associate { product ->
-            val portion : Float = if(product.portion > 0) product.portion else 1f
-			val enteredQuantity : Float? = enteredQuantities[product.id]
-            product.id to
-            ProductUIState(
-                product = product,
-                portion = portion,
-                quantityInStock = product.quantity,
-                enteredQuantity  = enteredQuantity ?: if(portion <= product.quantity) portion else 0f
-            )
+            val enteredQuantity : Float? = enteredQuantities[product.id]
+			product.id to
+            product.toProductUIState(enteredQuantity = enteredQuantity)
         }
     }
 	.onEach { println("productUIStates.size: ${it.size}") }
@@ -88,7 +82,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		enteredQuantityMap.value[productId] = max(quantity, 0f)
 	}
 	fun stepEnteredQuantity(productUIState : ProductUIState, decrease: Boolean = false) {
-        val productId = productUIState.product.id
+        val productId = productUIState.id
         val portion : Float = productUIState.portion
         var enteredQuantity : Float = enteredQuantityMap.value[productId] ?: 0f
         if(decrease)
@@ -98,10 +92,10 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             enteredQuantityMap.value[productId] = min(enteredQuantity + portion, quantityInStock)
         }
 	}
-    suspend fun addToShoppingCart(cartUIState : ShoppingCartUIState) {
-        val shoppingCartEntity = cartUIState.toShoppingCartEntity()
+    suspend fun addToShoppingCart(productUIState : ProductUIState) {
+        val shoppingCartEntity = productUIState.toShoppingCartEntity()
         mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
-        enteredQuantityMap.value.remove(cartUIState.productId)
+        enteredQuantityMap.value.remove(shoppingCartEntity.productId)
     }
 	suspend fun clearShoppingCart() : Int {
 		return mercuryShopRepository.shoppingCartDao.deleteAll()
@@ -117,7 +111,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
                 val shoppingCartEntity = ShoppingCartEntity(
                     productId = cartUIState.productId,
                     quantity = cartQuantity,
-                    amount = cartQuantity * productUIState.product.price
+                    amount = cartQuantity * productUIState.price
                 )
                 mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
                 if (cartQuantity > 0) {

@@ -114,7 +114,8 @@ extension OrderUIState {
         clientContacts : [ContactType : String]? = nil,
         creationDate : Kotlinx_datetimeLocalDateTime? = nil,
         completionDate : Kotlinx_datetimeLocalDateTime? = nil,
-        status : OrderStatus? = nil) -> OrderUIState {
+        status : OrderStatus? = nil,
+        items : [OrderItemUIState]? = nil) -> OrderUIState {
             return self.doCopy(
                 id: id ?? self.id,
                 amount: amount ?? self.amount,
@@ -122,9 +123,12 @@ extension OrderUIState {
                 clientContacts: clientContacts ?? self.clientContacts,
                 creationDate: creationDate ?? self.creationDate,
                 completionDate: completionDate ?? self.completionDate,
-                status: status ?? self.status)
+                status: status ?? self.status,
+                items : items ?? self.items)
         }
 }
+
+typealias ProductUIStateTuple = (productId : Int, uiState : ProductUIState)
 
 @Observable
 final class MercuryShopViewModel {
@@ -134,7 +138,7 @@ final class MercuryShopViewModel {
         return dateFormatter
     }().string(from: Date())
     private var mercuryShopInteractor : MercuryShopInteractor
-    var productUIStates : [(key : Int, value : ProductUIState)] = []
+    var productUIStates : [ProductUIStateTuple] = []
     var cartUIStates : [ShoppingCartUIState] = []
     var orderUIStates : [OrderUIState] = []
     var orderItemUIStates : [OrderItemUIState] = []
@@ -154,7 +158,7 @@ final class MercuryShopViewModel {
         get { return currentOrder != nil }
     }
     var cancelOrderOpacity : CGFloat {
-        get { return if let selectedOrder, selectedOrder.status == OrderStatus.created  { 1 } else { 0.5 } }
+        get { return if let selectedOrder, selectedOrder.status.name == OrderStatus.created.name  { 1 } else { 0.5 } }
     }
     var deleteOrderOpacity : CGFloat {
         get { return selectedOrder != nil ? 1 : 0.5 }
@@ -170,7 +174,7 @@ final class MercuryShopViewModel {
         taskObserveProductUIStates = Task { @MainActor in
             for await curProductUIStates in mercuryShopInteractor.productUIStates {
                 await MainActor.run {
-                    productUIStates = curProductUIStates.sorted { $0.key < $1.key }
+                    productUIStates = curProductUIStates.map { (productId: $0.key.intValue, uiState: $0.value) }.sorted { $0.productId < $1.productId }
                 }
             }
         }
@@ -227,13 +231,13 @@ final class MercuryShopViewModel {
                 productUIState.enteredQuantity
             },
             set: { newValue in
-                self.mercuryShopInteractor.updateEnteredQuantity(productId: productUIState.productId, quantity: newValue)
+                self.mercuryShopInteractor.updateEnteredQuantity(productId: productUIState.id, quantity: newValue)
             }
         )
     }
-    func addToShoppingCart(cartUIState : ShoppingCartUIState) {
+    func addToShoppingCart(productUIState: ProductUIState) {
         Task {
-            try? await mercuryShopInteractor.addToShoppingCart(cartUIState: cartUIState)
+            try? await mercuryShopInteractor.addToShoppingCart(productUIState: productUIState)
         }
     }
     func clearShoppingCart() {
@@ -263,13 +267,7 @@ final class MercuryShopViewModel {
     }
     func createOrder() {
         Task {
-            if let orderId = try? await mercuryShopInteractor.createOrder() {
-                let orderId : Int = Int(truncating: orderId)
-                if orderId > 0 {
-                    try? await Task.sleep(nanoseconds: 300_000_000)
-                    currentOrder = orderUIStates.first { $0.id == orderId }
-                }
-            }
+            currentOrder = try? await mercuryShopInteractor.createOrder()
         }
     }
     func saveOrder(_ close : Bool = false) {
