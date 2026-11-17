@@ -134,11 +134,11 @@ final class MercuryShopViewModel {
         return dateFormatter
     }().string(from: Date())
     private var mercuryShopInteractor : MercuryShopInteractor
-    var shopUIStates : [MercuryShopUIState] = []
-    var cartUIStates : [MercuryShopUIState] = []
+    var productUIStates : [(key : Int, value : ProductUIState)] = []
+    var cartUIStates : [ShoppingCartUIState] = []
     var orderUIStates : [OrderUIState] = []
     var orderItemUIStates : [OrderItemUIState] = []
-    var taskObserveShopUIStates : Task<Void, Never>? = nil
+    var taskObserveProductUIStates : Task<Void, Never>? = nil
     var taskObserveCartUIStates : Task<Void, Never>? = nil
     var taskObserveOrderUIStates : Task<Void, Never>? = nil
     var taskObserveOrderItemUIStates : Task<Void, Never>? = nil
@@ -166,11 +166,11 @@ final class MercuryShopViewModel {
         let koinHelper : KoinHelper = KoinHelper()
         mercuryShopInteractor = koinHelper.getMercuryShopInteractor()
     }
-    func observeShopUIStates() {
-        taskObserveShopUIStates = Task { @MainActor in
-            for await curShopUIStates in mercuryShopInteractor.shopUIStates {
+    func observeProductUIStates() {
+        taskObserveProductUIStates = Task { @MainActor in
+            for await curProductUIStates in mercuryShopInteractor.productUIStates {
                 await MainActor.run {
-                    shopUIStates = curShopUIStates
+                    productUIStates = curProductUIStates.sorted { $0.key < $1.key }
                 }
             }
         }
@@ -215,25 +215,25 @@ final class MercuryShopViewModel {
             self.selectedOrder = orderUIStates.first
         }
     }
-    func increaseEnteredQuantity(shopUIState: MercuryShopUIState) {
-        mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: false)
+    func increaseEnteredQuantity(productUIState: ProductUIState) {
+        mercuryShopInteractor.stepEnteredQuantity(productUIState: productUIState, decrease: false)
     }
-    func decreaseEnteredQuantity(shopUIState: MercuryShopUIState) {
-        mercuryShopInteractor.stepEnteredQuantity(shopUIState: shopUIState, decrease: true)
+    func decreaseEnteredQuantity(productUIState: ProductUIState) {
+        mercuryShopInteractor.stepEnteredQuantity(productUIState: productUIState, decrease: true)
     }
-    func bindEnteredQuantity(shopUIState: MercuryShopUIState) -> Binding<Float> {
+    func bindEnteredQuantity(productUIState: ProductUIState) -> Binding<Float> {
         return Binding(
             get: {
-                shopUIState.enteredQuantity
+                productUIState.enteredQuantity
             },
             set: { newValue in
-                self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: shopUIState, quantity: newValue)
+                self.mercuryShopInteractor.updateEnteredQuantity(productId: productUIState.productId, quantity: newValue)
             }
         )
     }
-    func addToShoppingCart(shopUIState : MercuryShopUIState) {
+    func addToShoppingCart(cartUIState : ShoppingCartUIState) {
         Task {
-            try? await mercuryShopInteractor.addToShoppingCart(shopUIState: shopUIState)
+            try? await mercuryShopInteractor.addToShoppingCart(cartUIState: cartUIState)
         }
     }
     func clearShoppingCart() {
@@ -241,23 +241,23 @@ final class MercuryShopViewModel {
             try? await mercuryShopInteractor.clearShoppingCart()
         }
     }
-    func increaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
+    func increaseShoppingCartQuantity(cartUIState : ShoppingCartUIState) {
         Task {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
         }
     }
-    func decreaseShoppingCartQuantity(cartUIState : MercuryShopUIState) {
+    func decreaseShoppingCartQuantity(cartUIState : ShoppingCartUIState) {
         Task {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
         }
     }
-    func bindShoppingCartQuantity(cartUIState : MercuryShopUIState) -> Binding<Float> {
+    func bindShoppingCartQuantity(cartUIState : ShoppingCartUIState) -> Binding<Float> {
         return Binding(
             get: {
-                cartUIState.cartQuantity
+                cartUIState.quantity
             },
             set: { newValue in
-                self.mercuryShopInteractor.updateEnteredQuantity(shopUIState: cartUIState, quantity: newValue)
+                self.mercuryShopInteractor.updateEnteredQuantity(productId: cartUIState.productId, quantity: newValue)
             }
         )
     }

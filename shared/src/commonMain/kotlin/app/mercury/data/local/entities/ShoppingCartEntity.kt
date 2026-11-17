@@ -11,6 +11,7 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.Companion.CASCADE
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import app.mercury.ui.ShoppingCartUIState
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -29,7 +30,15 @@ import kotlinx.serialization.Serializable
 )
 data class ShoppingCartEntity (
     @PrimaryKey
-    val productId : Int,
+    val productId : Int = 0,
     val quantity : Float = 0f,
     val amount : Float = 0f
-)
+) {
+    fun toShoppingCartUIState() : ShoppingCartUIState {
+        return ShoppingCartUIState(
+            productId = productId,
+            quantity = quantity,
+            amount = amount
+        )
+    }
+}
