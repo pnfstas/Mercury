@@ -29,7 +29,7 @@ struct OrderViewModifier: ViewModifier {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
-                            ScrollView {
+                            ScrollView([.horizontal, .vertical]) {
                                 Grid(alignment: .leading, horizontalSpacing: 10, verticalSpacing: 10) {
                                     GridRow {
                                         Text("Дата создания:")
@@ -73,8 +73,7 @@ struct OrderViewModifier: ViewModifier {
                                 .font(.custom("Arial", size: 12).weight(.regular))
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .scrollIndicators(.automatic, axes: .horizontal)
-                            .scrollIndicators(.automatic, axes: .vertical)
+                            .scrollIndicators(.visible, axes: [.horizontal, .vertical])
                             .background(.clear)
                         }
                         .frame(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8)

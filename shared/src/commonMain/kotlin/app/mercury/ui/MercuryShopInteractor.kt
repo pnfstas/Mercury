@@ -39,21 +39,26 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 	}
 	val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
 	val productUIStates : StateFlow<Map<Int, ProductUIState>> = combine(
-        mercuryShopRepository.productsDao.getAll(),
-        enteredQuantityMap
-    ) {
-        products, enteredQuantities ->
-        products.associate { product ->
-            val enteredQuantity : Float? = enteredQuantities[product.id]
+		mercuryShopRepository.productsDao.getAll(),
+		mercuryShopRepository.shoppingCartDao.getAll(),
+		mercuryShopRepository.orderItemsDao.getAll(),
+		enteredQuantityMap
+	) {
+		products, shoppingCartItems, orderItems, enteredQuantities ->
+		products.associate { product ->
+			val enteredQuantity : Float? = enteredQuantities[product.id]
+			val cartQuantity : Float = shoppingCartItems.filter { it.productId == product.id }.sumOf { it.quantity.toDouble() }.toFloat()
+			var orderedQuantity : Float = orderItems.filter { it.productId == product.id }.sumOf { it.quantity.toDouble() }.toFloat()
+			val quantityInStock : Float = product.quantity - orderedQuantity - cartQuantity
 			product.id to
-            product.toProductUIState(enteredQuantity = enteredQuantity)
-        }
-    }
+			product.toProductUIState(enteredQuantity = enteredQuantity, quantityInStock = quantityInStock)
+		}
+	}
 	.onEach { println("productUIStates.size: ${it.size}") }
-    .stateIn(
-        mercuryShopRepository.coroutineScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyMap())
+	.stateIn(
+		mercuryShopRepository.coroutineScope,
+		started = SharingStarted.WhileSubscribed(5000),
+		initialValue = emptyMap())
     val cartUIStates = mercuryShopRepository.shoppingCartDao.getAll().map { list ->
         list.map { it.toShoppingCartUIState() }
     }
@@ -150,7 +155,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         return orderUIState?.let {
 			val orderEntity : OrderEntity = orderUIState.toOrderEntity()
 			val orderId : Int = mercuryShopRepository.ordersDao.upsertOrder(orderEntity).toInt()
-            val newOrderUIState : OrderUIState? = mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState()
+            val newOrderUIState : OrderUIState? = mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState(it.items)
             newOrderUIState?.let {
                 val orderItems : List<OrderItemEntity> = it.items.map { it.toOrderItemEntity(orderId) }
                 mercuryShopRepository.orderItemsDao.insertAll(orderItems)

@@ -30,7 +30,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
-                            ScrollView {
+                            ScrollView([.horizontal, .vertical]) {
                                 LazyVStack(alignment: .leading, spacing: 7) {
                                     ForEach(viewModel.cartUIStates, id: \.productId) { cartUIState in
                                         let productId : Int = Int(truncating: NSNumber(value: cartUIState.productId))
@@ -70,8 +70,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                                 }
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .scrollIndicators(.automatic, axes: .horizontal)
-                            .scrollIndicators(.automatic, axes: .vertical)
+                            .scrollIndicators(.visible, axes: [.horizontal, .vertical])
                             .background(.clear)
                             HStack(alignment: .center, spacing: 20) {
                                 DialogButton(action: { viewModel.clearShoppingCart() }, label: "Очистить корзину", width: screenSize.width / 3,

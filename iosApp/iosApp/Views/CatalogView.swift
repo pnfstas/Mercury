@@ -12,7 +12,6 @@ struct CatalogView: View {
     var viewModel : MercuryShopViewModel
     @Environment(\.screenSize) private var screenSize
     var body: some View {
-        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 7) {
                 ForEach(viewModel.productUIStates, id: \.productId) { element in
@@ -59,7 +58,7 @@ struct CatalogView: View {
                 }
             }
         }
-        .scrollIndicators(.automatic, axes: .horizontal)
         .scrollIndicators(.automatic, axes: .vertical)
+        .scrollIndicators(.automatic, axes: .horizontal)
     }
 }

@@ -103,6 +103,7 @@
 		2EB541F130208195007DDEFC /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB5B92E303D8B0B001CA2A1 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB69D533056651400DA8436 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2EB6D18B30ADA12500BFF93C /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB7F95330972B4B001590A3 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB88C6930381DD700AF0812 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2EB9968A3045451500E86162 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		2ECB7EAF309DEDDE00AF4FDB /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECBAE73306E496900081E78 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECBD3833090921B00EB6120 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2ECBD59730AEDAF200FC108A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECC51D03051E509009265BF /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECC7668309A587100FF2486 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2ECEFCD3307CDBFD0079942E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -282,14 +284,7 @@
 				README.md,
 				settings.gradle.kts,
 				shared/build.gradle.kts,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/bodies.knb,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/debugInfo.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/fileEntries.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/files.knf,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/irDeclarations.knd,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/signatures.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/strings.knt,
-				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir_inlinable_functions/types.knt,
+				shared/build/bin/iosX64/debugFramework/shared.framework,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/bodies.knb,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/debugInfo.knd,
 				shared/build/classes/kotlin/iosX64/main/klib/shared/default/ir/fileEntries.knf,
@@ -666,7 +661,6 @@
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.LazyThreadSafetyMode.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction1.swift,
 				shared/build/skie/binaries/debugFramework/DEBUG/iosX64/swift/generated/Stdlib/Stdlib.SuspendFunction2.swift,
-				"shared/build/xcode-frameworks/Debug/iphonesimulator26.5/shared.framework",
 				shared/src/androidMain/kotlin/app/mercury/AndroidApp.kt,
 				shared/src/androidMain/kotlin/app/mercury/data/local/database/MercuryShopDatabase.android.kt,
 				shared/src/androidMain/kotlin/app/mercury/di/HttpClient.android.kt,
@@ -1285,6 +1279,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2EB6D42830ADA12500BFF93C /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2EB7FBAD30972B4B001590A3 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1571,6 +1570,11 @@
 			sourceTree = "<group>";
 		};
 		2ECBD4533090921B00EB6120 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2ECBD80030AEDAF200FC108A /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
@@ -1948,6 +1952,10 @@
 				{
 					ProductGroup = 2ED254F43052B704001DDBA9 /* Products */;
 					ProjectRef = 2ED251053052B704001DDBA9 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EB6D42830ADA12500BFF93C /* Products */;
+					ProjectRef = 2EB6D18B30ADA12500BFF93C /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E360AC430113F0C002163FF /* Products */;
@@ -2368,6 +2376,10 @@
 				{
 					ProductGroup = 2ECBD4533090921B00EB6120 /* Products */;
 					ProjectRef = 2ECBD3833090921B00EB6120 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2ECBD80030AEDAF200FC108A /* Products */;
+					ProjectRef = 2ECBD59730AEDAF200FC108A /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E92D76B302B396800836AEE /* Products */;

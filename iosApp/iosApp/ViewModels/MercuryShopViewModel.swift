@@ -173,8 +173,11 @@ final class MercuryShopViewModel {
     func observeProductUIStates() {
         taskObserveProductUIStates = Task { @MainActor in
             for await curProductUIStates in mercuryShopInteractor.productUIStates {
+                let nsDictionary : NSDictionary = curProductUIStates as NSDictionary
                 await MainActor.run {
-                    productUIStates = curProductUIStates.map { (productId: $0.key.intValue, uiState: $0.value) }.sorted { $0.productId < $1.productId }
+                    productUIStates = nsDictionary.compactMap { key, value -> ProductUIStateTuple? in
+                        if let numberKey = key as? NSNumber, let state = value as? ProductUIState { (productId: numberKey.intValue, uiState: state) }
+                        else { nil } }.sorted { $0.uiState.elite && !$1.uiState.elite } // && $0.productId < $1.productId }
                 }
             }
         }
@@ -191,7 +194,8 @@ final class MercuryShopViewModel {
     func observeOrderUIStates() {
         taskObserveOrderUIStates = Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
-                orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
+                //orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
+                orderUIStates = curOrderUIStates.compactMap { $0 as OrderUIState }
                 if let selectedOrder {
                     self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
                 }

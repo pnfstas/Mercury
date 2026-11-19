@@ -30,9 +30,9 @@ struct OrderListViewModifier: ViewModifier {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
-                            ScrollView {
+                            ScrollView([.horizontal, .vertical]) {
                                 LazyVStack(alignment: .leading, spacing: 7) {
-                                    ForEach(viewModel.orderUIStates, id: \.id) { orderUIState in //rawOrderUIState in
+                                    ForEach(viewModel.orderUIStates, id: \.id) { orderUIState in
                                         HStack(alignment: .center, spacing: 2) {
                                             Text(orderUIState.creationDate.toFormattedString())
                                                 .frame(width: screenSize.width / 6)
@@ -63,8 +63,7 @@ struct OrderListViewModifier: ViewModifier {
                                 }
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .scrollIndicators(.automatic, axes: .horizontal)
-                            .scrollIndicators(.automatic, axes: .vertical)
+                            .scrollIndicators(.visible, axes: [.horizontal, .vertical])
                             .background(.clear)
                             .safeAreaInset(edge: .top) {
                                 ControlGroup {

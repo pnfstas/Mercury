@@ -58,7 +58,9 @@ data class ProductEntity(
 			image = image,
 			url = url,
 			quantityInStock = if(quantityInStock > 0) quantityInStock else quantity,
-			enteredQuantity = enteredQuantity ?: if(portion <= quantity) portion else 0f
+			enteredQuantity = enteredQuantity?.let {
+				if(it > 0) it else null
+			} ?: if(portion <= quantity) portion else 0f
 		)
 	}
 }

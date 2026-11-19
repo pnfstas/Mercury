@@ -2,6 +2,7 @@ package app.mercury.data.local.entities
 
 import androidx.room.Embedded
 import app.mercury.ui.OrderUIState
+import app.mercury.ui.OrderItemUIState
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.datetime.LocalDateTime
@@ -46,7 +47,7 @@ data class OrderEntity (
     val completionDate : LocalDateTime = Instant.fromEpochMilliseconds(0).toLocalDateTime(TimeZone.currentSystemDefault()),
     val status : OrderStatus = OrderStatus.None
 ) {
-    fun toOrderUIState() : OrderUIState {
+    fun toOrderUIState(items : List<OrderItemUIState> = emptyList()) : OrderUIState {
         return OrderUIState (
             id = id,
             amount = amount,
@@ -54,7 +55,8 @@ data class OrderEntity (
             clientContacts = clientContacts,
             creationDate = creationDate,
             completionDate = completionDate,
-            status = status
+            status = status,
+			items = items
         )
     }
 }
