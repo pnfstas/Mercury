@@ -12,7 +12,6 @@ struct OrderListViewModifier: ViewModifier {
     var viewModel : MercuryShopViewModel
     @Environment(\.screenSize) private var screenSize
     func body(content: Content) -> some View {
-        //@Bindable var viewModel : MercuryShopViewModel = mercuryViewModel
         if viewModel.isOrderListOpen {
             content
                 .overlay(alignment: .center) {
@@ -30,7 +29,7 @@ struct OrderListViewModifier: ViewModifier {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             Divider()
                                 .frame(maxWidth: .infinity, maxHeight: 2, alignment: .leading)
-                            ScrollView([.horizontal, .vertical]) {
+                            ScrollView {
                                 LazyVStack(alignment: .leading, spacing: 7) {
                                     ForEach(viewModel.orderUIStates, id: \.id) { orderUIState in
                                         HStack(alignment: .center, spacing: 2) {
@@ -63,7 +62,8 @@ struct OrderListViewModifier: ViewModifier {
                                 }
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .scrollIndicators(.visible, axes: [.horizontal, .vertical])
+                            .scrollIndicators(.visible, axes: .vertical)
+                            .scrollIndicators(.automatic, axes: .horizontal)
                             .background(.clear)
                             .safeAreaInset(edge: .top) {
                                 ControlGroup {

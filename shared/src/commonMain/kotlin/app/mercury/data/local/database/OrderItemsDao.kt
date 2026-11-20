@@ -26,6 +26,9 @@ interface OrderItemsDao {
     @Upsert
     suspend fun upsertOrderItem(orderItemEntity: OrderItemEntity) : Long
 
+	@Upsert
+	suspend fun upsertAll(orderItemEntities: List<OrderItemEntity>) : List<Long>
+
     @Delete
     suspend fun delete(orderItemEntity: OrderItemEntity)
 

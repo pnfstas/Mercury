@@ -150,6 +150,7 @@ final class MercuryShopViewModel {
     var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
     var selectedOrder : OrderUIState? = nil
+    var selectedOrderItem : OrderItemUIState? = nil
     var isMenuOpen : Bool = false
     var isShoppingCartOpen : Bool = false
     var isOrderListOpen : Bool = false

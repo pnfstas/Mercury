@@ -67,7 +67,8 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList())
-    val orderUIStates = mercuryShopRepository.ordersDao.getAll().map { list ->
+    /*
+	val orderUIStates = mercuryShopRepository.ordersDao.getAll().map { list ->
         list.map { it.toOrderUIState() }
     }
     .onEach { println("orderUIStates.size: ${it.size}") }
@@ -75,10 +76,11 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		mercuryShopRepository.coroutineScope,
 		started = SharingStarted.WhileSubscribed(5000),
 		initialValue = emptyList())
-    val allOrderItemUIStates = mercuryShopRepository.orderItemsDao.getAllWithDetails().map { list ->
-        list.map { it.toOrderItemUIState() }
+	*/
+    val orderUIStates = mercuryShopRepository.orderItemsDao.getAllWithDetails().map { list ->
+        list.map { OrderItemUIState(items = it) }
     }
-    .onEach { println("orderItemUIStates.size: ${it.size}") }
+    .onEach { println("orderUIStates.size: ${it.size}") }
     .stateIn(
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
@@ -158,7 +160,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
             val newOrderUIState : OrderUIState? = mercuryShopRepository.ordersDao.getOne(id = orderId)?.toOrderUIState(it.items)
             newOrderUIState?.let {
                 val orderItems : List<OrderItemEntity> = it.items.map { it.toOrderItemEntity(orderId) }
-                mercuryShopRepository.orderItemsDao.insertAll(orderItems)
+                mercuryShopRepository.orderItemsDao.upsertAll(orderItems)
                 it
             }
 		}
