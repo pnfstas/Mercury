@@ -141,11 +141,11 @@ final class MercuryShopViewModel {
     var productUIStates : [ProductUIStateTuple] = []
     var cartUIStates : [ShoppingCartUIState] = []
     var orderUIStates : [OrderUIState] = []
-    var orderItemUIStates : [OrderItemUIState] = []
+    //var orderItemUIStates : [OrderItemUIState] = []
     var taskObserveProductUIStates : Task<Void, Never>? = nil
     var taskObserveCartUIStates : Task<Void, Never>? = nil
     var taskObserveOrderUIStates : Task<Void, Never>? = nil
-    var taskObserveOrderItemUIStates : Task<Void, Never>? = nil
+    //var taskObserveOrderItemUIStates : Task<Void, Never>? = nil
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
@@ -166,6 +166,12 @@ final class MercuryShopViewModel {
     }
     var deleteAllOrdersOpacity : CGFloat {
         get { return !orderUIStates.isEmpty ? 1 : 0.5 }
+    }
+    var deleteItemOfCurrentOrderOpacity : CGFloat {
+        get { return currentOrder != nil && selectedOrderItem != nil ? 1 : 0.5 }
+    }
+    var deleteAllItemsOfCurrentOrderOpacity : CGFloat {
+        get { return if let currentOrder, currentOrder.items.count > 0 { 1 } else { 0.5 } }
     }
     init() {
         let koinHelper : KoinHelper = KoinHelper()
@@ -195,8 +201,8 @@ final class MercuryShopViewModel {
     func observeOrderUIStates() {
         taskObserveOrderUIStates = Task { @MainActor in
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
-                //orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
-                orderUIStates = curOrderUIStates.compactMap { $0 as OrderUIState }
+                orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
+                //orderUIStates = curOrderUIStates.compactMap { $0 as OrderUIState }
                 if let selectedOrder {
                     self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
                 }
@@ -206,6 +212,7 @@ final class MercuryShopViewModel {
             }
         }
     }
+    /*
     func observeOrderItemUIStates(orderUIState: OrderUIState) {
         taskObserveOrderItemUIStates = Task { @MainActor in
             let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: orderUIState)
@@ -216,12 +223,23 @@ final class MercuryShopViewModel {
             }
         }
     }
+    */
     func updateSelectedOrder(_ selectedOrder: OrderUIState?) {
         if let selectedOrder {
             self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
         }
         else {
             self.selectedOrder = orderUIStates.first
+        }
+    }
+    func updateSelectedOrderItem(_ selectedOrderItem: OrderItemUIState?) {
+        if let selectedOrderItem {
+            self.selectedOrderItem = orderUIStates.lazy.flatMap { $0.items }
+                .first { $0.orderId == selectedOrderItem.orderId && $0.productId == selectedOrderItem.productId }
+        }
+        if self.selectedOrderItem == nil, let currentOrder {
+            self.selectedOrderItem = orderUIStates.lazy.flatMap { $0.items }
+                .first { $0.orderId == currentOrder.id }
         }
     }
     func increaseEnteredQuantity(productUIState: ProductUIState) {
@@ -250,17 +268,17 @@ final class MercuryShopViewModel {
             try? await mercuryShopInteractor.clearShoppingCart()
         }
     }
-    func increaseShoppingCartQuantity(cartUIState : ShoppingCartUIState) {
+    func increaseShoppingCartQuantity(_ cartUIState : ShoppingCartUIState) {
         Task {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: false)
         }
     }
-    func decreaseShoppingCartQuantity(cartUIState : ShoppingCartUIState) {
+    func decreaseShoppingCartQuantity(_ cartUIState : ShoppingCartUIState) {
         Task {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
         }
     }
-    func bindShoppingCartQuantity(cartUIState : ShoppingCartUIState) -> Binding<Float> {
+    func bindShoppingCartQuantity(_ cartUIState : ShoppingCartUIState) -> Binding<Float> {
         return Binding(
             get: {
                 cartUIState.quantity
@@ -311,25 +329,6 @@ final class MercuryShopViewModel {
             }
         }
     }
-    func updateOrderProperty(
-        id : Int = 0,
-        amount : Float = 0.0,
-        clientName : String = "",
-        clientContacts : [shared.ContactType : String] = [ : ],
-        creationDate : Date = Date(),
-        completionDate : Date = Date(),
-        status : shared.OrderStatus = .none) {
-         Task {
-            try? await mercuryShopInteractor.updateOrderProperty(
-                id : Int32(id),
-                amount : amount,
-                clientName : clientName,
-                clientContacts : clientContacts,
-                creationDate : creationDate.toLocalDateTime(),
-                completionDate : completionDate.toLocalDateTime(),
-                status : status)
-         }
-    }
     func bindOrderClientName() -> Binding<String> {
         return Binding(
             get: {
@@ -361,4 +360,43 @@ final class MercuryShopViewModel {
             }
         )
     }
+    func increaseOrderItemQuantity(_ orderItemUIState : OrderItemUIState) {
+        Task {
+            try? await mercuryShopInteractor.stepOrderItemQuantity(orderItemUIState : orderItemUIState, decrease: false)
+        }
+    }
+    func decreaseOrderItemQuantity(_ orderItemUIState : OrderItemUIState) {
+        Task {
+            try? await mercuryShopInteractor.stepOrderItemQuantity(orderItemUIState : orderItemUIState, decrease: true)
+        }
+    }
+    func bindOrderItemQuantity(_ orderItemUIState : OrderItemUIState) -> Binding<Float> {
+        return Binding(
+            get: {
+                orderItemUIState.quantity
+            },
+            set: { newValue in
+                self.mercuryShopInteractor.updateEnteredQuantity(productId: orderItemUIState.productId, quantity: newValue)
+            }
+        )
+    }
+    func deleteItemOfCurrentOrder() {
+        Task {
+            if let currentOrder, let selectedOrderItem {
+                if let count = try? await mercuryShopInteractor.deleteOrderItem(orderItemUIState : selectedOrderItem), Int(truncating : count) > 0 {
+                    updateSelectedOrderItem(selectedOrderItem)
+                }
+            }
+        }
+    }
+    func deleteAllItemsOfCurrentOrder() {
+        Task {
+            if let currentOrder {
+                if let count = try? await mercuryShopInteractor.deleteAllItemsOfOrder(orderUIState : currentOrder), Int(truncating : count) > 0 {
+                    self.selectedOrderItem = nil
+                }
+            }
+        }
+    }
+
 }

@@ -8,7 +8,9 @@ data class OrderItemUIState (
     val quantity : Float = 0f,
     val amount : Float = 0f
 ) {
-    fun toOrderItemEntity(newOrderId : Int = 0) : OrderItemEntity {
+    val id : Long
+		get() = (orderId.toLong() shl 32) or (productId.toLong() and 0xFFFFFFFFL)
+	fun toOrderItemEntity(newOrderId : Int = 0) : OrderItemEntity {
         return OrderItemEntity (
             orderId = if(newOrderId > 0) orderId else orderId,
             productId = productId,

@@ -53,11 +53,11 @@ struct ShoppingCartViewModifier: ViewModifier {
                                                 Text(product.priceDescr)
                                                     .frame(width: screenSize.width / 8)
                                                 HStack(alignment: .center) {
-                                                    IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "minus")
-                                                    TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState: cartUIState), format: .number)
+                                                    IconButton(action: { viewModel.decreaseShoppingCartQuantity(cartUIState) }, systemImage: "minus")
+                                                    TextField("", value: viewModel.bindShoppingCartQuantity(cartUIState), format: .number)
                                                         .keyboardType(.decimalPad)
                                                         .frame(width: 20, height: 22)
-                                                    IconButton(action: { viewModel.increaseShoppingCartQuantity(cartUIState: cartUIState) }, systemImage: "plus")
+                                                    IconButton(action: { viewModel.increaseShoppingCartQuantity(cartUIState) }, systemImage: "plus")
                                                 }
                                                 .overlay(Rectangle().stroke(.black, lineWidth: 2))
                                             }

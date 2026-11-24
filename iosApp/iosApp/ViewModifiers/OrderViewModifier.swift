@@ -59,6 +59,13 @@ struct OrderViewModifier: ViewModifier {
                                         .pickerStyle(.menu)
                                     }
                                     GridRow {
+                                        HStack(alignment: .center) {
+                                            DialogButton(action: { viewModel.isOrderItemsOpen = true }, label: "Позиции заказа", width: screenSize.width / 3)
+                                        }
+                                        .gridCellColumns(2)
+                                        .frame(maxWidth: .infinity)
+                                    }
+                                    GridRow {
                                         HStack(alignment: .center, spacing: 20) {
                                             DialogButton(action: { viewModel.saveOrder() }, label: "Сохранить", width: screenSize.width / 3)
                                             DialogButton(action: { viewModel.saveOrder(true) }, label: "Сохранить и закрыть", width: screenSize.width / 3)

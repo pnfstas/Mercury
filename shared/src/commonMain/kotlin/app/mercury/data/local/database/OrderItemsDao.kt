@@ -32,11 +32,27 @@ interface OrderItemsDao {
     @Delete
     suspend fun delete(orderItemEntity: OrderItemEntity)
 
+	@Query("DELETE FROM order_items WHERE orderId = :orderId AND productId = :productId")
+	suspend fun deleteById(orderId : Int, productId : Int) : Int
+
     @Delete
     suspend fun deleteAll(orderItemEntities : List<OrderItemEntity>) : Int
 
-    @Query("DELETE FROM order_items WHERE orderId = :orderId")
-    suspend fun deleteAllOfOrder(orderId : Int)
+    @Query("""
+		DELETE FROM order_items
+		WHERE
+		   orderId = :orderId
+		   AND rowid NOT IN (
+				SELECT
+					rowid
+				FROM
+					order_items
+				WHERE
+					orderId = :orderId
+				LIMIT 1
+			)
+	""")
+    suspend fun deleteAllOfOrder(orderId : Int) : Int
 
     @Query("SELECT * FROM order_items")
     fun getAll() : Flow<List<OrderItemEntity>>

@@ -78,7 +78,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		initialValue = emptyList())
 	*/
     val orderUIStates = mercuryShopRepository.orderItemsDao.getAllWithDetails().map { list ->
-        list.map { OrderItemUIState(items = it) }
+        list.groupBy { it.order.id }.map { (orderId, items) -> OrderUIState(items = items) }
     }
     .onEach { println("orderUIStates.size: ${it.size}") }
     .stateIn(
@@ -181,25 +181,37 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 	suspend fun deleteAllOrders() : Int {
 		return mercuryShopRepository.ordersDao.deleteAll()
 	}
-    suspend fun updateOrderProperty(
-		id : Int,
-		amount : Float = 0f,
-		clientName : String = "",
-		clientContacts : Map<ContactType, String> = mapOf(),
-		creationDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
-		completionDate : LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
-		status : OrderStatus = OrderStatus.None) {
-        val orderEntity : OrderEntity? = mercuryShopRepository.ordersDao.getOne(id = id)
-        if(orderEntity != null) {
-            val newOrderEntity = orderEntity.copy(
-                id = id,
-                amount = amount,
-                clientName = clientName,
-                clientContacts = clientContacts,
-                creationDate = creationDate,
-                completionDate = completionDate,
-                status = status)
-            mercuryShopRepository.ordersDao.upsertOrder(orderEntity = newOrderEntity)
-        }
-    }
+	suspend fun stepOrderItemQuantity(orderItemUIState : OrderItemUIState, decrease: Boolean = false) {
+		val productId = orderItemUIState.productId
+		val productUIState : ProductUIState? = productUIStates.value[productId]
+		if(productUIState != null) {
+			val orderItemQuantity: Float =
+				if (decrease) min(orderItemUIState.quantity - productUIState.portion, 0f)
+				else min(orderItemUIState.quantity + productUIState.portion, productUIState.quantityInStock)
+			if (orderItemQuantity >= 0) {
+				val orderItemEntity = OrderItemEntity(
+					orderId = orderItemUIState.orderId,
+					productId = productId,
+					quantity = orderItemQuantity,
+					amount = orderItemQuantity * productUIState.price
+				)
+				mercuryShopRepository.orderItemsDao.upsertOrderItem(orderItemEntity)
+				if (orderItemQuantity > 0) {
+					enteredQuantityMap.value[productId] = orderItemQuantity
+				} else {
+					enteredQuantityMap.value.remove(productId)
+				}
+			}
+		}
+	}
+	suspend fun deleteOrderItem(orderItemUIState : OrderItemUIState?) : Int {
+		return orderItemUIState?.let {
+			mercuryShopRepository.orderItemsDao.deleteById(orderId = it.orderId, productId = it.productId)
+		} ?: 0
+	}
+	suspend fun deleteAllItemsOfOrder(orderUIState: OrderUIState?) : Int {
+		return orderUIState?.let {
+			mercuryShopRepository.orderItemsDao.deleteAllOfOrder(orderId = orderUIState.id)
+		} ?: 0
+	}
 }
