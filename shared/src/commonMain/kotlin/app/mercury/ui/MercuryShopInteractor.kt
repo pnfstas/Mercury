@@ -67,16 +67,6 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList())
-    /*
-	val orderUIStates = mercuryShopRepository.ordersDao.getAll().map { list ->
-        list.map { it.toOrderUIState() }
-    }
-    .onEach { println("orderUIStates.size: ${it.size}") }
-	.stateIn(
-		mercuryShopRepository.coroutineScope,
-		started = SharingStarted.WhileSubscribed(5000),
-		initialValue = emptyList())
-	*/
     val orderUIStates = mercuryShopRepository.orderItemsDao.getAllWithDetails().map { list ->
         list.groupBy { it.order.id }.map { (orderId, items) -> OrderUIState(items = items) }
     }

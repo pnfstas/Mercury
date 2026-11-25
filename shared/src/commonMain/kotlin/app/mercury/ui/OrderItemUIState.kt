@@ -12,7 +12,7 @@ data class OrderItemUIState (
 		get() = (orderId.toLong() shl 32) or (productId.toLong() and 0xFFFFFFFFL)
 	fun toOrderItemEntity(newOrderId : Int = 0) : OrderItemEntity {
         return OrderItemEntity (
-            orderId = if(newOrderId > 0) orderId else orderId,
+            orderId = if(newOrderId > 0) newOrderId else orderId,
             productId = productId,
             quantity = quantity,
             amount = amount

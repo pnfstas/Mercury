@@ -78,6 +78,7 @@
 		2E88D76930121A52008A7446 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8A4F243020BAD60038841A /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8B2608305FA87D00A38929 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
+		2E8B6AE930B71D3F002BF9C5 /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9234301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
 		2E8E9235301135E00039A83E /* iosApp_copy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp_copy.xcodeproj; sourceTree = "<group>"; };
 		2E8EA1F4301135E00039A83E /* iosApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = iosApp.xcodeproj; sourceTree = "<group>"; };
@@ -328,12 +329,6 @@
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosSimulatorArm64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/assembledResources/iosX64Main/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/compose-multiplatform.xml",
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabase_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/MercuryShopDatabaseConstructor.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/OrderItemsDao_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/OrdersDao_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ProductsDao_Impl.kt,
-				shared/build/generated/ksp/iosX64/iosX64Main/kotlin/app/mercury/data/local/database/ShoppingCartDao_Impl.kt,
 				shared/build/konan.txt,
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
 				"shared/build/kotlin-multiplatform-resources/aggregated-resources/iosSimulatorArm64/composeResources/app.mercury/drawable/compose-multiplatform.xml",
@@ -1148,6 +1143,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2E8B6D4E30B71D3F002BF9C5 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2E8EA4E7301135E00039A83E /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -1935,24 +1935,24 @@
 					ProjectRef = 2E453B783011556A000E0AB6 /* iosApp.xcodeproj */;
 				},
 				{
-					ProductGroup = 2EC6CF5F307619A2004CC2E7 /* Products */;
-					ProjectRef = 2EC6CE8F307619A2004CC2E7 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EBEAF68306508B200710B38 /* Products */;
-					ProjectRef = 2EBEAE98306508B200710B38 /* iosApp.xcodeproj */;
-				},
-				{
-					ProductGroup = 2EBA56533053353B00025547 /* Products */;
-					ProjectRef = 2EBA525F3053353B00025547 /* iosApp.xcodeproj */;
-				},
-				{
 					ProductGroup = 2E453CB43011556A000E0AB6 /* Products */;
 					ProjectRef = 2E4533773011556A000E0AB6 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E44D98F3094AE66005D98D5 /* Products */;
 					ProjectRef = 2E44D7363094AE66005D98D5 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBA56533053353B00025547 /* Products */;
+					ProjectRef = 2EBA525F3053353B00025547 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EC6CF5F307619A2004CC2E7 /* Products */;
+					ProjectRef = 2EC6CE8F307619A2004CC2E7 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2EBEAF68306508B200710B38 /* Products */;
+					ProjectRef = 2EBEAE98306508B200710B38 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2E72F6D9303ACF20002CAB5F /* Products */;
@@ -2365,6 +2365,10 @@
 				{
 					ProductGroup = 2E2540F530AC737500D178A0 /* Products */;
 					ProjectRef = 2E2540AC30AC737500D178A0 /* iosApp.xcodeproj */;
+				},
+				{
+					ProductGroup = 2E8B6D4E30B71D3F002BF9C5 /* Products */;
+					ProjectRef = 2E8B6AE930B71D3F002BF9C5 /* iosApp.xcodeproj */;
 				},
 				{
 					ProductGroup = 2EB452E0304172FE00CD1866 /* Products */;

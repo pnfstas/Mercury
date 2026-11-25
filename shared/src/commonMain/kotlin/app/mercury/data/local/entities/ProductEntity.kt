@@ -60,7 +60,7 @@ data class ProductEntity(
 			quantityInStock = if(quantityInStock > 0) quantityInStock else quantity,
 			enteredQuantity = enteredQuantity?.let {
 				if(it > 0) it else null
-			} ?: if(portion <= quantity) portion else 0f
+			} ?: /*if(portion <= quantity) portion else*/ 0f
 		)
 	}
 }

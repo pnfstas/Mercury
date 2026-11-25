@@ -42,7 +42,7 @@ struct ContentView: View {
         .orderList(viewModel: viewModel)
         .shoppingCart(viewModel: viewModel)
         .order(viewModel: viewModel)
-        .orderList(viewModel: viewModel)
+        .orderItems(viewModel: viewModel)
         .onAppear {
             viewModel.observeProductUIStates()
             viewModel.observeCartUIStates()

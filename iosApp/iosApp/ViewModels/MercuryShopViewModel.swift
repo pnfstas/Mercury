@@ -141,14 +141,13 @@ final class MercuryShopViewModel {
     var productUIStates : [ProductUIStateTuple] = []
     var cartUIStates : [ShoppingCartUIState] = []
     var orderUIStates : [OrderUIState] = []
-    //var orderItemUIStates : [OrderItemUIState] = []
     var taskObserveProductUIStates : Task<Void, Never>? = nil
     var taskObserveCartUIStates : Task<Void, Never>? = nil
     var taskObserveOrderUIStates : Task<Void, Never>? = nil
-    //var taskObserveOrderItemUIStates : Task<Void, Never>? = nil
     var navigationPath : [AppScreens] = []
     var currentScreen : AppScreens = AppScreens.main
     var currentOrder : OrderUIState? = nil
+    var selectedCartItem : ShoppingCartUIState? = nil
     var selectedOrder : OrderUIState? = nil
     var selectedOrderItem : OrderItemUIState? = nil
     var isMenuOpen : Bool = false
@@ -157,6 +156,12 @@ final class MercuryShopViewModel {
     var isOrderItemsOpen : Bool = false
     var isOrderOpen : Bool {
         get { return currentOrder != nil }
+    }
+    var deleteShoppingCartItemOpacity : CGFloat {
+        get { return selectedCartItem != nil ? 1 : 0.5 }
+    }
+    var deleteAllShoppingCartItemsOpacity : CGFloat {
+        get { return cartUIStates.count > 0 ? 1 : 0.5 }
     }
     var cancelOrderOpacity : CGFloat {
         get { return if let selectedOrder, selectedOrder.status.name == OrderStatus.created.name  { 1 } else { 0.5 } }
@@ -209,21 +214,12 @@ final class MercuryShopViewModel {
                 else {
                     self.selectedOrder = orderUIStates.first
                 }
-            }
-        }
-    }
-    /*
-    func observeOrderItemUIStates(orderUIState: OrderUIState) {
-        taskObserveOrderItemUIStates = Task { @MainActor in
-            let stateFlowOrderItemUIStates = mercuryShopInteractor.getOrderItemUIStates(orderUIState: orderUIState)
-            for await curOrderItemUIStates in stateFlowOrderItemUIStates {
-                await MainActor.run {
-                    orderItemUIStates = curOrderItemUIStates
+                if let selectedOrder, let selectedOrderItem {
+                    self.selectedOrderItem = selectedOrder.items.first { $0.productId == selectedOrderItem.productId } ?? selectedOrder.items.first
                 }
             }
         }
     }
-    */
     func updateSelectedOrder(_ selectedOrder: OrderUIState?) {
         if let selectedOrder {
             self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
