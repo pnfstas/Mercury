@@ -128,6 +128,20 @@ extension OrderUIState {
         }
 }
 
+extension OrderItemUIState {
+    func `with`(
+        orderId : Int32? = nil,
+        productId : Int32? = nil,
+        quantity : Float? = nil,
+        amount : Float? = nil) -> OrderItemUIState {
+            return self.doCopy(
+                orderId : orderId ?? self.orderId,
+                productId : productId ?? self.productId,
+                quantity : quantity ?? self.quantity,
+                amount : amount ?? self.amount)
+        }
+}
+
 typealias ProductUIStateTuple = (productId : Int, uiState : ProductUIState)
 
 @Observable
@@ -199,6 +213,7 @@ final class MercuryShopViewModel {
             for await curCartUIStates in mercuryShopInteractor.cartUIStates {
                 await MainActor.run {
                     cartUIStates = curCartUIStates
+                    updateSelectedCartItem(self.selectedCartItem)
                 }
             }
         }
@@ -208,35 +223,20 @@ final class MercuryShopViewModel {
             for await curOrderUIStates in mercuryShopInteractor.orderUIStates {
                 orderUIStates = curOrderUIStates.compactMap { $0 as? OrderUIState }
                 //orderUIStates = curOrderUIStates.compactMap { $0 as OrderUIState }
-                if let selectedOrder {
-                    self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
-                }
-                else {
-                    self.selectedOrder = orderUIStates.first
-                }
-                if let selectedOrder, let selectedOrderItem {
-                    self.selectedOrderItem = selectedOrder.items.first { $0.productId == selectedOrderItem.productId } ?? selectedOrder.items.first
-                }
+                updateSelectedOrder(self.selectedOrder)
+                updateSelectedOrderItem(self.selectedOrderItem)
             }
         }
     }
+    func updateSelectedCartItem(_ selectedCartItem: ShoppingCartUIState?) {
+        self.selectedCartItem = selectedCartItem.flatMap { current in self.cartUIStates.first { $0.productId == current.productId } } ?? self.cartUIStates.first
+    }
     func updateSelectedOrder(_ selectedOrder: OrderUIState?) {
-        if let selectedOrder {
-            self.selectedOrder = orderUIStates.first(where: { $0.id == selectedOrder.id }) ?? orderUIStates.first
-        }
-        else {
-            self.selectedOrder = orderUIStates.first
-        }
+        self.selectedOrder = selectedOrder.flatMap { current in self.orderUIStates.first { $0.id == current.id } } ?? self.orderUIStates.first
     }
     func updateSelectedOrderItem(_ selectedOrderItem: OrderItemUIState?) {
-        if let selectedOrderItem {
-            self.selectedOrderItem = orderUIStates.lazy.flatMap { $0.items }
-                .first { $0.orderId == selectedOrderItem.orderId && $0.productId == selectedOrderItem.productId }
-        }
-        if self.selectedOrderItem == nil, let currentOrder {
-            self.selectedOrderItem = orderUIStates.lazy.flatMap { $0.items }
-                .first { $0.orderId == currentOrder.id }
-        }
+        self.selectedOrderItem = selectedOrderItem.flatMap { current in self.orderUIStates.lazy.flatMap { $0.items }
+            .first { $0.orderId == current.orderId && $0.productId == current.productId } } ??  currentOrder.flatMap { current in current.items.first }
     }
     func increaseEnteredQuantity(productUIState: ProductUIState) {
         mercuryShopInteractor.stepEnteredQuantity(productUIState: productUIState, decrease: false)
@@ -259,9 +259,14 @@ final class MercuryShopViewModel {
             try? await mercuryShopInteractor.addToShoppingCart(productUIState: productUIState)
         }
     }
-    func clearShoppingCart() {
+    func deleteShoppingCartItem() {
         Task {
-            try? await mercuryShopInteractor.clearShoppingCart()
+            _ = try? await mercuryShopInteractor.deleteShoppingCartItem(cartUIState : self.selectedCartItem)
+        }
+    }
+    func deleteAllShoppingCartItems() {
+        Task {
+            try? await mercuryShopInteractor.deleteAllShoppingCartItems()
         }
     }
     func increaseShoppingCartQuantity(_ cartUIState : ShoppingCartUIState) {
@@ -274,13 +279,15 @@ final class MercuryShopViewModel {
             try? await mercuryShopInteractor.stepShoppingCartQuantity(cartUIState : cartUIState, decrease: true)
         }
     }
-    func bindShoppingCartQuantity(_ cartUIState : ShoppingCartUIState) -> Binding<Float> {
+    func bindShoppingCartQuantity(_ cartUIState: ShoppingCartUIState) -> Binding<Float> {
         return Binding(
             get: {
                 cartUIState.quantity
             },
-            set: { newValue in
-                self.mercuryShopInteractor.updateEnteredQuantity(productId: cartUIState.productId, quantity: newValue)
+            set: { [weak self] newValue in
+                Task { [weak self] in
+                    try? await self?.mercuryShopInteractor.updateShoppingCartQuantity(productId: cartUIState.productId, quantity: newValue)
+                }
             }
         )
     }
@@ -372,13 +379,21 @@ final class MercuryShopViewModel {
                 orderItemUIState.quantity
             },
             set: { newValue in
-                self.mercuryShopInteractor.updateEnteredQuantity(productId: orderItemUIState.productId, quantity: newValue)
+                if let currentOrder = self.currentOrder, currentOrder.id == orderItemUIState.orderId {
+                    let currentItems : [OrderItemUIState] = currentOrder.items
+                    if let index = currentItems.firstIndex(of: orderItemUIState)  {
+                        let newOrderItem : OrderItemUIState = orderItemUIState.with(quantity : newValue)
+                        var newItems : [OrderItemUIState] = currentItems
+                        newItems[index] = newOrderItem
+                        self.currentOrder = currentOrder.with(items: newItems)
+                    }
+                }
             }
         )
     }
     func deleteItemOfCurrentOrder() {
         Task {
-            if let currentOrder, let selectedOrderItem {
+            if let selectedOrderItem {
                 if let count = try? await mercuryShopInteractor.deleteOrderItem(orderItemUIState : selectedOrderItem), Int(truncating : count) > 0 {
                     updateSelectedOrderItem(selectedOrderItem)
                 }

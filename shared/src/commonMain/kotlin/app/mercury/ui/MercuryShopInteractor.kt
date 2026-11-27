@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -37,7 +38,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 			mercuryShopRepository.updateProducts()
 		}
 	}
-	val enteredQuantityMap = MutableStateFlow<MutableMap<Int, Float>>(mutableMapOf())
+	val enteredQuantityMap = MutableStateFlow<Map<Int, Float>>(emptyMap())
 	val productUIStates : StateFlow<Map<Int, ProductUIState>> = combine(
 		mercuryShopRepository.productsDao.getAll(),
 		mercuryShopRepository.shoppingCartDao.getAll(),
@@ -75,34 +76,63 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
         mercuryShopRepository.coroutineScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList())
-	fun updateEnteredQuantity(productId : Int, quantity: Float) {
-		enteredQuantityMap.value[productId] = max(quantity, 0f)
+	fun updateEnteredQuantity(productId : Int, quantity : Float) {
+		val productUIState : ProductUIState? = productUIStates.value[productId]
+		val newQuantity : Float = productUIState?.let { min(quantity, productUIState.quantityInStock) } ?: 0f
+		enteredQuantityMap.update { currentMap ->
+			if(newQuantity > 0) currentMap + (productId to newQuantity) else currentMap - productId
+		}
 	}
 	fun stepEnteredQuantity(productUIState : ProductUIState, decrease: Boolean = false) {
         val productId = productUIState.id
         val portion : Float = productUIState.portion
-        var enteredQuantity : Float = enteredQuantityMap.value[productId] ?: 0f
-        if(decrease)
-            enteredQuantityMap.value[productId] = min(enteredQuantity - portion, 0f)
-        else {
-            val quantityInStock: Float = productUIState.quantityInStock
-            enteredQuantityMap.value[productId] = min(enteredQuantity + portion, quantityInStock)
-        }
+		enteredQuantityMap.update { currentMap ->
+			val currentQuantity : Float = currentMap[productId] ?: 0f
+			val newQuantity : Float = if(decrease) max(currentQuantity - portion, 0f) else min(currentQuantity + portion, productUIState.quantityInStock)
+			if(newQuantity > 0) currentMap + (productId to newQuantity) else currentMap - productId
+		}
 	}
     suspend fun addToShoppingCart(productUIState : ProductUIState) {
-        val shoppingCartEntity = productUIState.toShoppingCartEntity()
-        mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
-        enteredQuantityMap.value.remove(shoppingCartEntity.productId)
+        val productId = productUIState.id
+		val currentCartEntity : ShoppingCartEntity? = mercuryShopRepository.shoppingCartDao.getOne(productId = productId)
+		val currentQuantity : Float = currentCartEntity?.let { it.quantity } ?: 0f
+		val newCartEntity : ShoppingCartEntity = productUIState.toShoppingCartEntity(currentQuantity = currentQuantity)
+        mercuryShopRepository.shoppingCartDao.upsertShoppingCart(newCartEntity)
+		updateEnteredQuantity(productId = productId, quantity = 0f)
     }
-	suspend fun clearShoppingCart() : Int {
+	suspend fun deleteShoppingCartItem(cartUIState : ShoppingCartUIState?) : Int {
+		return cartUIState?.let {
+			mercuryShopRepository.shoppingCartDao.deleteById(productId = it.productId)
+		} ?: 0
+	}
+	suspend fun deleteAllShoppingCartItems() : Int {
 		return mercuryShopRepository.shoppingCartDao.deleteAll()
+	}
+	suspend fun updateShoppingCartQuantity(productId : Int, quantity : Float) {
+		val productUIState : ProductUIState? = productUIStates.value[productId]
+		if(productUIState != null) {
+			val cartQuantity: Float = min(quantity, productUIState.quantityInStock)
+			if (cartQuantity > 0) {
+				val shoppingCartEntity = ShoppingCartEntity(
+					productId = productId,
+					quantity = cartQuantity,
+					amount = cartQuantity * productUIState.price
+				)
+				mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
+				updateEnteredQuantity(productId = productId, quantity = cartQuantity)
+			}
+			else {
+				mercuryShopRepository.shoppingCartDao.deleteById(productId = productId)
+				updateEnteredQuantity(productId = productId, quantity = 0f)
+			}
+		}
 	}
     suspend fun stepShoppingCartQuantity(cartUIState : ShoppingCartUIState, decrease: Boolean = false) {
         val productId = cartUIState.productId
         val productUIState : ProductUIState? = productUIStates.value[productId]
         if(productUIState != null) {
             val cartQuantity: Float =
-                if (decrease) min(cartUIState.quantity - productUIState.portion, 0f)
+                if (decrease) max(cartUIState.quantity - productUIState.portion, 0f)
                 else min(cartUIState.quantity + productUIState.portion, productUIState.quantityInStock)
             if (cartQuantity >= 0) {
                 val shoppingCartEntity = ShoppingCartEntity(
@@ -111,22 +141,13 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
                     amount = cartQuantity * productUIState.price
                 )
                 mercuryShopRepository.shoppingCartDao.upsertShoppingCart(shoppingCartEntity)
-                if (cartQuantity > 0) {
-                    enteredQuantityMap.value[productId] = cartQuantity
-                } else {
-                    enteredQuantityMap.value.remove(productId)
-                }
+				updateEnteredQuantity(productId = productId, quantity = cartQuantity)
             }
+			else {
+				mercuryShopRepository.shoppingCartDao.deleteById(productId = productId)
+				updateEnteredQuantity(productId = productId, quantity = 0f)
+			}
         }
-    }
-    fun getOrderItemUIStates(orderUIState: OrderUIState) : StateFlow<List<OrderItemUIState>> {
-        return mercuryShopRepository.orderItemsDao.getAllOfOrderWithDetails(orderId = orderUIState.id).map { list ->
-            list.map { it.toOrderItemUIState() }
-        }
-        .stateIn(
-            mercuryShopRepository.coroutineScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = emptyList())
     }
     suspend fun createOrder(): OrderUIState? {
         var orderUIState: OrderUIState? = null
@@ -176,7 +197,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 		val productUIState : ProductUIState? = productUIStates.value[productId]
 		if(productUIState != null) {
 			val orderItemQuantity: Float =
-				if (decrease) min(orderItemUIState.quantity - productUIState.portion, 0f)
+				if (decrease) max(orderItemUIState.quantity - productUIState.portion, 0f)
 				else min(orderItemUIState.quantity + productUIState.portion, productUIState.quantityInStock)
 			if (orderItemQuantity >= 0) {
 				val orderItemEntity = OrderItemEntity(
@@ -186,11 +207,7 @@ class MercuryShopInteractor(private val mercuryShopRepository: MercuryShopReposi
 					amount = orderItemQuantity * productUIState.price
 				)
 				mercuryShopRepository.orderItemsDao.upsertOrderItem(orderItemEntity)
-				if (orderItemQuantity > 0) {
-					enteredQuantityMap.value[productId] = orderItemQuantity
-				} else {
-					enteredQuantityMap.value.remove(productId)
-				}
+				updateEnteredQuantity(productId = productId, quantity = orderItemQuantity)
 			}
 		}
 	}

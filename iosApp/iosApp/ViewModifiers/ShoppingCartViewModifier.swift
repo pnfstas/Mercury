@@ -63,7 +63,7 @@ struct ShoppingCartViewModifier: ViewModifier {
                                             }
                                             .frame(maxWidth: .infinity)
                                             .foregroundStyle(.black)
-                                            .background(.clear)
+                                            .background(cartUIState.productId == viewModel.selectedCartItem?.productId ? Color.cyan : Color.clear)
                                             .font(.custom("Arial", size: 12).weight(.regular))
                                         }
                                     }
@@ -73,9 +73,16 @@ struct ShoppingCartViewModifier: ViewModifier {
                             .scrollIndicators(.visible, axes: .vertical)
                             .scrollIndicators(.automatic, axes: .horizontal)
                             .background(.clear)
+                            .safeAreaInset(edge: .top) {
+                                ControlGroup {
+                                    DialogButton(action: { viewModel.deleteShoppingCartItem() }, label: "Удалить", width: 100, height: 30, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteShoppingCartItemOpacity)
+                                    DialogButton(action: { viewModel.deleteAllShoppingCartItems() }, label: "Очистить", width: 100, height: 30, backgroundColor: .clear, foregroundColor: .black, borderColor: .main, borderWidth: 1, opacity: viewModel.deleteAllShoppingCartItemsOpacity)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .background(.menu)
+                                .controlGroupStyle(.navigation)
+                            }
                             HStack(alignment: .center, spacing: 20) {
-                                DialogButton(action: { viewModel.clearShoppingCart() }, label: "Очистить корзину", width: screenSize.width / 3,
-                                    opacity: buttonOpacity)
                                 DialogButton(action: { viewModel.createOrder() }, label: "Сформировать заказ", width: screenSize.width / 3,
                                     opacity: buttonOpacity)
                             }

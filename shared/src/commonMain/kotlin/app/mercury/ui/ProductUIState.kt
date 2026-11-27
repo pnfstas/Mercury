@@ -39,11 +39,11 @@ data class ProductUIState (
 			amount = enteredQuantity * price
 		)
 	}
-	fun toShoppingCartEntity() : ShoppingCartEntity {
+	fun toShoppingCartEntity(currentQuantity : Float = 0f) : ShoppingCartEntity {
 		return ShoppingCartEntity(
 			productId = id,
-			quantity = enteredQuantity,
-			amount = enteredQuantity * price
+			quantity = currentQuantity + enteredQuantity,
+			amount = (currentQuantity + enteredQuantity) * price
 		)
 	}
 }
